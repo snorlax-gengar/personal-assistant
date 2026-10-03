@@ -132,8 +132,8 @@ def generate_landing_html(total_count, stock_count, re_count):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gengarileo Executive Assistant - 아이폰 16 프로 캘린더 자동 구독</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="apple-mobile-web-app-title" content="Gengarileo">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -179,19 +179,21 @@ def generate_landing_html(total_count, stock_count, re_count):
       to {{ opacity: 1; transform: translateY(0); }}
     }}
     .emblem-wrapper {{
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: inline-block;
       position: relative;
     }}
     .emblem {{
-      width: 76px;
-      height: 76px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      box-shadow: 0 16px 36px rgba(124, 58, 237, 0.45), 0 0 24px rgba(56, 189, 248, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
     }}
     .emblem:hover {{
-      transform: scale(1.05);
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 22px 45px rgba(124, 58, 237, 0.6), 0 0 30px rgba(56, 189, 248, 0.4);
     }}
     .status-badge {{
       display: inline-flex;
@@ -317,7 +319,7 @@ def generate_landing_html(total_count, stock_count, re_count):
 <body>
   <div class="card">
     <div class="emblem-wrapper">
-      <img src="favicon.svg" alt="Gengarileo Executive Assistant" class="emblem" />
+      <img src="emblem.jpg" alt="Gengarileo Executive Concierge" class="emblem" />
     </div>
 
     <div>

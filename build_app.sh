@@ -12,6 +12,7 @@ echo "📦 .app 번들 구조 생성 중..."
 rm -rf "$APP_BUNDLE"
 mkdir -p "$APP_BUNDLE/Contents/MacOS"
 mkdir -p "$APP_BUNDLE/Contents/Resources"
+cp "$BUILD_DIR/public/AppIcon.icns" "$APP_BUNDLE/Contents/Resources/" 2>/dev/null || true
 
 mv "$BUILD_DIR/$APP_NAME" "$APP_BUNDLE/Contents/MacOS/"
 
@@ -32,6 +33,8 @@ cat << 'EOF' > "$APP_BUNDLE/Contents/Info.plist"
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
     <string>1.0.0</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>LSMinimumSystemVersion</key>
     <string>13.0</string>
     <key>LSUIElement</key>
