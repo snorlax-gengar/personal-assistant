@@ -6,10 +6,10 @@ METHOD:PUBLISH
 X-WR-CALNAME:🏠 [Gengarileo] 부동산·청약
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
-UID:6cebc0fa-6c36-4389-99cb-ca93bad2ccc0@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261005
-DTEND;VALUE=DATE:20261006
+UID:cb152cad-e448-4ab4-a23b-4bc4002e0948@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
 SUMMARY:[🏠] [일반분양] 과천 디에트르 퍼스티지 청약 (분양가 약 8.7억)
 DESCRIPTION:시간: 분양가 약 8.7억\n메모: 과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EA%B3%BC%EC%B2%9C%20%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4%20%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EA%B3%BC%EC%B2%9C%20%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4%20%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80
@@ -25,10 +25,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:8358a2ec-dbd4-448d-80da-24e02459ff77@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261008
-DTEND;VALUE=DATE:20261009
+UID:90546a15-36c0-45e2-a110-86722a57faed@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
 SUMMARY:[🏠] [공공분양] 동작구 수방사 본청약 청약 (분양가 약 8.7억)
 DESCRIPTION:시간: 분양가 약 8.7억\n메모: 서울 동작 | 노량진 한강변 알짜 공공분양 1순위 | [분양가 약 8.7억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EB%8F%99%EC%9E%91%EA%B5%AC%20%EC%88%98%EB%B0%A9%EC%82%AC%20%EB%B3%B8%EC%B2%AD%EC%95%BD\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EB%8F%99%EC%9E%91%EA%B5%AC%20%EC%88%98%EB%B0%A9%EC%82%AC%20%EB%B3%B8%EC%B2%AD%EC%95%BD
@@ -44,10 +44,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:57e77522-5ba9-4e24-afe6-71c62613f976@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261010
-DTEND;VALUE=DATE:20261011
+UID:5ebc99ba-17c2-4d2f-8844-3718b5efa423@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261012
 SUMMARY:[🏠] [일반분양] 마포 에피트 어바닉 청약 (분양가 약 10.2억)
 DESCRIPTION:시간: 분양가 약 10.2억\n메모: 서울 마포 | 애오개역 초역세권 일반분양 청약 | [분양가 약 10.2억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EB%A7%88%ED%8F%AC%20%EC%97%90%ED%94%BC%ED%8A%B8%20%EC%96%B4%EB%B0%94%EB%8B%89\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EB%A7%88%ED%8F%AC%20%EC%97%90%ED%94%BC%ED%8A%B8%20%EC%96%B4%EB%B0%94%EB%8B%89
@@ -63,10 +63,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:c4ad8329-dab1-40ae-9277-3d56a0d60fd7@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261013
-DTEND;VALUE=DATE:20261014
+UID:839c8d3a-ed1c-4eb3-9307-6ccca546c722@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
 SUMMARY:[🏠] [신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약 (분양가 약 4.8억)
 DESCRIPTION:시간: 분양가 약 4.8억\n메모: 하남 | LH 청약플러스 본청약 접수 | [분양가 약 4.8억]\n상세정보: https://new.land.naver.com/complexes?keyword=%ED%95%98%EB%82%A8%20%EA%B5%90%EC%82%B0%20A2%EB%B8%94%EB%A1%9D%20%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%ED%95%98%EB%82%A8%20%EA%B5%90%EC%82%B0%20A2%EB%B8%94%EB%A1%9D%20%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4
@@ -82,10 +82,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:54566dda-a044-4c79-b1b6-c034b3bec5f1@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261017
-DTEND;VALUE=DATE:20261018
+UID:8769a310-a9b4-45b0-bcc4-1fe116fde8ac@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261018
+DTEND;VALUE=DATE:20261019
 SUMMARY:[🏠] [공공분양] 남양주 왕숙 B2블록 공공분양 청약 (분양가 약 4.5억)
 DESCRIPTION:시간: 분양가 약 4.5억\n메모: 남양주 | 3기 신도시 LH 공공분양 본접수 | [분양가 약 4.5억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EB%82%A8%EC%96%91%EC%A3%BC%20%EC%99%95%EC%88%99%20B2%EB%B8%94%EB%A1%9D%20%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EB%82%A8%EC%96%91%EC%A3%BC%20%EC%99%95%EC%88%99%20B2%EB%B8%94%EB%A1%9D%20%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91
@@ -101,10 +101,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:3d1c620b-94f9-4ac1-b760-7b4cebb27f9c@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261021
-DTEND;VALUE=DATE:20261022
+UID:09c8256c-acd6-4e8d-8517-ea8a142e2826@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261022
+DTEND;VALUE=DATE:20261023
 SUMMARY:[🏠] [일반분양] 고양 장항 아테라 청약 (분양가 약 6.8억)
 DESCRIPTION:시간: 분양가 약 6.8억\n메모: 고양 일산 | 일산 장항지구 1순위 청약 접수 | [분양가 약 6.8억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EA%B3%A0%EC%96%91%20%EC%9E%A5%ED%95%AD%20%EC%95%84%ED%85%8C%EB%9D%BC\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EA%B3%A0%EC%96%91%20%EC%9E%A5%ED%95%AD%20%EC%95%84%ED%85%8C%EB%9D%BC
@@ -120,10 +120,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:5aec5fb9-0656-4eb2-9063-fe8091619add@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261025
-DTEND;VALUE=DATE:20261026
+UID:214cb5a2-804a-4e99-8693-9ba894908305@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
 SUMMARY:[🏠] [일반분양] 구리 인창 수택 재개발 청약 (분양가 약 8.8억)
 DESCRIPTION:시간: 분양가 약 8.8억\n메모: 구리 | 구리역 역세권 일반분양 특공/1순위 | [분양가 약 8.8억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EA%B5%AC%EB%A6%AC%20%EC%9D%B8%EC%B0%BD%20%EC%88%98%ED%83%9D%20%EC%9E%AC%EA%B0%9C%EB%B0%9C\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EA%B5%AC%EB%A6%AC%20%EC%9D%B8%EC%B0%BD%20%EC%88%98%ED%83%9D%20%EC%9E%AC%EA%B0%9C%EB%B0%9C
@@ -139,10 +139,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:bbb3afd6-f754-4bff-bc8f-583dad05015d@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261029
-DTEND;VALUE=DATE:20261030
+UID:7419f9c0-bad7-44fd-bbf1-1f83c9924332@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
 SUMMARY:[🏠] [일반분양] 의정부 롯데캐슬 나리벡시티 청약 (분양가 약 5.8억)
 DESCRIPTION:시간: 분양가 약 5.8억\n메모: 의정부 | 의정부 금오동 1순위 청약 | [분양가 약 5.8억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EC%9D%98%EC%A0%95%EB%B6%80%20%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC%20%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EC%9D%98%EC%A0%95%EB%B6%80%20%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC%20%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0
@@ -158,10 +158,10 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:3fd07a8d-5b51-4790-85f1-dd781b3459cb@personalassistant
-DTSTAMP:20261003T223645Z
-DTSTART;VALUE=DATE:20261031
-DTEND;VALUE=DATE:20261101
+UID:caeede55-b1d2-479b-ab3b-0448c8612e75@personalassistant
+DTSTAMP:20261003T224315Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
 SUMMARY:[🏠] [무순위] 올림픽파크 포레온 (취소분 59㎡) 청약 (분양가 약 10.5억)
 DESCRIPTION:시간: 분양가 약 10.5억\n메모: 서울 강동 | 59㎡ 취소분 무순위 줍줍 청약 접수 | [분양가 약 10.5억]\n상세정보: https://new.land.naver.com/complexes?keyword=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC%20%ED%8F%AC%EB%A0%88%EC%98%A8%20%28%EC%B7%A8%EC%86%8C%EB%B6%84%2059%E3%8E%A1%29\n[PersonalAssistant 자동 비서 구독]
 URL:https://new.land.naver.com/complexes?keyword=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC%20%ED%8F%AC%EB%A0%88%EC%98%A8%20%28%EC%B7%A8%EC%86%8C%EB%B6%84%2059%E3%8E%A1%29

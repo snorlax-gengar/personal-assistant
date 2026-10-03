@@ -2,8 +2,9 @@ name: Gengarileo Assistant Daily Sync & Calendar Publisher
 
 on:
   schedule:
-    # 매일 한국 시간(KST) 새벽 05:00 실행 (UTC 20:00)
+    # 매일 한국 시간(KST) 새벽 05:00 (UTC 20:00) & 아침 08:00 (UTC 23:00) 실행
     - cron: '0 20 * * *'
+    - cron: '0 23 * * *'
   workflow_dispatch: # GitHub 웹에서 수동 실행 가능
   push:
     branches:
@@ -37,6 +38,13 @@ jobs:
         run: |
           python3 scripts/sync_collector.py
           python3 scripts/generate_ics.py
+
+      - name: 📢 텔레그램 모바일 모닝 브리핑 발송
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 scripts/telegram_briefing.py
 
       - name: 💾 최신 캘린더 파일 저장소 자동 커밋
         run: |

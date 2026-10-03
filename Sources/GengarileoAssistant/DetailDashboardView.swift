@@ -10,6 +10,7 @@ struct DetailDashboardView: View {
     @State private var isSyncing: Bool = false
 
     // 입력 필드 상태
+    @State private var quickInputText: String = ""
     @State private var newTitle: String = ""
     @State private var newCategory: ScheduleCategory = .personal
     @State private var newDate: Date = Date()
@@ -97,7 +98,79 @@ struct DetailDashboardView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 14)
-            .padding(.bottom, 10)
+            .padding(.bottom, 8)
+
+            // MARK: - 스마트 빠른 자연어 등록 바 (Fantastical 스타일)
+            VStack(spacing: 5) {
+                HStack(spacing: 8) {
+                    Image(systemName: "bolt.fill")
+                        .font(.system(size: 11))
+                        .foregroundColor(.yellow)
+
+                    TextField("⚡ 스마트 등록: '내일 7시 저녁', '10/25 엔비디아 실적'...", text: $quickInputText)
+                        .textFieldStyle(.plain)
+                        .font(.system(size: 11.5))
+                        .onSubmit {
+                            submitQuickInput()
+                        }
+
+                    if !quickInputText.trimmingCharacters(in: .whitespaces).isEmpty {
+                        Button(action: {
+                            submitQuickInput()
+                        }) {
+                            Text("등록")
+                                .font(.system(size: 10.5, weight: .bold))
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2.5)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(4)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(Color.primary.opacity(0.04))
+                .cornerRadius(7)
+
+                // 실시간 자연어 파싱 미리보기 힌트
+                if !quickInputText.trimmingCharacters(in: .whitespaces).isEmpty {
+                    let parsed = ScheduleStore.parseNaturalLanguage(input: quickInputText)
+                    HStack(spacing: 6) {
+                        Text("미리보기:")
+                            .font(.system(size: 9.5))
+                            .foregroundColor(.secondary)
+
+                        Label(parsed.category.rawValue, systemImage: parsed.category.iconName)
+                            .font(.system(size: 9, weight: .medium))
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 1)
+                            .background(parsed.category.color.opacity(0.15))
+                            .foregroundColor(parsed.category.color)
+                            .cornerRadius(3)
+
+                        Text("📅 \(formattedDateShort(parsed.date))")
+                            .font(.system(size: 9))
+                            .foregroundColor(.secondary)
+
+                        if let t = parsed.timeString {
+                            Text("⏰ \(t)")
+                                .font(.system(size: 9))
+                                .foregroundColor(.secondary)
+                        }
+
+                        Spacer()
+
+                        Text("⏎ Enter로 즉시 추가")
+                            .font(.system(size: 9, weight: .medium))
+                            .foregroundColor(.blue.opacity(0.85))
+                    }
+                    .padding(.horizontal, 4)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 8)
 
             Divider()
 
@@ -321,6 +394,13 @@ struct DetailDashboardView: View {
                         let indexPath = "/Users/declan/Desktop/GengarileoAssistant/public/index.html"
                         NSWorkspace.shared.open(URL(fileURLWithPath: indexPath))
                     }
+                    Button("📢 텔레그램 모바일 브리핑 지금 발송") {
+                        store.sendTelegramBriefing { success, message in
+                            backupMessage = message
+                            showingBackupAlert = true
+                        }
+                    }
+                    Divider()
                     Button("지금 파일로 백업") {
                         if let backup = store.createBackupSnapshot() {
                             backupMessage = "백업 완료:\n\(backup.lastPathComponent)"
@@ -353,7 +433,7 @@ struct DetailDashboardView: View {
             .padding(.vertical, 8)
             .background(Color.primary.opacity(0.02))
         }
-        .frame(width: 440, height: 530)
+        .frame(width: 440, height: 560)
         .alert(isPresented: $showingBackupAlert) {
             Alert(
                 title: Text("알림"),
@@ -361,6 +441,20 @@ struct DetailDashboardView: View {
                 dismissButton: .default(Text("확인"))
             )
         }
+    }
+
+    private func submitQuickInput() {
+        let trimmed = quickInputText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        store.addNaturalLanguageItem(input: trimmed)
+        quickInputText = ""
+    }
+
+    private func formattedDateShort(_ date: Date) -> String {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "ko_KR")
+        df.dateFormat = "M/d(E)"
+        return df.string(from: date)
     }
 
     private func addNewItem() {

@@ -1,0 +1,85 @@
+name: Add Schedule via Mobile Shortcut
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: '일정 제목'
+        required: true
+        type: string
+      category:
+        description: '카테고리 (개인/업무, 할 일, 주식/금융, 부동산)'
+        required: false
+        default: '개인/업무'
+        type: string
+      date:
+        description: '날짜 (YYYY-MM-DD)'
+        required: true
+        type: string
+      memo:
+        description: '메모'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  add-schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 코드 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 🐍 Python 환경 설정
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: ➕ 모바일 신규 일정 추가
+        run: |
+          python3 -c "
+          import json, uuid, datetime, os
+
+          data_path = 'data/schedules.json'
+          with open(data_path, 'r', encoding='utf-8') as f:
+              items = json.load(f)
+
+          title = '''${{ inputs.title }}'''.strip()
+          category = '''${{ inputs.category }}'''.strip() or '개인/업무'
+          date_str = '''${{ inputs.date }}'''.strip()
+          memo = '''${{ inputs.memo }}'''.strip()
+
+          new_item = {
+              'id': str(uuid.uuid4()),
+              'title': title,
+              'category': category,
+              'date': f'{date_str}T09:00:00Z',
+              'isCompleted': False,
+              'isDDay': True,
+              'memo': f'{memo} [아이폰 단축어 등록]',
+              'createdAt': datetime.datetime.now().isoformat() + 'Z'
+          }
+          items.append(new_item)
+          items.sort(key=lambda x: x.get('date', ''))
+
+          with open(data_path, 'w', encoding='utf-8') as f:
+              json.dump(items, f, ensure_ascii=False, indent=2)
+
+          print(f'[+] 모바일 일정 등록 성공: {title} ({date_str})')
+          "
+
+      - name: 📅 캘린더 파일 (.ics) 재성성
+        run: |
+          python3 scripts/generate_ics.py
+
+      - name: 💾 저장소 커밋 & 푸시
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/schedules.json public/
+          git commit -m "feat(mobile): 아이폰 단축어를 통한 새 일정 등록 - ${{ inputs.title }} [skip ci]"
+          git push

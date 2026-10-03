@@ -340,7 +340,48 @@ def fetch_realestate_subscriptions(re_config):
 
 
 # ==========================================
-# 3. 데이터 병합 엔진 (Safe Merge & Upsert)
+# 3. 사후 트래킹 엔진 (실적 발표 결과 & 청약 당첨일 추적)
+# ==========================================
+def apply_post_event_tracking(items):
+    """
+    실적 발표 결과 및 청약 당첨자 발표일 사후 트래킹 엔진
+    - 접수/발표 당일 및 지난 일정에 대해 결과 링크, 당첨일 자동 계산 및 안내를 추가합니다.
+    """
+    today = datetime.date.today()
+    for item in items:
+        date_str = item.get("date", "")[:10]
+        try:
+            event_date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+        except Exception:
+            continue
+
+        category = item.get("category", "")
+        # 부동산 청약 사후 트래킹 (접수일 기준)
+        if category == "부동산":
+            if event_date < today:
+                # 통상 청약 접수일로부터 7~8일 뒤가 당첨자 발표일
+                ann_date = event_date + datetime.timedelta(days=8)
+                ann_str = f"{ann_date.month}/{ann_date.day}"
+                if "당첨자 발표" not in item.get("memo", ""):
+                    item["memo"] = f"{item.get('memo', '')} | [접수 마감 -> 당첨발표: {ann_str}]"
+                    item["timeDetail"] = f"당첨발표 {ann_str}"
+            elif event_date == today:
+                item["timeDetail"] = "오늘 청약 마감!"
+                if "오늘 마감" not in item.get("memo", ""):
+                    item["memo"] = f"{item.get('memo', '')} | [오늘 청약 마감일(청약홈 접수)]"
+
+        # 주식 실적 발표 사후 트래킹
+        elif category == "주식/금융":
+            if event_date < today:
+                if "실적 발표 완료" not in item.get("memo", ""):
+                    item["memo"] = f"{item.get('memo', '')} | [실적 발표 완료: 공시 확인]"
+                    item["timeDetail"] = "발표 완료"
+            elif event_date == today:
+                item["timeDetail"] = "오늘 발표 D-Day!"
+
+
+# ==========================================
+# 4. 데이터 병합 엔진 (Safe Merge & Upsert)
 # ==========================================
 def merge_and_save(stock_items, realestate_items):
     existing = load_existing_schedules()
@@ -364,13 +405,16 @@ def merge_and_save(stock_items, realestate_items):
             final_items.append(item)
             existing_titles.add(item["title"])
 
+    # 3. 사후 트래킹 적용 (당첨 발표일, 실적 완료 등)
+    apply_post_event_tracking(final_items)
+
     # 날짜 순서 정렬
     final_items.sort(key=lambda x: x.get("date", ""))
 
     with open(SCHEDULES_PATH, "w", encoding="utf-8") as f:
         json.dump(final_items, f, ensure_ascii=False, indent=2)
 
-    print(f"[✅] 15억 이하 선별 동기화 완료! 총 {len(final_items)}개 일정 등록됨.")
+    print(f"[✅] 15억 이하 선별 및 사후 트래킹 동기화 완료! 총 {len(final_items)}개 일정 등록됨.")
     print(f"     - 보존된 개인/Todo: {len(preserved_items)}건")
     print(f"     - 주식 실적발표: {len(stock_items)}건")
     print(f"     - 15억 이하 부동산 청약: {len(realestate_items)}건")

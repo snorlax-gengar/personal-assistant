@@ -211,6 +211,111 @@ class ScheduleStore: ObservableObject {
         triggerDebouncedCalendarSync()
     }
 
+    // MARK: - Smart Natural Language Parser (Fantastical 스타일 빠른 등록)
+    static func parseNaturalLanguage(input: String) -> (title: String, category: ScheduleCategory, date: Date, isDDay: Bool, timeString: String?) {
+        var text = input.trimmingCharacters(in: .whitespacesAndNewlines)
+        let calendar = Calendar.current
+        var targetDate = Date()
+        var detectedCategory: ScheduleCategory = .personal
+        var detectedTimeStr: String? = nil
+
+        // 1. 카테고리 태그 및 키워드 감지
+        if text.contains("#할일") || text.contains("#todo") || text.contains("체크리스트") {
+            detectedCategory = .todo
+            text = text.replacingOccurrences(of: "#할일", with: "").replacingOccurrences(of: "#todo", with: "")
+        } else if text.contains("#주식") || text.contains("실적 발표") || text.contains("실적발표") || text.contains("실발") || text.contains("어닝") {
+            detectedCategory = .stock
+            text = text.replacingOccurrences(of: "#주식", with: "")
+        } else if text.contains("#부동산") || text.contains("청약") || text.contains("분양") || text.contains("신희타") || text.contains("무순위") || text.contains("줍줍") {
+            detectedCategory = .realEstate
+            text = text.replacingOccurrences(of: "#부동산", with: "")
+        } else if text.contains("#업무") || text.contains("#개인") {
+            detectedCategory = .personal
+            text = text.replacingOccurrences(of: "#업무", with: "").replacingOccurrences(of: "#개인", with: "")
+        }
+
+        // 2. 날짜 키워드 감지
+        if text.contains("내일") {
+            targetDate = calendar.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+            text = text.replacingOccurrences(of: "내일", with: "")
+        } else if text.contains("모레") {
+            targetDate = calendar.date(byAdding: .day, value: 2, to: Date()) ?? Date()
+            text = text.replacingOccurrences(of: "모레", with: "")
+        } else if text.contains("글피") {
+            targetDate = calendar.date(byAdding: .day, value: 3, to: Date()) ?? Date()
+            text = text.replacingOccurrences(of: "글피", with: "")
+        } else if text.contains("오늘") {
+            targetDate = Date()
+            text = text.replacingOccurrences(of: "오늘", with: "")
+        } else if let match = text.range(of: "(\\d+)일\\s*(뒤|후)", options: .regularExpression) {
+            let matchedStr = String(text[match])
+            if let num = Int(matchedStr.filter { $0.isNumber }) {
+                targetDate = calendar.date(byAdding: .day, value: num, to: Date()) ?? Date()
+            }
+            text.removeSubrange(match)
+        } else if let match = text.range(of: "(\\d{1,2})월\\s*(\\d{1,2})일", options: .regularExpression) {
+            let matchedStr = String(text[match])
+            let numbers = matchedStr.components(separatedBy: CharacterSet.decimalDigits.inverted).compactMap { Int($0) }
+            if numbers.count >= 2 {
+                var comps = calendar.dateComponents([.year], from: Date())
+                comps.month = numbers[0]
+                comps.day = numbers[1]
+                if let d = calendar.date(from: comps) {
+                    targetDate = d
+                }
+            }
+            text.removeSubrange(match)
+        } else if let match = text.range(of: "(\\d{1,2})/(\\d{1,2})", options: .regularExpression) {
+            let matchedStr = String(text[match])
+            let parts = matchedStr.split(separator: "/").compactMap { Int($0) }
+            if parts.count >= 2 {
+                var comps = calendar.dateComponents([.year], from: Date())
+                comps.month = parts[0]
+                comps.day = parts[1]
+                if let d = calendar.date(from: comps) {
+                    targetDate = d
+                }
+            }
+            text.removeSubrange(match)
+        }
+
+        // 3. 시간대 추출 (예: 저녁 7시, 오후 3시, 14시 등)
+        if let match = text.range(of: "(오전|오후|저녁|아침|밤)?\\s*(\\d{1,2})시", options: .regularExpression) {
+            let matchedStr = String(text[match]).trimmingCharacters(in: .whitespaces)
+            detectedTimeStr = matchedStr
+            text.removeSubrange(match)
+        }
+
+        let cleanTitle = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines.union(CharacterSet(charactersIn: "-,:/")))
+        let finalTitle = cleanTitle.isEmpty ? "새 일정" : cleanTitle
+
+        return (
+            title: finalTitle,
+            category: detectedCategory,
+            date: targetDate,
+            isDDay: true,
+            timeString: detectedTimeStr
+        )
+    }
+
+    /// 자연어 한 줄 입력으로 즉시 일정 추가 (키보드 Enter 한 번으로 등록)
+    @discardableResult
+    func addNaturalLanguageItem(input: String) -> ScheduleItem {
+        let parsed = ScheduleStore.parseNaturalLanguage(input: input)
+        let memoText = parsed.timeString != nil ? "시간: \(parsed.timeString!)" : ""
+        let item = ScheduleItem(
+            title: parsed.title,
+            category: parsed.category,
+            date: parsed.date,
+            isDDay: parsed.isDDay,
+            memo: memoText,
+            timeDetail: parsed.timeString
+        )
+        items.append(item)
+        triggerDebouncedCalendarSync()
+        return item
+    }
+
     func toggleCompleted(id: UUID) {
         if let index = items.firstIndex(where: { $0.id == id }) {
             items[index].isCompleted.toggle()
@@ -406,6 +511,44 @@ class ScheduleStore: ObservableObject {
     func openConfigFile() {
         let configPath = "/Users/declan/Desktop/GengarileoAssistant/config.json"
         NSWorkspace.shared.open(URL(fileURLWithPath: configPath))
+    }
+
+    /// 텔레그램 모바일 아침 브리핑 즉시 전송
+    func sendTelegramBriefing(completion: @escaping (Bool, String) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let scriptPath = "/Users/declan/Desktop/GengarileoAssistant/scripts/telegram_briefing.py"
+            let pythonBin = "/opt/homebrew/bin/python3"
+
+            let process = Process()
+            process.executableURL = URL(fileURLWithPath: FileManager.default.fileExists(atPath: pythonBin) ? pythonBin : "/usr/bin/python3")
+            process.arguments = [scriptPath]
+
+            let pipe = Pipe()
+            process.standardOutput = pipe
+            process.standardError = pipe
+
+            do {
+                try process.run()
+                process.waitUntilExit()
+
+                let data = pipe.fileHandleForReading.readDataToEndOfFile()
+                let output = String(data: data, encoding: .utf8) ?? ""
+
+                DispatchQueue.main.async {
+                    if output.contains("전송 성공") {
+                        completion(true, "텔레그램으로 모바일 브리핑이 성공적으로 전송되었습니다! 📱")
+                    } else if output.contains("토큰 또는 Chat ID가 설정되지 않아") {
+                        completion(false, "텔레그램 봇 토큰과 Chat ID가 아직 설정되지 않았습니다.\nconfig.json 또는 GitHub Secrets에 등록해 주세요.")
+                    } else {
+                        completion(false, "전송 결과:\n\(output)")
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(false, "텔레그램 스크립트 실행 실패: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 
     // MARK: - Auto-Sync Scheduler
