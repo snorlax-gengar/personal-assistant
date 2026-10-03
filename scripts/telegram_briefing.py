@@ -63,13 +63,13 @@ def build_briefing_message(items):
 
     # 메시지 조합
     lines = [
-        "🤖 *[Gengarileo 개인 비서 모닝 브리핑]*",
+        "✦ *[Gengarileo 전용 비서 모닝 브리핑]*",
         f"📅 {today_str}\n"
     ]
 
     # 1. 오늘 D-Day 일정
     if today_items:
-        lines.append(f"🚨 *[오늘의 D-Day 일정]* ({len(today_items)}건)")
+        lines.append(f"🚨 *[오늘의 D-Day 보좌 일정]* ({len(today_items)}건)")
         for it in today_items:
             cat = it.get("category", "")
             emoji = "💼" if "개인" in cat else ("📈" if "주식" in cat else "🏠")
@@ -101,7 +101,7 @@ def build_briefing_message(items):
         lines.append("")
 
     lines.append("━━━━━━━━━━━━━━━━━")
-    lines.append("💡 *오늘도 알차고 멋진 하루 보내세요!* ✨")
+    lines.append("💡 *오늘도 알차고 성공적인 하루 보내세요!* ✨\n— Gengarileo Private Concierge")
 
     return "\n".join(lines)
 
