@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인 비서 - 아이폰 16 프로 캘린더 자동 구독</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 20px;
+      padding: 30px 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .icon {
+      font-size: 46px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+    }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 24px 0;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: #0f172a;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 18px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+    .btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    .btn-secondary {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #475569;
+    }
+    .guide {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #334155;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: left;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🤖</div>
+    <h1>개인 비서 클라우드 캘린더</h1>
+    <p class="subtitle">맥북이 꺼져 있어도 365일 24시간<br>아이폰 16 프로 캘린더 및 위젯으로 자동 갱신됩니다.</p>
+
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-val">10건</div>
+        <div class="stat-label">📈 주식 실발</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">8건</div>
+        <div class="stat-label">🏠 수도권 청약</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">19건</div>
+        <div class="stat-label">전체 일정</div>
+      </div>
+    </div>
+
+    <!-- 아이폰 Safari에서 클릭 시 캘린더 구독 창 팝업 -->
+    <a href="all.ics" class="btn btn-primary" id="allLink">📱 [통합] 캘린더 구독하기</a>
+    <a href="stocks.ics" class="btn btn-secondary" id="stockLink">📈 주식 실적발표만 구독</a>
+    <a href="realestate.ics" class="btn btn-secondary" id="reLink">🏠 부동산 청약만 구독</a>
+
+    <div class="guide">
+      <strong>💡 아이폰에서 구독하는 방법:</strong><br>
+      1. 아이폰 Safari에서 위 버튼을 누르면 <strong>"캘린더를 구독하시겠습니까?"</strong> 창이 뜹니다.<br>
+      2. <strong>[구독]</strong>을 누르고 자동 새로고침 주기를 <strong>'매시간'</strong>으로 설정하면 끝!<br>
+      3. 잠금화면, Always-On 디스플레이, 홈화면 캘린더 위젯에서 확인하실 수 있습니다.
+    </div>
+  </div>
+
+  <script>
+    // iOS Safari에서 webcal 프로토콜로 바로 열기 지원
+    const currentHost = window.location.host;
+    const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+    const protocol = window.location.protocol === 'https:' ? 'webcal:' : 'webcal:';
+    
+    document.getElementById('allLink').href = protocol + '//' + currentHost + currentPath + '/all.ics';
+    document.getElementById('stockLink').href = protocol + '//' + currentHost + currentPath + '/stocks.ics';
+    document.getElementById('reLink').href = protocol + '//' + currentHost + currentPath + '/realestate.ics';
+  </script>
+</body>
+</html>

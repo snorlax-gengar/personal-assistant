@@ -1,0 +1,12 @@
+# Swift & macOS Build Artifacts
+.build/
+.cache/
+*.app/
+*.o
+*.swiftdoc
+*.swiftmodule
+
+# Local Backups & Temp
+data/backups/
+.DS_Store
+*.xcuserstate

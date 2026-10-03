@@ -1,0 +1,160 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PersonalAssistant//KO
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:🏠 [비서] 부동산·청약
+X-WR-TIMEZONE:Asia/Seoul
+BEGIN:VEVENT
+UID:6B433C23-CAE2-4E48-A913-FEEFF56A238D@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+SUMMARY:[🏠] [일반분양] 과천 디에트르 퍼스티지 청약 (일반분양 접수)
+DESCRIPTION:시간: 일반분양 접수\n메모: 과천 | 과천 지식정보타운 1순위 접수\n상세정보: https://new.land.naver.com/complexes?keyword=%EA%B3%BC%EC%B2%9C%20%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4%20%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EA%B3%BC%EC%B2%9C%20%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4%20%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 과천 디에트르 퍼스티지 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 과천 디에트르 퍼스티지 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:51549CF7-914D-422D-8D4D-ABDF20C3787A@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261008
+DTEND;VALUE=DATE:20261009
+SUMMARY:[🏠] [일반분양] 잠실 래미안 아이파크 청약 (일반분양 접수)
+DESCRIPTION:시간: 일반분양 접수\n메모: 서울 송파 | 특별공급 및 1순위 청약홈 접수\n상세정보: https://new.land.naver.com/complexes?keyword=%EC%9E%A0%EC%8B%A4%20%EB%9E%98%EB%AF%B8%EC%95%88%20%EC%95%84%EC%9D%B4%ED%8C%8C%ED%81%AC\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EC%9E%A0%EC%8B%A4%20%EB%9E%98%EB%AF%B8%EC%95%88%20%EC%95%84%EC%9D%B4%ED%8C%8C%ED%81%AC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 잠실 래미안 아이파크 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 잠실 래미안 아이파크 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:8E3107D1-451F-46AF-8813-EB75E1CC4814@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+SUMMARY:[🏠] [신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약 (신혼희망타운 접수)
+DESCRIPTION:시간: 신혼희망타운 접수\n메모: 하남 | LH 청약플러스 본청약 접수\n상세정보: https://new.land.naver.com/complexes?keyword=%ED%95%98%EB%82%A8%20%EA%B5%90%EC%82%B0%20A2%EB%B8%94%EB%A1%9D%20%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%ED%95%98%EB%82%A8%20%EA%B5%90%EC%82%B0%20A2%EB%B8%94%EB%A1%9D%20%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:B7EB9447-D5DF-4490-8BD3-1DC9FCA23A78@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261017
+DTEND;VALUE=DATE:20261018
+SUMMARY:[🏠] [공공분양] 남양주 왕숙 B2블록 공공분양 청약 (공공분양 접수)
+DESCRIPTION:시간: 공공분양 접수\n메모: 남양주 | LH 공공분양 사전청약 본접수\n상세정보: https://new.land.naver.com/complexes?keyword=%EB%82%A8%EC%96%91%EC%A3%BC%20%EC%99%95%EC%88%99%20B2%EB%B8%94%EB%A1%9D%20%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EB%82%A8%EC%96%91%EC%A3%BC%20%EC%99%95%EC%88%99%20B2%EB%B8%94%EB%A1%9D%20%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[공공분양] 남양주 왕숙 B2블록 공공분양 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [공공분양] 남양주 왕숙 B2블록 공공분양 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:5BF8F12D-26A4-4491-B9B6-EB72F09E16AE@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:[🏠] [일반분양] 고양 장항 아테라 청약 (일반분양 접수)
+DESCRIPTION:시간: 일반분양 접수\n메모: 고양 일산 | 장항지구 1순위 청약 접수\n상세정보: https://new.land.naver.com/complexes?keyword=%EA%B3%A0%EC%96%91%20%EC%9E%A5%ED%95%AD%20%EC%95%84%ED%85%8C%EB%9D%BC\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EA%B3%A0%EC%96%91%20%EC%9E%A5%ED%95%AD%20%EC%95%84%ED%85%8C%EB%9D%BC
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 고양 장항 아테라 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 고양 장항 아테라 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2852BDBB-3970-4F54-A728-A87F92297735@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:[🏠] [일반분양] 구리 인창 수택 재개발 청약 (일반분양 접수)
+DESCRIPTION:시간: 일반분양 접수\n메모: 구리 | 일반분양 특별공급 접수\n상세정보: https://new.land.naver.com/complexes?keyword=%EA%B5%AC%EB%A6%AC%20%EC%9D%B8%EC%B0%BD%20%EC%88%98%ED%83%9D%20%EC%9E%AC%EA%B0%9C%EB%B0%9C\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EA%B5%AC%EB%A6%AC%20%EC%9D%B8%EC%B0%BD%20%EC%88%98%ED%83%9D%20%EC%9E%AC%EA%B0%9C%EB%B0%9C
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 구리 인창 수택 재개발 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 구리 인창 수택 재개발 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:64AFA150-1965-42AA-B689-D96A531E44D3@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261029
+DTEND;VALUE=DATE:20261030
+SUMMARY:[🏠] [일반분양] 의정부 롯데캐슬 나리벡시티 청약 (일반분양 접수)
+DESCRIPTION:시간: 일반분양 접수\n메모: 의정부 | 의정부 금오동 1순위 청약\n상세정보: https://new.land.naver.com/complexes?keyword=%EC%9D%98%EC%A0%95%EB%B6%80%20%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC%20%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EC%9D%98%EC%A0%95%EB%B6%80%20%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC%20%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 의정부 롯데캐슬 나리벡시티 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 의정부 롯데캐슬 나리벡시티 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:A99930F6-14B6-436C-8B58-60C02DA1851C@personalassistant
+DTSTAMP:20261003T140949Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:[🏠] [무순위] 올림픽파크 포레온 청약 (무순위 접수)
+DESCRIPTION:시간: 무순위 접수\n메모: 서울 강동 | 취소분 무순위 줍줍 청약 접수\n상세정보: https://new.land.naver.com/complexes?keyword=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC%20%ED%8F%AC%EB%A0%88%EC%98%A8\n[PersonalAssistant 자동 비서 구독]
+URL:https://new.land.naver.com/complexes?keyword=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC%20%ED%8F%AC%EB%A0%88%EC%98%A8
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[무순위] 올림픽파크 포레온 청약 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [무순위] 올림픽파크 포레온 청약 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
