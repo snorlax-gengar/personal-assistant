@@ -1,4 +1,4 @@
-name: Daily Schedule Sync & Calendar Publisher
+name: Gengarileo Assistant Daily Sync & Calendar Publisher
 
 on:
   schedule:

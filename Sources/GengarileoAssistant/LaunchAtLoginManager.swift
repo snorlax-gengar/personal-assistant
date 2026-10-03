@@ -45,18 +45,18 @@ class LaunchAtLoginManager {
     private func setupLaunchAgentFallback(enabled: Bool) {
         let fileManager = FileManager.default
         let launchAgentsDir = fileManager.homeDirectoryForCurrentUser.appendingPathComponent("Library/LaunchAgents", isDirectory: true)
-        let plistURL = launchAgentsDir.appendingPathComponent("com.declan.PersonalAssistant.plist")
+        let plistURL = launchAgentsDir.appendingPathComponent("com.declan.GengarileoAssistant.plist")
 
         if enabled {
             try? fileManager.createDirectory(at: launchAgentsDir, withIntermediateDirectories: true)
-            let appPath = "/Users/declan/Desktop/PersonalAssistant/PersonalAssistant.app/Contents/MacOS/PersonalAssistant"
+            let appPath = "/Users/declan/Desktop/GengarileoAssistant/GengarileoAssistant.app/Contents/MacOS/GengarileoAssistant"
             let plistContent = """
             <?xml version="1.0" encoding="UTF-8"?>
             <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
             <plist version="1.0">
             <dict>
                 <key>Label</key>
-                <string>com.declan.PersonalAssistant</string>
+                <string>com.declan.GengarileoAssistant</string>
                 <key>ProgramArguments</key>
                 <array>
                     <string>\(appPath)</string>

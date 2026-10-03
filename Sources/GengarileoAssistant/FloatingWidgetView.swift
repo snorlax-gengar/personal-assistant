@@ -19,7 +19,7 @@ struct FloatingWidgetView: View {
                     Image(systemName: "sparkles")
                         .foregroundColor(.yellow)
                         .font(.system(size: 13, weight: .bold))
-                    Text("개인 비서 위젯")
+                    Text("Gengarileo 위젯")
                         .font(.system(size: 13, weight: .bold))
                 }
 

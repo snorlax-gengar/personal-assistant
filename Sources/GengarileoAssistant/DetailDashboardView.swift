@@ -39,7 +39,7 @@ struct DetailDashboardView: View {
                     Image(systemName: "calendar.badge.clock")
                         .foregroundColor(.blue)
                         .font(.title3)
-                    Text("개인 비서 대시보드")
+                    Text("Gengarileo 개인 비서")
                         .font(.system(size: 14, weight: .bold))
 
                     // 전역 단축키 힌트 배지
@@ -318,7 +318,7 @@ struct DetailDashboardView: View {
 
                 Menu {
                     Button("아이폰 클라우드 구독 페이지 열기") {
-                        let indexPath = "/Users/declan/Desktop/PersonalAssistant/public/index.html"
+                        let indexPath = "/Users/declan/Desktop/GengarileoAssistant/public/index.html"
                         NSWorkspace.shared.open(URL(fileURLWithPath: indexPath))
                     }
                     Button("지금 파일로 백업") {

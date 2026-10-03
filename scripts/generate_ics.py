@@ -226,7 +226,7 @@ def generate_landing_html(total_count, stock_count, re_count):
 <body>
   <div class="card">
     <div class="icon">🤖</div>
-    <h1>개인 비서 클라우드 캘린더</h1>
+    <h1>Gengarileo 개인 비서 클라우드 캘린더</h1>
     <p class="subtitle">맥북이 꺼져 있어도 365일 24시간<br>아이폰 16 프로 캘린더 및 위젯으로 자동 갱신됩니다.</p>
 
     <div class="stats">
@@ -285,17 +285,17 @@ def main():
     re_items = [i for i in items if i.get("category") == "부동산"]
 
     # 1. all.ics 생성
-    all_ics = build_ics_content(items, "🤖 [비서] 주식 & 부동산 통합")
+    all_ics = build_ics_content(items, "🤖 [Gengarileo] 주식 & 부동산 통합")
     with open(os.path.join(PUBLIC_DIR, "all.ics"), "w", encoding="utf-8") as f:
         f.write(all_ics)
 
     # 2. stocks.ics 생성
-    stocks_ics = build_ics_content(stock_items, "📈 [비서] 주식·실적")
+    stocks_ics = build_ics_content(stock_items, "📈 [Gengarileo] 주식·실적")
     with open(os.path.join(PUBLIC_DIR, "stocks.ics"), "w", encoding="utf-8") as f:
         f.write(stocks_ics)
 
     # 3. realestate.ics 생성
-    re_ics = build_ics_content(re_items, "🏠 [비서] 부동산·청약")
+    re_ics = build_ics_content(re_items, "🏠 [Gengarileo] 부동산·청약")
     with open(os.path.join(PUBLIC_DIR, "realestate.ics"), "w", encoding="utf-8") as f:
         f.write(re_ics)
 

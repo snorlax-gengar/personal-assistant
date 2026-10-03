@@ -159,14 +159,14 @@ class ScheduleStore: ObservableObject {
 
     init() {
         // 프로젝트 폴더 내 data 디렉토리 우선 사용
-        let projectDataDir = URL(fileURLWithPath: "/Users/declan/Desktop/PersonalAssistant/data", isDirectory: true)
+        let projectDataDir = URL(fileURLWithPath: "/Users/declan/Desktop/GengarileoAssistant/data", isDirectory: true)
         let fileManager = FileManager.default
 
         if (try? fileManager.createDirectory(at: projectDataDir, withIntermediateDirectories: true)) != nil {
             self.dataDirectory = projectDataDir
         } else {
             let appSupport = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-            let fallback = appSupport.appendingPathComponent("PersonalAssistant", isDirectory: true)
+            let fallback = appSupport.appendingPathComponent("GengarileoAssistant", isDirectory: true)
             try? fileManager.createDirectory(at: fallback, withIntermediateDirectories: true)
             self.dataDirectory = fallback
         }
@@ -368,7 +368,7 @@ class ScheduleStore: ObservableObject {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
 
-            let scriptPath = "/Users/declan/Desktop/PersonalAssistant/scripts/sync_collector.py"
+            let scriptPath = "/Users/declan/Desktop/GengarileoAssistant/scripts/sync_collector.py"
             let pythonBin = "/opt/homebrew/bin/python3"
 
             let process = Process()
@@ -404,7 +404,7 @@ class ScheduleStore: ObservableObject {
 
     /// 설정 파일(config.json)을 기본 텍스트 편집기로 열기
     func openConfigFile() {
-        let configPath = "/Users/declan/Desktop/PersonalAssistant/config.json"
+        let configPath = "/Users/declan/Desktop/GengarileoAssistant/config.json"
         NSWorkspace.shared.open(URL(fileURLWithPath: configPath))
     }
 

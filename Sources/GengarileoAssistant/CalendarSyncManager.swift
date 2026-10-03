@@ -15,15 +15,15 @@ class CalendarSyncManager {
     private func config(for category: ScheduleCategory) -> CategoryCalendarConfig {
         switch category {
         case .stock:
-            return CategoryCalendarConfig(title: "📈 [비서] 주식·실적", color: .systemGreen)
+            return CategoryCalendarConfig(title: "📈 [Gengarileo] 주식·실적", color: .systemGreen)
         case .realEstate:
-            return CategoryCalendarConfig(title: "🏠 [비서] 부동산·청약", color: .systemOrange)
+            return CategoryCalendarConfig(title: "🏠 [Gengarileo] 부동산·청약", color: .systemOrange)
         case .personal:
-            return CategoryCalendarConfig(title: "💼 [비서] 개인·업무", color: .systemBlue)
+            return CategoryCalendarConfig(title: "💼 [Gengarileo] 개인·업무", color: .systemBlue)
         case .todo:
-            return CategoryCalendarConfig(title: "✅ [비서] 할 일", color: .systemPurple)
+            return CategoryCalendarConfig(title: "✅ [Gengarileo] 할 일", color: .systemPurple)
         case .all:
-            return CategoryCalendarConfig(title: "📌 [비서] 기타", color: .systemGray)
+            return CategoryCalendarConfig(title: "📌 [Gengarileo] 기타", color: .systemGray)
         }
     }
 
@@ -177,7 +177,7 @@ class CalendarSyncManager {
         }
         ics += "END:VCALENDAR\n"
 
-        let icsPath = "/Users/declan/Desktop/PersonalAssistant/data/PersonalAssistant.ics"
+        let icsPath = "/Users/declan/Desktop/GengarileoAssistant/data/GengarileoAssistant.ics"
         do {
             try ics.write(toFile: icsPath, atomically: true, encoding: .utf8)
             NSWorkspace.shared.open(URL(fileURLWithPath: icsPath))

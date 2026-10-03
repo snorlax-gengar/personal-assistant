@@ -2,20 +2,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "PersonalAssistant",
+    name: "GengarileoAssistant",
     platforms: [
         .macOS(.v13)
     ],
     products: [
         .executable(
-            name: "PersonalAssistant",
-            targets: ["PersonalAssistant"]
+            name: "GengarileoAssistant",
+            targets: ["GengarileoAssistant"]
         )
     ],
     targets: [
         .executableTarget(
-            name: "PersonalAssistant",
-            path: "Sources/PersonalAssistant"
+            name: "GengarileoAssistant",
+            path: "Sources/GengarileoAssistant"
         )
     ]
 )

@@ -1,12 +1,12 @@
 #!/bin/bash
 set -e
 
-APP_NAME="PersonalAssistant"
+APP_NAME="GengarileoAssistant"
 BUILD_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_BUNDLE="$BUILD_DIR/$APP_NAME.app"
 
-echo "🔨 Swift 컴파일 진행 중..."
-swiftc -O -module-cache-path /tmp/swift-cache -parse-as-library "$BUILD_DIR/Sources/PersonalAssistant/"*.swift -o "$BUILD_DIR/$APP_NAME"
+echo "🔨 Swift 컴파일 진행 중 (GengarileoAssistant)..."
+swiftc -O -module-cache-path /tmp/swift-cache -parse-as-library "$BUILD_DIR/Sources/GengarileoAssistant/"*.swift -o "$BUILD_DIR/$APP_NAME"
 
 echo "📦 .app 번들 구조 생성 중..."
 rm -rf "$APP_BUNDLE"
@@ -21,11 +21,13 @@ cat << 'EOF' > "$APP_BUNDLE/Contents/Info.plist"
 <plist version="1.0">
 <dict>
     <key>CFBundleExecutable</key>
-    <string>PersonalAssistant</string>
+    <string>GengarileoAssistant</string>
     <key>CFBundleIdentifier</key>
-    <string>com.declan.PersonalAssistant</string>
+    <string>com.declan.GengarileoAssistant</string>
     <key>CFBundleName</key>
-    <string>PersonalAssistant</string>
+    <string>GengarileoAssistant</string>
+    <key>CFBundleDisplayName</key>
+    <string>Gengarileo 개인비서</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
