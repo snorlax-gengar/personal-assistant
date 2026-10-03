@@ -317,6 +317,10 @@ struct DetailDashboardView: View {
                 .controlSize(.mini)
 
                 Menu {
+                    Button("아이폰 클라우드 구독 페이지 열기") {
+                        let indexPath = "/Users/declan/Desktop/PersonalAssistant/public/index.html"
+                        NSWorkspace.shared.open(URL(fileURLWithPath: indexPath))
+                    }
                     Button("지금 파일로 백업") {
                         if let backup = store.createBackupSnapshot() {
                             backupMessage = "백업 완료:\n\(backup.lastPathComponent)"
