@@ -131,7 +131,13 @@ def generate_landing_html(total_count, stock_count, re_count):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>개인 비서 - 아이폰 16 프로 캘린더 자동 구독</title>
+  <title>Gengarileo 개인 비서 - 아이폰 16 프로 캘린더 자동 구독</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="apple-mobile-web-app-title" content="Gengarileo">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#4c1d95">
   <style>
     body {{
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
