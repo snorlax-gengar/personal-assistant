@@ -236,7 +236,7 @@ def generate_landing_html(total_count, stock_count, re_count):
       </div>
       <div class="stat-item">
         <div class="stat-val">{re_count}건</div>
-        <div class="stat-label">🏠 수도권 청약</div>
+        <div class="stat-label">🏠 수도권 청약 (15억 이하)</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">{total_count}건</div>
