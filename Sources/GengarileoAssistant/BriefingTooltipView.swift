@@ -66,6 +66,12 @@ struct BriefingTooltipView: View {
 
                             Spacer()
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if let urlString = item.linkURL, let url = URL(string: urlString) {
+                                NSWorkspace.shared.open(url)
+                            }
+                        }
                     }
                 }
                 .padding(8)

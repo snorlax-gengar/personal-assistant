@@ -120,8 +120,29 @@ class CalendarSyncManager {
                 for item in itemsForCategory {
                     let event = EKEvent(eventStore: eventStore)
                     event.calendar = calendar
-                    event.title = item.title
-                    event.notes = "\(item.memo)\n\n[PersonalAssistant 자동 비서]"
+                    if let urlStr = item.linkURL, let url = URL(string: urlStr) {
+                        event.url = url
+                    }
+
+                    var noteParts = [String]()
+                    if let detail = item.timeDetail, !detail.isEmpty {
+                        noteParts.append(item.category == .realEstate ? "💰 분양가: \(detail)" : "⏰ 시간: \(detail)")
+                    }
+                    if !item.memo.isEmpty {
+                        noteParts.append("📋 요약: \(item.memo)")
+                    }
+                    if let urlStr = item.linkURL {
+                        noteParts.append(item.category == .realEstate ? "📄 청약 공고글 & 분석: \(urlStr)" : "🔗 상세링크: \(urlStr)")
+                    }
+                    if item.category == .realEstate {
+                        if item.title.contains("신혼희망타운") || item.title.contains("공공") || item.memo.contains("LH") {
+                            noteParts.append("🏛 공식 접수처 (LH청약플러스): https://apply.lh.or.kr")
+                        } else {
+                            noteParts.append("🏛 공식 접수처 (한국부동산원 청약홈): https://www.applyhome.co.kr")
+                        }
+                    }
+                    noteParts.append("✦ [개인비서 Blanc 자동 비서]")
+                    event.notes = noteParts.joined(separator: "\n\n")
 
                     let startOfDay = cal.startOfDay(for: item.date)
                     event.startDate = startOfDay
@@ -165,13 +186,36 @@ class CalendarSyncManager {
             let uid = UUID().uuidString
             let catTitle = config(for: item.category).title
 
+            var noteParts = [String]()
+            if let detail = item.timeDetail, !detail.isEmpty {
+                noteParts.append(item.category == .realEstate ? "💰 [분양가]: \(detail)" : "⏰ [시간]: \(detail)")
+            }
+            if !item.memo.isEmpty {
+                noteParts.append("📋 [요약]: \(item.memo)")
+            }
+            if let urlStr = item.linkURL {
+                noteParts.append(item.category == .realEstate ? "📄 [청약 공고글 & 분석]: \(urlStr)" : "🔗 [상세정보]: \(urlStr)")
+            }
+            if item.category == .realEstate {
+                if item.title.contains("신혼희망타운") || item.title.contains("공공") || item.memo.contains("LH") {
+                    noteParts.append("🏛 [공식 접수처 (LH청약플러스)]: https://apply.lh.or.kr")
+                } else {
+                    noteParts.append("🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr")
+                }
+            }
+            noteParts.append("✦ [개인비서 Blanc 자동 비서]")
+            let fullDesc = noteParts.joined(separator: "\\n")
+
             ics += "BEGIN:VEVENT\n"
             ics += "UID:\(uid)\n"
             ics += "DTSTAMP:\(dateStr)T000000Z\n"
             ics += "DTSTART;VALUE=DATE:\(dateStr)\n"
             ics += "SUMMARY:[\(item.category.shortEmoji)] \(item.title)\n"
             ics += "CATEGORIES:\(catTitle)\n"
-            ics += "DESCRIPTION:\(item.memo)\n"
+            ics += "DESCRIPTION:\(fullDesc)\n"
+            if let urlStr = item.linkURL {
+                ics += "URL:\(urlStr)\n"
+            }
             ics += "BEGIN:VALARM\nTRIGGER:-PT15H\nACTION:DISPLAY\nDESCRIPTION:D-Day 알림\nEND:VALARM\n"
             ics += "END:VEVENT\n"
         }

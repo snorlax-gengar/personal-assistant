@@ -4,12 +4,13 @@ PRODID:-//PersonalAssistant//KO
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:E930B145-2BE7-4189-AAAC-9A04CE2A8335
+UID:46FE5507-F663-479C-ABBE-74795F08BA04
 DTSTAMP:20261007T000000Z
 DTSTART;VALUE=DATE:20261007
 SUMMARY:[🏠] [일반분양] 과천 디에트르 퍼스티지 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억]
+DESCRIPTION:💰 [분양가]: 분양가 약 8.7억\n📋 [요약]: 과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억] | 접수: 청약홈\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EA%B3%BC%EC%B2%9C%20%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4%20%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EA%B3%BC%EC%B2%9C%20%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4%20%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -17,12 +18,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:58504AB0-724D-43B4-B0A9-71A1324FBC2F
+UID:399CFF01-812B-46AD-AE6A-7BCC1031CDBB
 DTSTAMP:20261008T000000Z
 DTSTART;VALUE=DATE:20261008
 SUMMARY:[📈] 삼성전자 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:005930.KS 3분기 잠정 실적 발표 공시
+DESCRIPTION:⏰ [시간]: 장 시작 전 공시\n📋 [요약]: 005930.KS 3분기 잠정 실적 발표 공시\n🔗 [상세정보]: https://finance.naver.com/item/main.naver?code=005930\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.naver.com/item/main.naver?code=005930
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -30,12 +32,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2F773FEC-BC25-47BC-8D1C-EFD4F68C6B5A
+UID:960E8C8C-3B66-4B60-8D9B-1FF9FC64BF7E
 DTSTAMP:20261010T000000Z
 DTSTART;VALUE=DATE:20261010
 SUMMARY:[🏠] [공공분양] 동작구 수방사 본청약 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:서울 동작 | 노량진 한강변 알짜 공공분양 1순위 | [분양가 약 8.7억]
+DESCRIPTION:💰 [분양가]: 분양가 약 8.7억\n📋 [요약]: 서울 동작 | 노량진 한강변 알짜 공공분양 1순위 | [분양가 약 8.7억] | 접수: LH청약플러스\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EB%8F%99%EC%9E%91%EA%B5%AC%20%EC%88%98%EB%B0%A9%EC%82%AC%20%EB%B3%B8%EC%B2%AD%EC%95%BD%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (LH청약플러스)]: https://apply.lh.or.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EB%8F%99%EC%9E%91%EA%B5%AC%20%EC%88%98%EB%B0%A9%EC%82%AC%20%EB%B3%B8%EC%B2%AD%EC%95%BD%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -43,12 +46,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:A14D738F-CEAB-4BFB-BE0E-01B231B97EB9
+UID:51421987-B350-4244-BC0F-DC0A8E575D46
 DTSTAMP:20261012T000000Z
 DTSTART;VALUE=DATE:20261012
 SUMMARY:[🏠] [일반분양] 마포 에피트 어바닉 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:서울 마포 | 애오개역 초역세권 일반분양 청약 | [분양가 약 10.2억]
+DESCRIPTION:💰 [분양가]: 분양가 약 10.2억\n📋 [요약]: 서울 마포 | 애오개역 초역세권 일반분양 청약 | [분양가 약 10.2억] | 접수: 청약홈\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EB%A7%88%ED%8F%AC%20%EC%97%90%ED%94%BC%ED%8A%B8%20%EC%96%B4%EB%B0%94%EB%8B%89%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EB%A7%88%ED%8F%AC%20%EC%97%90%ED%94%BC%ED%8A%B8%20%EC%96%B4%EB%B0%94%EB%8B%89%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -56,12 +60,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:024082DA-3EA0-4044-97CC-F9538E6C1B74
+UID:8E85D2F3-F156-4613-B970-8C2B214C1DF7
 DTSTAMP:20261015T000000Z
 DTSTART;VALUE=DATE:20261015
 SUMMARY:[🏠] [신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:하남 | LH 청약플러스 본청약 접수 | [분양가 약 4.8억]
+DESCRIPTION:💰 [분양가]: 분양가 약 4.8억\n📋 [요약]: 하남 | LH 청약플러스 본청약 접수 | [분양가 약 4.8억] | 접수: LH청약플러스\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%ED%95%98%EB%82%A8%20%EA%B5%90%EC%82%B0%20A2%EB%B8%94%EB%A1%9D%20%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (LH청약플러스)]: https://apply.lh.or.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%ED%95%98%EB%82%A8%20%EA%B5%90%EC%82%B0%20A2%EB%B8%94%EB%A1%9D%20%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -69,12 +74,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:DD1B66D9-A95D-4BC6-8533-28FC6A862237
+UID:578A2C1D-62D3-4340-8401-6D96D710E6BB
 DTSTAMP:20261017T000000Z
 DTSTART;VALUE=DATE:20261017
 SUMMARY:[📈] TSMC 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:TSM Q3 실적 발표 및 가이던스
+DESCRIPTION:⏰ [시간]: 장 시작 전 (BMO)\n📋 [요약]: TSM Q3 실적 발표 및 가이던스\n🔗 [상세정보]: https://finance.yahoo.com/quote/TSM\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/TSM
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -82,12 +88,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:579767B7-0D49-4333-899B-1277AB1DFE42
+UID:07C06176-A553-475C-BC78-C2AA774FE6F4
 DTSTAMP:20261019T000000Z
 DTSTART;VALUE=DATE:20261019
 SUMMARY:[🏠] [공공분양] 남양주 왕숙 B2블록 공공분양 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:남양주 | 3기 신도시 LH 공공분양 본접수 | [분양가 약 4.5억]
+DESCRIPTION:💰 [분양가]: 분양가 약 4.5억\n📋 [요약]: 남양주 | 3기 신도시 LH 공공분양 본접수 | [분양가 약 4.5억] | 접수: LH청약플러스\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EB%82%A8%EC%96%91%EC%A3%BC%20%EC%99%95%EC%88%99%20B2%EB%B8%94%EB%A1%9D%20%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (LH청약플러스)]: https://apply.lh.or.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EB%82%A8%EC%96%91%EC%A3%BC%20%EC%99%95%EC%88%99%20B2%EB%B8%94%EB%A1%9D%20%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -95,12 +102,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:CE0AB6C1-5089-4AD2-9460-02DED4CD3BF3
+UID:EBDA547C-D573-41B8-A200-8396E634E7B2
 DTSTAMP:20261023T000000Z
 DTSTART;VALUE=DATE:20261023
 SUMMARY:[📈] 테슬라 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:TSLA Q3 실적 발표 (컨퍼런스콜)
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: TSLA Q3 실적 발표 (컨퍼런스콜)\n🔗 [상세정보]: https://finance.yahoo.com/quote/TSLA\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/TSLA
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -108,12 +116,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:28E01E21-918E-4086-94EB-7EF5710C2CAC
+UID:F7158A20-3422-49E3-B365-0DEA44BD7039
 DTSTAMP:20261023T000000Z
 DTSTART;VALUE=DATE:20261023
 SUMMARY:[🏠] [일반분양] 고양 장항 아테라 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:고양 일산 | 일산 장항지구 1순위 청약 접수 | [분양가 약 6.8억]
+DESCRIPTION:💰 [분양가]: 분양가 약 6.8억\n📋 [요약]: 고양 일산 | 일산 장항지구 1순위 청약 접수 | [분양가 약 6.8억] | 접수: 청약홈\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91%20%EC%9E%A5%ED%95%AD%20%EC%95%84%ED%85%8C%EB%9D%BC%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91%20%EC%9E%A5%ED%95%AD%20%EC%95%84%ED%85%8C%EB%9D%BC%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -121,12 +130,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:FC7EA504-D0BF-479A-BC1A-A83BCA577E0E
+UID:0B62FB70-FB42-410C-8F02-55D36FC5ECB6
 DTSTAMP:20261024T000000Z
 DTSTART;VALUE=DATE:20261024
 SUMMARY:[📈] SK하이닉스 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:000660.KS 3분기 경영 실적 발표
+DESCRIPTION:⏰ [시간]: 장 시작 전 공시\n📋 [요약]: 000660.KS 3분기 경영 실적 발표\n🔗 [상세정보]: https://finance.naver.com/item/main.naver?code=000660\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.naver.com/item/main.naver?code=000660
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -134,12 +144,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:EFAA962A-C8ED-47F0-A76D-3823513B6891
+UID:6627C8EB-A1FE-4D03-9216-B5E350A23F37
 DTSTAMP:20261027T000000Z
 DTSTART;VALUE=DATE:20261027
 SUMMARY:[🏠] [일반분양] 구리 인창 수택 재개발 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:구리 | 구리역 역세권 일반분양 특공/1순위 | [분양가 약 8.8억]
+DESCRIPTION:💰 [분양가]: 분양가 약 8.8억\n📋 [요약]: 구리 | 구리역 역세권 일반분양 특공/1순위 | [분양가 약 8.8억] | 접수: 청약홈\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC%20%EC%9D%B8%EC%B0%BD%20%EC%88%98%ED%83%9D%20%EC%9E%AC%EA%B0%9C%EB%B0%9C%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC%20%EC%9D%B8%EC%B0%BD%20%EC%88%98%ED%83%9D%20%EC%9E%AC%EA%B0%9C%EB%B0%9C%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -147,12 +158,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:82118B9E-C4B3-4867-B63D-2329DFC7BA48
+UID:D9EF9C05-4B35-4892-AD71-5D8E5C716E88
 DTSTAMP:20261029T000000Z
 DTSTART;VALUE=DATE:20261029
 SUMMARY:[📈] 구글(알파벳) 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:GOOGL Q3 실적 발표
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: GOOGL Q3 실적 발표\n🔗 [상세정보]: https://finance.yahoo.com/quote/GOOGL\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/GOOGL
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -160,12 +172,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:DCAFEE97-F215-4453-A83C-458526DD1F8B
+UID:165A8A7F-099E-409E-9808-C2D25B341F18
 DTSTAMP:20261030T000000Z
 DTSTART;VALUE=DATE:20261030
 SUMMARY:[📈] 마이크로소프트 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:MSFT FY25 Q1 실적 발표
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: MSFT FY25 Q1 실적 발표\n🔗 [상세정보]: https://finance.yahoo.com/quote/MSFT\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/MSFT
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -173,12 +186,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:3014BC28-D3E8-4B3B-BC7E-3279FFCAC959
+UID:C70CD5FF-91CB-488A-BAD7-41741EFF9DDA
 DTSTAMP:20261030T000000Z
 DTSTART;VALUE=DATE:20261030
 SUMMARY:[📈] 메타 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:META Q3 실적 발표
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: META Q3 실적 발표\n🔗 [상세정보]: https://finance.yahoo.com/quote/META\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/META
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -186,12 +200,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:5C180422-F471-4055-B4F1-BD1213FA98FF
+UID:AB998765-41CE-4BAA-8A3E-D7B8C4E6877A
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 SUMMARY:[📈] 애플 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:AAPL FY24 Q4 실적 발표
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: AAPL FY24 Q4 실적 발표\n🔗 [상세정보]: https://finance.yahoo.com/quote/AAPL\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/AAPL
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -199,12 +214,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:EC82CC86-5E36-442C-AA6C-3CDD3AE0F9FF
+UID:DA6C213B-73AC-48DB-83A3-6D5354152856
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 SUMMARY:[📈] 아마존 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:AMZN Q3 실적 발표
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: AMZN Q3 실적 발표\n🔗 [상세정보]: https://finance.yahoo.com/quote/AMZN\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/AMZN
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -212,12 +228,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:04E87FDF-980D-4C0D-BCB9-851B8FB9A86A
+UID:5135444A-8487-4F05-9938-53370B3B2506
 DTSTAMP:20261031T000000Z
 DTSTART;VALUE=DATE:20261031
 SUMMARY:[🏠] [일반분양] 의정부 롯데캐슬 나리벡시티 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:의정부 | 의정부 금오동 1순위 청약 | [분양가 약 5.8억]
+DESCRIPTION:💰 [분양가]: 분양가 약 5.8억\n📋 [요약]: 의정부 | 의정부 금오동 1순위 청약 | [분양가 약 5.8억] | 접수: 청약홈\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80%20%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC%20%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80%20%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC%20%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -225,12 +242,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:0EA2F763-8BB7-4A79-9D82-28665AE1CC59
+UID:C5DB34FC-8E76-497B-806F-94A80428CC6A
 DTSTAMP:20261102T000000Z
 DTSTART;VALUE=DATE:20261102
 SUMMARY:[🏠] [무순위] 올림픽파크 포레온 (취소분 59㎡) 청약
 CATEGORIES:🏠 [개인비서 Blanc] 부동산·청약
-DESCRIPTION:서울 강동 | 59㎡ 취소분 무순위 줍줍 청약 접수 | [분양가 약 10.5억]
+DESCRIPTION:💰 [분양가]: 분양가 약 10.5억\n📋 [요약]: 서울 강동 | 59㎡ 취소분 무순위 줍줍 청약 접수 | [분양가 약 10.5억] | 접수: 청약홈\n📄 [청약 공고글 & 분석]: https://search.naver.com/search.naver?query=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC%20%ED%8F%AC%EB%A0%88%EC%98%A8%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0\n🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr\n✦ [개인비서 Blanc 자동 비서]
+URL:https://search.naver.com/search.naver?query=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC%20%ED%8F%AC%EB%A0%88%EC%98%A8%20%EC%B2%AD%EC%95%BD%20%EA%B3%B5%EA%B3%A0
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY
@@ -238,12 +256,13 @@ DESCRIPTION:D-Day 알림
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:21514CFF-B534-4779-9777-41B1D77D1B8A
+UID:7A71E710-3DD4-4249-B33E-9802700D537D
 DTSTAMP:20261120T000000Z
 DTSTART;VALUE=DATE:20261120
 SUMMARY:[📈] 엔비디아 실적 발표
 CATEGORIES:📈 [개인비서 Blanc] 주식·실적
-DESCRIPTION:NVDA FY25 Q3 실적 발표 (컨퍼런스콜)
+DESCRIPTION:⏰ [시간]: 장 마감 후 (AMC)\n📋 [요약]: NVDA FY25 Q3 실적 발표 (컨퍼런스콜)\n🔗 [상세정보]: https://finance.yahoo.com/quote/NVDA\n✦ [개인비서 Blanc 자동 비서]
+URL:https://finance.yahoo.com/quote/NVDA
 BEGIN:VALARM
 TRIGGER:-PT15H
 ACTION:DISPLAY

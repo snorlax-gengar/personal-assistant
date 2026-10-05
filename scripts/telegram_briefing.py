@@ -75,6 +75,9 @@ def build_briefing_message(items):
             emoji = "💼" if "개인" in cat else ("📈" if "주식" in cat else "🏠")
             detail = f" ({it.get('timeDetail')})" if it.get("timeDetail") else ""
             memo = f"\n   └ {it.get('memo')}" if it.get("memo") else ""
+            if it.get("linkURL"):
+                link_text = "공고글 보기" if "부동산" in cat else "상세보기"
+                memo += f" [🔗{link_text}]({it.get('linkURL')})"
             lines.append(f"• {emoji} *{it.get('title')}*{detail}{memo}")
         lines.append("")
     else:
@@ -88,6 +91,9 @@ def build_briefing_message(items):
             emoji = "💼" if "개인" in cat else ("📈" if "주식" in cat else "🏠")
             detail = f" | {it.get('timeDetail')}" if it.get("timeDetail") else ""
             memo = f"\n   └ {it.get('memo')}" if it.get("memo") else ""
+            if it.get("linkURL"):
+                link_text = "공고글 보기" if "부동산" in cat else "상세보기"
+                memo += f" [🔗{link_text}]({it.get('linkURL')})"
             lines.append(f"• {emoji} *{it.get('title')}* (D-{d_day}){detail}{memo}")
         lines.append("")
 

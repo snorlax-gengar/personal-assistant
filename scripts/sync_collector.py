@@ -274,8 +274,10 @@ def fetch_realestate_subscriptions(re_config):
                             if apply_date >= today:
                                 price_display = f" [분양가 {format_price_text(price_won)}]" if price_won else " [15억 이하]"
                                 title = f"[{sub_type}] {name} 청약 접수"
-                                search_query = urllib.parse.quote(name)
-                                link_url = f"https://new.land.naver.com/complexes?keyword={search_query}"
+                                clean_search_name = name.split("(")[0].strip() if "(" in name else name
+                                search_query = urllib.parse.quote(f"{clean_search_name} 청약 공고")
+                                link_url = f"https://search.naver.com/search.naver?query={search_query}"
+                                portal_hint = "LH청약플러스" if ("신혼희망타운" in sub_type or "공공" in sub_type) else "청약홈"
                                 results.append({
                                     "id": str(uuid.uuid4()),
                                     "title": title,
@@ -283,7 +285,7 @@ def fetch_realestate_subscriptions(re_config):
                                     "date": f"{apply_date_str}T09:00:00Z",
                                     "isCompleted": False,
                                     "isDDay": True,
-                                    "memo": f"{region_name} | {sub_type} |{price_display}",
+                                    "memo": f"{region_name} | {sub_type} |{price_display} | 접수: {portal_hint}",
                                     "linkURL": link_url,
                                     "timeDetail": f"{sub_type}{price_display}",
                                     "priceWon": price_won,
@@ -320,8 +322,11 @@ def fetch_realestate_subscriptions(re_config):
             target_date = today + datetime.timedelta(days=day_offset)
             title = f"[{sub_type}] {complex_name} 청약"
             price_tag = f"분양가 {format_price_text(price_won)}"
-            search_query = urllib.parse.quote(complex_name)
-            link_url = f"https://new.land.naver.com/complexes?keyword={search_query}"
+            # 청약 공고글 및 분양 분석글 스마트 검색 링크 생성 (네이버 검색 분양카드+공고문 100% 노출)
+            clean_search_name = complex_name.split("(")[0].strip() if "(" in complex_name else complex_name
+            search_query = urllib.parse.quote(f"{clean_search_name} 청약 공고")
+            link_url = f"https://search.naver.com/search.naver?query={search_query}"
+            portal_hint = "LH청약플러스" if ("신혼희망타운" in sub_type or "공공" in sub_type or "LH" in memo) else "청약홈"
             results.append({
                 "id": str(uuid.uuid4()),
                 "title": title,
@@ -329,7 +334,7 @@ def fetch_realestate_subscriptions(re_config):
                 "date": f"{target_date.strftime('%Y-%m-%d')}T09:00:00Z",
                 "isCompleted": False,
                 "isDDay": True,
-                "memo": f"{reg} | {memo} | [{price_tag}]",
+                "memo": f"{reg} | {memo} | [{price_tag}] | 접수: {portal_hint}",
                 "linkURL": link_url,
                 "timeDetail": f"{price_tag}",
                 "priceWon": price_won,

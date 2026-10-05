@@ -6,12 +6,12 @@ METHOD:PUBLISH
 X-WR-CALNAME:📈 [개인비서 Blanc] 주식·실적
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
-UID:e3face74-8486-4000-a6cd-594159d30057@personalassistant
-DTSTAMP:20261005T124304Z
+UID:06E3DEE8-462F-4F65-AABE-9FE6135BAD75@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261008
 DTEND;VALUE=DATE:20261009
 SUMMARY:[📈] 삼성전자 실적 발표 (장 시작 전 공시)
-DESCRIPTION:시간: 장 시작 전 공시\n메모: 005930.KS 3분기 잠정 실적 발표 공시\n상세정보: https://finance.naver.com/item/main.naver?code=005930\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 시작 전 공시\n📊 [종목 정보]: 005930.KS 3분기 잠정 실적 발표 공시\n📈 [실적 공시 및 시세 확인]: https://finance.naver.com/item/main.naver?code=005930\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.naver.com/item/main.naver?code=005930
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -25,12 +25,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:b07ac6fb-a4b2-41df-a292-66d1c157e236@personalassistant
-DTSTAMP:20261005T124304Z
+UID:8A21D4DB-281C-42CA-A4A2-B544A080AE45@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261017
 DTEND;VALUE=DATE:20261018
 SUMMARY:[📈] TSMC 실적 발표 (장 시작 전 (BMO))
-DESCRIPTION:시간: 장 시작 전 (BMO)\n메모: TSM Q3 실적 발표 및 가이던스\n상세정보: https://finance.yahoo.com/quote/TSM\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 시작 전 (BMO)\n📊 [종목 정보]: TSM Q3 실적 발표 및 가이던스\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/TSM\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/TSM
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -44,12 +44,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:6804402a-8c04-4e35-bfb0-3d384c2d4096@personalassistant
-DTSTAMP:20261005T124304Z
+UID:F80EE1A7-38FA-4ECE-90F2-D69463EB9C7C@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261023
 DTEND;VALUE=DATE:20261024
 SUMMARY:[📈] 테슬라 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: TSLA Q3 실적 발표 (컨퍼런스콜)\n상세정보: https://finance.yahoo.com/quote/TSLA\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: TSLA Q3 실적 발표 (컨퍼런스콜)\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/TSLA\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/TSLA
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -63,12 +63,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:659ba4ba-4582-450d-ab17-55355b52ed17@personalassistant
-DTSTAMP:20261005T124304Z
+UID:34BFEEDC-47F8-4BBC-A7B0-48E4EB25646B@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261024
 DTEND;VALUE=DATE:20261025
 SUMMARY:[📈] SK하이닉스 실적 발표 (장 시작 전 공시)
-DESCRIPTION:시간: 장 시작 전 공시\n메모: 000660.KS 3분기 경영 실적 발표\n상세정보: https://finance.naver.com/item/main.naver?code=000660\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 시작 전 공시\n📊 [종목 정보]: 000660.KS 3분기 경영 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.naver.com/item/main.naver?code=000660\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.naver.com/item/main.naver?code=000660
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -82,12 +82,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:eecc2562-4d9e-46b1-8d81-31f4656c6a5d@personalassistant
-DTSTAMP:20261005T124304Z
+UID:E24B3A39-9286-464B-8FD9-6AB80E6B2B6E@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261029
 DTEND;VALUE=DATE:20261030
 SUMMARY:[📈] 구글(알파벳) 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: GOOGL Q3 실적 발표\n상세정보: https://finance.yahoo.com/quote/GOOGL\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: GOOGL Q3 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/GOOGL\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/GOOGL
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -101,12 +101,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:dd750b12-7e47-44e0-b2d9-fd03233f54f3@personalassistant
-DTSTAMP:20261005T124304Z
+UID:06133638-4134-4E85-B5FB-714FC176484C@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:[📈] 마이크로소프트 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: MSFT FY25 Q1 실적 발표\n상세정보: https://finance.yahoo.com/quote/MSFT\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: MSFT FY25 Q1 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/MSFT\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/MSFT
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -120,12 +120,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:884e9b91-1b00-4ee7-b9e5-c987934a391a@personalassistant
-DTSTAMP:20261005T124304Z
+UID:6987C444-6766-4131-8187-A4F7119D2BF4@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261030
 DTEND;VALUE=DATE:20261031
 SUMMARY:[📈] 메타 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: META Q3 실적 발표\n상세정보: https://finance.yahoo.com/quote/META\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: META Q3 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/META\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/META
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -139,12 +139,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:786ce94f-21d1-482e-aae3-a37267ca5950@personalassistant
-DTSTAMP:20261005T124304Z
+UID:F04ACAFC-F0DC-4DB5-B8C9-3953D22AE375@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:[📈] 애플 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: AAPL FY24 Q4 실적 발표\n상세정보: https://finance.yahoo.com/quote/AAPL\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: AAPL FY24 Q4 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/AAPL\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/AAPL
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -158,12 +158,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:bbe30fec-6410-49e9-9e80-caf631510824@personalassistant
-DTSTAMP:20261005T124304Z
+UID:2A970315-5625-4E74-9612-F2E3BDAACAB3@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
 SUMMARY:[📈] 아마존 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: AMZN Q3 실적 발표\n상세정보: https://finance.yahoo.com/quote/AMZN\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: AMZN Q3 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/AMZN\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/AMZN
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -177,12 +177,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:d0683d44-06a1-4a21-8acb-9a190a916b92@personalassistant
-DTSTAMP:20261005T124304Z
+UID:9179DD5F-6500-401F-8986-C8F9DB7F99AB@personalassistant
+DTSTAMP:20261005T131834Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:[📈] 엔비디아 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:시간: 장 마감 후 (AMC)\n메모: NVDA FY25 Q3 실적 발표 (컨퍼런스콜)\n상세정보: https://finance.yahoo.com/quote/NVDA\n[PersonalAssistant 자동 비서 구독]
+DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: NVDA FY25 Q3 실적 발표 (컨퍼런스콜)\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/NVDA\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/NVDA
 BEGIN:VALARM
 ACTION:DISPLAY

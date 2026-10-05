@@ -79,13 +79,33 @@ def build_ics_content(items, calendar_name):
             summary += f" ({time_detail})"
 
         desc_parts = []
-        if time_detail:
-            desc_parts.append(f"시간: {time_detail}")
-        if memo:
-            desc_parts.append(f"메모: {memo}")
-        if link_url:
-            desc_parts.append(f"상세정보: {link_url}")
-        desc_parts.append("[PersonalAssistant 자동 비서 구독]")
+        if category == "부동산":
+            if time_detail:
+                desc_parts.append(f"💰 [분양가]: {time_detail}")
+            if memo:
+                desc_parts.append(f"📋 [단지 요약]: {memo}")
+            if link_url:
+                desc_parts.append(f"📄 [청약 공고글 & 분석 보기]: {link_url}")
+            if "신혼희망타운" in title or "공공분양" in title or "LH" in memo:
+                desc_parts.append("🏛 [공식 접수처 (LH청약플러스)]: https://apply.lh.or.kr")
+            else:
+                desc_parts.append("🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr")
+        elif category == "주식/금융":
+            if time_detail:
+                desc_parts.append(f"⏰ [발표 시간]: {time_detail}")
+            if memo:
+                desc_parts.append(f"📊 [종목 정보]: {memo}")
+            if link_url:
+                desc_parts.append(f"📈 [실적 공시 및 시세 확인]: {link_url}")
+        else:
+            if time_detail:
+                desc_parts.append(f"시간: {time_detail}")
+            if memo:
+                desc_parts.append(f"메모: {memo}")
+            if link_url:
+                desc_parts.append(f"상세정보: {link_url}")
+
+        desc_parts.append("✦ [개인비서 Blanc 자동 비서 구독]")
         description = "\\n".join(desc_parts)
 
         lines.extend([

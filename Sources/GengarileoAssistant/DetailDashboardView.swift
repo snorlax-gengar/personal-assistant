@@ -541,21 +541,66 @@ struct ScheduleRowView: View {
                     }
                 }
             }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                if let urlString = item.linkURL, let url = URL(string: urlString) {
+                    NSWorkspace.shared.open(url)
+                }
+            }
+            .help(item.category == .realEstate ? "클릭하여 청약 공고글 및 분양 정보 보기" : (item.linkURL != nil ? "클릭하여 상세 정보 웹페이지 열기" : ""))
 
             Spacer()
 
             HStack(spacing: 6) {
-                // 원클릭 웹 링크 버튼 (Yahoo Finance, 네이버 증권, 청약 정보 등)
+                // 원클릭 공고글 / 실적 / 웹 링크 버튼
                 if let urlString = item.linkURL, let url = URL(string: urlString) {
-                    Button(action: {
-                        NSWorkspace.shared.open(url)
-                    }) {
-                        Image(systemName: "arrow.up.right.square")
-                            .font(.system(size: 12))
-                            .foregroundColor(.blue.opacity(0.8))
+                    if item.category == .realEstate {
+                        Button(action: {
+                            NSWorkspace.shared.open(url)
+                        }) {
+                            HStack(spacing: 3) {
+                                Image(systemName: "doc.text.magnifyingglass")
+                                    .font(.system(size: 9))
+                                Text("공고글")
+                                    .font(.system(size: 10, weight: .semibold))
+                            }
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(Color.orange.opacity(0.15))
+                            .foregroundColor(.orange)
+                            .cornerRadius(6)
+                        }
+                        .buttonStyle(.plain)
+                        .help("입주자 모집 공고글 및 분양 정보 상세 보기")
+                    } else if item.category == .stock {
+                        Button(action: {
+                            NSWorkspace.shared.open(url)
+                        }) {
+                            HStack(spacing: 3) {
+                                Image(systemName: "chart.line.uptrend.xyaxis")
+                                    .font(.system(size: 9))
+                                Text("실적")
+                                    .font(.system(size: 10, weight: .semibold))
+                            }
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 3)
+                            .background(Color.green.opacity(0.15))
+                            .foregroundColor(.green)
+                            .cornerRadius(6)
+                        }
+                        .buttonStyle(.plain)
+                        .help("실적 발표 및 기업 공시 상세 보기")
+                    } else {
+                        Button(action: {
+                            NSWorkspace.shared.open(url)
+                        }) {
+                            Image(systemName: "arrow.up.right.square")
+                                .font(.system(size: 12))
+                                .foregroundColor(.blue.opacity(0.8))
+                        }
+                        .buttonStyle(.plain)
+                        .help("웹에서 상세 정보 보기")
                     }
-                    .buttonStyle(.plain)
-                    .help("웹에서 상세 정보 보기")
                 }
 
                 // 삭제 버튼
