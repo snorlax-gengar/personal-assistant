@@ -40,7 +40,7 @@ struct DetailDashboardView: View {
                     Image(systemName: "calendar.badge.clock")
                         .foregroundColor(.blue)
                         .font(.title3)
-                    Text("Gengarileo 개인 비서")
+                    Text("Blanc 개인 비서")
                         .font(.system(size: 14, weight: .bold))
 
                     // 전역 단축키 힌트 배지

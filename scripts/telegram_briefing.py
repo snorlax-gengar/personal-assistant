@@ -63,7 +63,7 @@ def build_briefing_message(items):
 
     # 메시지 조합
     lines = [
-        "✦ *[Gengarileo 전용 비서 모닝 브리핑]*",
+        "✦ *[Blanc 전용 비서 모닝 브리핑]*",
         f"📅 {today_str}\n"
     ]
 
@@ -101,7 +101,7 @@ def build_briefing_message(items):
         lines.append("")
 
     lines.append("━━━━━━━━━━━━━━━━━")
-    lines.append("💡 *오늘도 알차고 성공적인 하루 보내세요!* ✨\n— Gengarileo Private Concierge")
+    lines.append("💡 *오늘도 알차고 성공적인 하루 보내세요!* ✨\n— Blanc Private Concierge")
 
     return "\n".join(lines)
 
