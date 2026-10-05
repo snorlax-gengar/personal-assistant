@@ -545,7 +545,7 @@ struct ScheduleRowView: View {
             .onTapGesture {
                 openURLSafely(item.linkURL)
             }
-            .help(item.category == .realEstate ? "클릭하여 청약 공고글 및 분양 정보 보기" : (item.linkURL != nil ? "클릭하여 상세 정보 웹페이지 열기" : ""))
+            .help(item.category == .realEstate ? "클릭하여 \(item.portalButtonTitle) 공식 사이트 열기" : (item.linkURL != nil ? "클릭하여 상세 정보 웹페이지 열기" : ""))
 
             Spacer()
 
@@ -557,10 +557,10 @@ struct ScheduleRowView: View {
                             openURLSafely(urlString)
                         }) {
                             HStack(spacing: 3) {
-                                Image(systemName: "doc.text.magnifyingglass")
+                                Image(systemName: "building.columns.fill")
                                     .font(.system(size: 9))
-                                Text("공고글")
-                                    .font(.system(size: 10, weight: .semibold))
+                                Text(item.portalButtonTitle)
+                                    .font(.system(size: 10, weight: .bold))
                             }
                             .padding(.horizontal, 6)
                             .padding(.vertical, 3)
@@ -569,7 +569,7 @@ struct ScheduleRowView: View {
                             .cornerRadius(6)
                         }
                         .buttonStyle(.plain)
-                        .help("입주자 모집 공고글 및 분양 정보 상세 보기")
+                        .help("\(item.portalButtonTitle) 공식 공고 및 접수처 바로가기")
                     } else if item.category == .stock {
                         Button(action: {
                             openURLSafely(urlString)
@@ -623,19 +623,13 @@ struct ScheduleRowView: View {
         }
         .contextMenu {
             if let urlString = item.linkURL {
-                Button("📄 공고글 및 상세 분석 열기") {
+                Button("🏛 \(item.portalButtonTitle) 공식 사이트 열기") {
                     openURLSafely(urlString)
                 }
             }
-            if item.category == .realEstate {
-                if item.title.contains("신혼희망타운") || item.title.contains("공공") || item.memo.contains("LH") {
-                    Button("🏛 LH 청약플러스 공식 접수처 열기") {
-                        openURLSafely("https://apply.lh.or.kr")
-                    }
-                } else {
-                    Button("🏛 한국부동산원 청약홈 공식 접수처 열기") {
-                        openURLSafely("https://www.applyhome.co.kr")
-                    }
+            if let search = item.searchURL {
+                Button("🔍 네이버 상세 분석 & 공고 요약글 보기") {
+                    openURLSafely(search)
                 }
             }
             Divider()

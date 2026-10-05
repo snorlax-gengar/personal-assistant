@@ -92,8 +92,31 @@ struct ScheduleItem: Identifiable, Codable, Equatable {
     var isDDay: Bool = true
     var memo: String = ""
     var linkURL: String? = nil
+    var searchURL: String? = nil
     var timeDetail: String? = nil
     var createdAt: Date = Date()
+
+    // MARK: - Portal Branding Helper
+    var portalButtonTitle: String {
+        if category == .realEstate {
+            if let link = linkURL {
+                if link.contains("lh.or.kr") { return "LH청약" }
+                if link.contains("i-sh.co.kr") { return "SH청약" }
+                if link.contains("applyhome.co.kr") { return "청약홈" }
+            }
+            if title.contains("신혼희망타운") || title.contains("공공") || memo.contains("LH") {
+                return "LH청약"
+            }
+            if title.contains("SH") || memo.contains("SH") {
+                return "SH청약"
+            }
+            return "청약홈"
+        } else if category == .stock {
+            return "실적"
+        } else {
+            return "웹"
+        }
+    }
 
     // MARK: - Date Helpers
     var dDayDays: Int {

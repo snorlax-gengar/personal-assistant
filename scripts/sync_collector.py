@@ -274,10 +274,20 @@ def fetch_realestate_subscriptions(re_config):
                             if apply_date >= today:
                                 price_display = f" [분양가 {format_price_text(price_won)}]" if price_won else " [15억 이하]"
                                 title = f"[{sub_type}] {name} 청약 접수"
+                                if "SH" in name or "SH" in sub_type:
+                                    portal_hint = "SH청약"
+                                    official_url = "https://www.i-sh.co.kr/app/index.do"
+                                elif "신혼희망타운" in sub_type or "공공" in sub_type:
+                                    portal_hint = "LH청약플러스"
+                                    official_url = "https://apply.lh.or.kr/lhapply/apply/pblanc/selectPblancList.do"
+                                else:
+                                    portal_hint = "청약홈"
+                                    official_url = "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do"
+
                                 clean_search_name = name.split("(")[0].strip() if "(" in name else name
                                 search_query = urllib.parse.quote_plus(f"{clean_search_name} 청약 공고")
-                                link_url = f"https://search.naver.com/search.naver?query={search_query}"
-                                portal_hint = "LH청약플러스" if ("신혼희망타운" in sub_type or "공공" in sub_type) else "청약홈"
+                                search_url = f"https://search.naver.com/search.naver?query={search_query}"
+
                                 results.append({
                                     "id": str(uuid.uuid4()),
                                     "title": title,
@@ -285,8 +295,9 @@ def fetch_realestate_subscriptions(re_config):
                                     "date": f"{apply_date_str}T09:00:00Z",
                                     "isCompleted": False,
                                     "isDDay": True,
-                                    "memo": f"{region_name} | {sub_type} |{price_display} | 접수: {portal_hint}",
-                                    "linkURL": link_url,
+                                    "memo": f"{region_name} | {sub_type} |{price_display} | 공식접수: {portal_hint}",
+                                    "linkURL": official_url,
+                                    "searchURL": search_url,
                                     "timeDetail": f"{sub_type}{price_display}",
                                     "priceWon": price_won,
                                     "createdAt": datetime.datetime.now().isoformat() + "Z"
@@ -322,11 +333,22 @@ def fetch_realestate_subscriptions(re_config):
             target_date = today + datetime.timedelta(days=day_offset)
             title = f"[{sub_type}] {complex_name} 청약"
             price_tag = f"분양가 {format_price_text(price_won)}"
-            # 청약 공고글 및 분양 분석글 스마트 검색 링크 생성 (네이버 검색 분양카드+공고문 100% 노출)
+            
+            # 공식 청약 접수처(청약홈 / LH / SH) 다이렉트 공고 사이트 매핑
+            if "SH" in complex_name or "SH" in sub_type or "SH" in memo:
+                portal_hint = "SH청약"
+                official_url = "https://www.i-sh.co.kr/app/index.do"
+            elif "신혼희망타운" in sub_type or "공공" in sub_type or "LH" in memo or "LH" in complex_name:
+                portal_hint = "LH청약플러스"
+                official_url = "https://apply.lh.or.kr/lhapply/apply/pblanc/selectPblancList.do"
+            else:
+                portal_hint = "청약홈"
+                official_url = "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do"
+
             clean_search_name = complex_name.split("(")[0].strip() if "(" in complex_name else complex_name
             search_query = urllib.parse.quote_plus(f"{clean_search_name} 청약 공고")
-            link_url = f"https://search.naver.com/search.naver?query={search_query}"
-            portal_hint = "LH청약플러스" if ("신혼희망타운" in sub_type or "공공" in sub_type or "LH" in memo) else "청약홈"
+            search_url = f"https://search.naver.com/search.naver?query={search_query}"
+
             results.append({
                 "id": str(uuid.uuid4()),
                 "title": title,
@@ -334,8 +356,9 @@ def fetch_realestate_subscriptions(re_config):
                 "date": f"{target_date.strftime('%Y-%m-%d')}T09:00:00Z",
                 "isCompleted": False,
                 "isDDay": True,
-                "memo": f"{reg} | {memo} | [{price_tag}] | 접수: {portal_hint}",
-                "linkURL": link_url,
+                "memo": f"{reg} | {memo} | [{price_tag}] | 공식접수: {portal_hint}",
+                "linkURL": official_url,
+                "searchURL": search_url,
                 "timeDetail": f"{price_tag}",
                 "priceWon": price_won,
                 "createdAt": datetime.datetime.now().isoformat() + "Z"

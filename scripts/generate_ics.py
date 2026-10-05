@@ -80,16 +80,16 @@ def build_ics_content(items, calendar_name):
 
         desc_parts = []
         if category == "부동산":
+            search_url = item.get("searchURL", "")
             if time_detail:
                 desc_parts.append(f"💰 [분양가]: {time_detail}")
             if memo:
                 desc_parts.append(f"📋 [단지 요약]: {memo}")
             if link_url:
-                desc_parts.append(f"📄 [청약 공고글 & 분석 보기]: {link_url}")
-            if "신혼희망타운" in title or "공공분양" in title or "LH" in memo:
-                desc_parts.append("🏛 [공식 접수처 (LH청약플러스)]: https://apply.lh.or.kr")
-            else:
-                desc_parts.append("🏛 [공식 접수처 (한국부동산원 청약홈)]: https://www.applyhome.co.kr")
+                portal_label = "LH청약플러스" if "lh.or.kr" in link_url else ("SH청약" if "i-sh" in link_url else "청약홈")
+                desc_parts.append(f"🏛 [공식 접수처 ({portal_label})]: {link_url}")
+            if search_url:
+                desc_parts.append(f"🔍 [단지 분석 & 공고 요약글]: {search_url}")
         elif category == "주식/금융":
             if time_detail:
                 desc_parts.append(f"⏰ [발표 시간]: {time_detail}")
