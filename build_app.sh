@@ -28,7 +28,7 @@ cat << 'EOF' > "$APP_BUNDLE/Contents/Info.plist"
     <key>CFBundleName</key>
     <string>GengarileoAssistant</string>
     <key>CFBundleDisplayName</key>
-    <string>Blanc 개인비서</string>
+    <string>개인비서 Blanc</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

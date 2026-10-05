@@ -1,4 +1,4 @@
-# ✦ PersonalAssistant - Blanc (블랑 개인 비서)
+# ✦ 개인비서 Blanc (Personal Assistant Blanc)
 
 macOS 상단 메뉴바/바탕화면 및 **아이폰 16 프로 캘린더·위젯**과 100% 자동 연동되는 **올인원 프라이빗 비서(Executive Concierge) 서비스**입니다.
 

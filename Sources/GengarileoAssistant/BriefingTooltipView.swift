@@ -19,7 +19,7 @@ struct BriefingTooltipView: View {
                     .font(.title3)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Gengarileo 데일리 브리핑")
+                    Text("개인비서 Blanc 데일리 브리핑")
                         .font(.system(size: 13, weight: .bold))
                     Text(todayString)
                         .font(.system(size: 11))

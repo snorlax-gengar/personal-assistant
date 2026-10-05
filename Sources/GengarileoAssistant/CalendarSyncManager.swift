@@ -15,15 +15,15 @@ class CalendarSyncManager {
     private func config(for category: ScheduleCategory) -> CategoryCalendarConfig {
         switch category {
         case .stock:
-            return CategoryCalendarConfig(title: "📈 [Blanc] 주식·실적", color: .systemGreen)
+            return CategoryCalendarConfig(title: "📈 [개인비서 Blanc] 주식·실적", color: .systemGreen)
         case .realEstate:
-            return CategoryCalendarConfig(title: "🏠 [Blanc] 부동산·청약", color: .systemOrange)
+            return CategoryCalendarConfig(title: "🏠 [개인비서 Blanc] 부동산·청약", color: .systemOrange)
         case .personal:
-            return CategoryCalendarConfig(title: "💼 [Blanc] 개인·업무", color: .systemBlue)
+            return CategoryCalendarConfig(title: "💼 [개인비서 Blanc] 개인·업무", color: .systemBlue)
         case .todo:
-            return CategoryCalendarConfig(title: "✅ [Blanc] 할 일", color: .systemPurple)
+            return CategoryCalendarConfig(title: "✅ [개인비서 Blanc] 할 일", color: .systemPurple)
         case .all:
-            return CategoryCalendarConfig(title: "📌 [Blanc] 기타", color: .systemGray)
+            return CategoryCalendarConfig(title: "📌 [개인비서 Blanc] 기타", color: .systemGray)
         }
     }
 

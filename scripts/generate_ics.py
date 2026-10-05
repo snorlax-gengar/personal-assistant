@@ -131,10 +131,10 @@ def generate_landing_html(total_count, stock_count, re_count):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blanc Executive Assistant - 아이폰 16 프로 캘린더 자동 구독</title>
+  <title>개인비서 Blanc - 아이폰 16 프로 캘린더 자동 구독</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta name="apple-mobile-web-app-title" content="Blanc">
+  <meta name="apple-mobile-web-app-title" content="개인비서 Blanc">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#1e1b4b">
@@ -319,7 +319,7 @@ def generate_landing_html(total_count, stock_count, re_count):
 <body>
   <div class="card">
     <div class="emblem-wrapper">
-      <img src="emblem.jpg" alt="Blanc Executive Concierge" class="emblem" />
+      <img src="emblem.jpg" alt="개인비서 Blanc" class="emblem" />
     </div>
 
     <div>
@@ -328,8 +328,8 @@ def generate_landing_html(total_count, stock_count, re_count):
       </div>
     </div>
 
-    <h1>Blanc Executive Concierge</h1>
-    <p class="subtitle">VIP 전용 24시간 실시간 일정 & 자산 브리핑 시스템<br>맥북이 꺼져 있어도 아이폰 AOD와 위젯으로 완벽히 보좌합니다.</p>
+    <h1>개인비서 Blanc</h1>
+    <p class="subtitle">VIP 회원을 위한 24시간 실시간 일정 & 자산 브리핑 시스템<br>맥북이 꺼져 있어도 아이폰 AOD와 위젯으로 완벽히 보좌합니다.</p>
 
     <div class="stats">
       <div class="stat-item">
@@ -359,7 +359,7 @@ def generate_landing_html(total_count, stock_count, re_count):
     </div>
 
     <div class="footer-brand">
-      Blanc Private Concierge Service • Powered by Cloud Pipeline
+      개인비서 Blanc • Powered by Cloud Pipeline
     </div>
   </div>
 
@@ -391,17 +391,17 @@ def main():
     re_items = [i for i in items if i.get("category") == "부동산"]
 
     # 1. all.ics 생성 (로봇 이모지 대신 품격 있는 ✦ 심볼)
-    all_ics = build_ics_content(items, "✦ [Blanc] 주식 & 부동산 통합 비서")
+    all_ics = build_ics_content(items, "✦ [개인비서 Blanc] 주식 & 부동산 통합")
     with open(os.path.join(PUBLIC_DIR, "all.ics"), "w", encoding="utf-8") as f:
         f.write(all_ics)
 
     # 2. stocks.ics 생성
-    stocks_ics = build_ics_content(stock_items, "📈 [Blanc] 주식·실적")
+    stocks_ics = build_ics_content(stock_items, "📈 [개인비서 Blanc] 주식·실적")
     with open(os.path.join(PUBLIC_DIR, "stocks.ics"), "w", encoding="utf-8") as f:
         f.write(stocks_ics)
 
     # 3. realestate.ics 생성
-    re_ics = build_ics_content(re_items, "🏠 [Blanc] 부동산·청약")
+    re_ics = build_ics_content(re_items, "🏠 [개인비서 Blanc] 부동산·청약")
     with open(os.path.join(PUBLIC_DIR, "realestate.ics"), "w", encoding="utf-8") as f:
         f.write(re_ics)
 

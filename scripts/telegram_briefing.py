@@ -63,7 +63,7 @@ def build_briefing_message(items):
 
     # 메시지 조합
     lines = [
-        "✦ *[Blanc 전용 비서 모닝 브리핑]*",
+        "✦ *[개인비서 Blanc 모닝 브리핑]*",
         f"📅 {today_str}\n"
     ]
 
@@ -101,7 +101,7 @@ def build_briefing_message(items):
         lines.append("")
 
     lines.append("━━━━━━━━━━━━━━━━━")
-    lines.append("💡 *오늘도 알차고 성공적인 하루 보내세요!* ✨\n— Blanc Private Concierge")
+    lines.append("💡 *오늘도 알차고 성공적인 하루 보내세요!* ✨\n— 개인비서 Blanc")
 
     return "\n".join(lines)
 
@@ -135,7 +135,7 @@ def send_telegram_message(token, chat_id, text):
 
 def main():
     print("=" * 60)
-    print("📢 Gengarileo 텔레그램 아침 브리핑 발송 시스템")
+    print("📢 개인비서 Blanc 텔레그램 아침 브리핑 발송 시스템")
     print("=" * 60)
 
     # 1. 토큰 및 Chat ID 확인
