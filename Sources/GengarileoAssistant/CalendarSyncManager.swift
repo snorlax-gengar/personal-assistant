@@ -120,8 +120,9 @@ class CalendarSyncManager {
                 for item in itemsForCategory {
                     let event = EKEvent(eventStore: eventStore)
                     event.calendar = calendar
-                    if let urlStr = item.linkURL, let url = URL(string: urlStr) {
-                        event.url = url
+                    if let urlStr = item.linkURL {
+                        let trimmed = urlStr.trimmingCharacters(in: .whitespacesAndNewlines)
+                        event.url = URL(string: trimmed) ?? URL(string: trimmed.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")
                     }
 
                     var noteParts = [String]()

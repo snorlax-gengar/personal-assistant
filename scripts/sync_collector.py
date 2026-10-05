@@ -275,7 +275,7 @@ def fetch_realestate_subscriptions(re_config):
                                 price_display = f" [분양가 {format_price_text(price_won)}]" if price_won else " [15억 이하]"
                                 title = f"[{sub_type}] {name} 청약 접수"
                                 clean_search_name = name.split("(")[0].strip() if "(" in name else name
-                                search_query = urllib.parse.quote(f"{clean_search_name} 청약 공고")
+                                search_query = urllib.parse.quote_plus(f"{clean_search_name} 청약 공고")
                                 link_url = f"https://search.naver.com/search.naver?query={search_query}"
                                 portal_hint = "LH청약플러스" if ("신혼희망타운" in sub_type or "공공" in sub_type) else "청약홈"
                                 results.append({
@@ -324,7 +324,7 @@ def fetch_realestate_subscriptions(re_config):
             price_tag = f"분양가 {format_price_text(price_won)}"
             # 청약 공고글 및 분양 분석글 스마트 검색 링크 생성 (네이버 검색 분양카드+공고문 100% 노출)
             clean_search_name = complex_name.split("(")[0].strip() if "(" in complex_name else complex_name
-            search_query = urllib.parse.quote(f"{clean_search_name} 청약 공고")
+            search_query = urllib.parse.quote_plus(f"{clean_search_name} 청약 공고")
             link_url = f"https://search.naver.com/search.naver?query={search_query}"
             portal_hint = "LH청약플러스" if ("신혼희망타운" in sub_type or "공공" in sub_type or "LH" in memo) else "청약홈"
             results.append({

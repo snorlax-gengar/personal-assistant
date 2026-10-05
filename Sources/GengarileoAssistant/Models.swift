@@ -2,6 +2,45 @@ import Foundation
 import SwiftUI
 import AppKit
 
+// MARK: - Safe URL Opener (브라우저를 화면 최상단으로 강제 활성화)
+func openURLSafely(_ urlString: String?) {
+    guard let urlString = urlString else { return }
+    let trimmed = urlString.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !trimmed.isEmpty else { return }
+
+    let targetURL: URL?
+    if let direct = URL(string: trimmed) {
+        targetURL = direct
+    } else if let encoded = trimmed.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let direct = URL(string: encoded) {
+        targetURL = direct
+    } else {
+        targetURL = nil
+    }
+
+    guard let url = targetURL else {
+        print("[!] URL 변환 실패: \(trimmed)")
+        return
+    }
+
+    print("[*] URL 열기 실행: \(url.absoluteString)")
+
+    let config = NSWorkspace.OpenConfiguration()
+    config.activates = true
+    config.addsToRecentItems = false
+
+    NSWorkspace.shared.open(url, configuration: config) { app, error in
+        if let error = error {
+            print("[!] NSWorkspace 열기 오류: \(error.localizedDescription), 폴백 시도")
+            DispatchQueue.main.async {
+                NSWorkspace.shared.open(url)
+            }
+        } else {
+            print("[+] 브라우저 활성화 완료: \(app?.localizedName ?? "Browser")")
+        }
+    }
+}
+
 // MARK: - Category
 enum ScheduleCategory: String, Codable, CaseIterable, Identifiable {
     case all = "전체"

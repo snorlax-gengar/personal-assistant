@@ -94,9 +94,7 @@ struct FloatingWidgetView: View {
                             }
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                if let urlString = item.linkURL, let url = URL(string: urlString) {
-                                    NSWorkspace.shared.open(url)
-                                }
+                                openURLSafely(item.linkURL)
                             }
                         }
                     }

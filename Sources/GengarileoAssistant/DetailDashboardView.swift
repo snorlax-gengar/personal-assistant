@@ -543,9 +543,7 @@ struct ScheduleRowView: View {
             }
             .contentShape(Rectangle())
             .onTapGesture {
-                if let urlString = item.linkURL, let url = URL(string: urlString) {
-                    NSWorkspace.shared.open(url)
-                }
+                openURLSafely(item.linkURL)
             }
             .help(item.category == .realEstate ? "클릭하여 청약 공고글 및 분양 정보 보기" : (item.linkURL != nil ? "클릭하여 상세 정보 웹페이지 열기" : ""))
 
@@ -553,10 +551,10 @@ struct ScheduleRowView: View {
 
             HStack(spacing: 6) {
                 // 원클릭 공고글 / 실적 / 웹 링크 버튼
-                if let urlString = item.linkURL, let url = URL(string: urlString) {
+                if let urlString = item.linkURL {
                     if item.category == .realEstate {
                         Button(action: {
-                            NSWorkspace.shared.open(url)
+                            openURLSafely(urlString)
                         }) {
                             HStack(spacing: 3) {
                                 Image(systemName: "doc.text.magnifyingglass")
@@ -566,7 +564,7 @@ struct ScheduleRowView: View {
                             }
                             .padding(.horizontal, 6)
                             .padding(.vertical, 3)
-                            .background(Color.orange.opacity(0.15))
+                            .background(Color.orange.opacity(0.18))
                             .foregroundColor(.orange)
                             .cornerRadius(6)
                         }
@@ -574,7 +572,7 @@ struct ScheduleRowView: View {
                         .help("입주자 모집 공고글 및 분양 정보 상세 보기")
                     } else if item.category == .stock {
                         Button(action: {
-                            NSWorkspace.shared.open(url)
+                            openURLSafely(urlString)
                         }) {
                             HStack(spacing: 3) {
                                 Image(systemName: "chart.line.uptrend.xyaxis")
@@ -584,7 +582,7 @@ struct ScheduleRowView: View {
                             }
                             .padding(.horizontal, 6)
                             .padding(.vertical, 3)
-                            .background(Color.green.opacity(0.15))
+                            .background(Color.green.opacity(0.18))
                             .foregroundColor(.green)
                             .cornerRadius(6)
                         }
@@ -592,7 +590,7 @@ struct ScheduleRowView: View {
                         .help("실적 발표 및 기업 공시 상세 보기")
                     } else {
                         Button(action: {
-                            NSWorkspace.shared.open(url)
+                            openURLSafely(urlString)
                         }) {
                             Image(systemName: "arrow.up.right.square")
                                 .font(.system(size: 12))
@@ -622,6 +620,35 @@ struct ScheduleRowView: View {
         .cornerRadius(8)
         .onHover { hovering in
             isHovered = hovering
+        }
+        .contextMenu {
+            if let urlString = item.linkURL {
+                Button("📄 공고글 및 상세 분석 열기") {
+                    openURLSafely(urlString)
+                }
+            }
+            if item.category == .realEstate {
+                if item.title.contains("신혼희망타운") || item.title.contains("공공") || item.memo.contains("LH") {
+                    Button("🏛 LH 청약플러스 공식 접수처 열기") {
+                        openURLSafely("https://apply.lh.or.kr")
+                    }
+                } else {
+                    Button("🏛 한국부동산원 청약홈 공식 접수처 열기") {
+                        openURLSafely("https://www.applyhome.co.kr")
+                    }
+                }
+            }
+            Divider()
+            Button(item.isCompleted ? "미완료로 변경" : "완료로 체크") {
+                withAnimation {
+                    store.toggleCompleted(id: item.id)
+                }
+            }
+            Button("일정 삭제", role: .destructive) {
+                withAnimation {
+                    store.deleteItem(id: item.id)
+                }
+            }
         }
     }
 }
