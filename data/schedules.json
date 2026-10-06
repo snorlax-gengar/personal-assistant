@@ -10,21 +10,7 @@
     "date": "2026-10-03T09:10:11Z"
   },
   {
-    "id": "1c4687fc-54db-4ebd-8232-3beb2507f27e",
-    "title": "[일반분양] 과천 디에트르 퍼스티지 청약",
-    "category": "부동산",
-    "date": "2026-10-07T09:00:00Z",
-    "isCompleted": false,
-    "isDDay": true,
-    "memo": "과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억] | 공식접수: 청약홈",
-    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
-    "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%BC%EC%B2%9C+%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4+%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
-    "timeDetail": "분양가 약 8.7억",
-    "priceWon": 870000000,
-    "createdAt": "2026-10-05T13:43:14.361357Z"
-  },
-  {
-    "id": "2c05a4d1-7201-4567-9e27-9c39049a5744",
+    "id": "5de401f4-0ce3-4689-b77b-d7596c2c057c",
     "title": "삼성전자 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-08T09:00:00Z",
@@ -33,13 +19,27 @@
     "memo": "005930.KS 3분기 잠정 실적 발표 공시",
     "linkURL": "https://finance.naver.com/item/main.naver?code=005930",
     "timeDetail": "장 시작 전 공시",
-    "createdAt": "2026-10-05T13:42:59.007681Z"
+    "createdAt": "2026-10-06T01:04:33.290843Z"
   },
   {
-    "id": "2c5b7f1a-5341-4a5e-bc02-3a4f3728a56f",
+    "id": "f745544d-fa9b-40cd-94f8-97ba96efa85d",
+    "title": "[일반분양] 과천 디에트르 퍼스티지 청약",
+    "category": "부동산",
+    "date": "2026-10-08T09:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억] | 공식접수: 청약홈",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%BC%EC%B2%9C+%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4+%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
+    "timeDetail": "분양가 약 8.7억",
+    "priceWon": 870000000,
+    "createdAt": "2026-10-06T01:04:48.320663Z"
+  },
+  {
+    "id": "a11fc973-74c5-4af8-a9c9-71d6dd5765c0",
     "title": "[공공분양] 동작구 수방사 본청약 청약",
     "category": "부동산",
-    "date": "2026-10-10T09:00:00Z",
+    "date": "2026-10-11T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "서울 동작 | 노량진 한강변 알짜 공공분양 1순위 | [분양가 약 8.7억] | 공식접수: LH청약플러스",
@@ -47,13 +47,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EB%8F%99%EC%9E%91%EA%B5%AC+%EC%88%98%EB%B0%A9%EC%82%AC+%EB%B3%B8%EC%B2%AD%EC%95%BD+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 8.7억",
     "priceWon": 870000000,
-    "createdAt": "2026-10-05T13:43:14.361406Z"
+    "createdAt": "2026-10-06T01:04:48.320714Z"
   },
   {
-    "id": "f76cbda5-003d-4a76-a42b-c198d712b8c5",
+    "id": "f00c9580-f82c-47c1-8e6e-3546c6616471",
     "title": "[일반분양] 마포 에피트 어바닉 청약",
     "category": "부동산",
-    "date": "2026-10-12T09:00:00Z",
+    "date": "2026-10-13T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "서울 마포 | 애오개역 초역세권 일반분양 청약 | [분양가 약 10.2억] | 공식접수: 청약홈",
@@ -61,13 +61,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EB%A7%88%ED%8F%AC+%EC%97%90%ED%94%BC%ED%8A%B8+%EC%96%B4%EB%B0%94%EB%8B%89+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 10.2억",
     "priceWon": 1020000000,
-    "createdAt": "2026-10-05T13:43:14.361433Z"
+    "createdAt": "2026-10-06T01:04:48.320745Z"
   },
   {
-    "id": "7d34e11a-3a17-4530-b554-d3bb1d4d6fb0",
+    "id": "fd7ff7b0-9cb7-43fa-af48-776768517ef1",
     "title": "[신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약",
     "category": "부동산",
-    "date": "2026-10-15T09:00:00Z",
+    "date": "2026-10-16T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "하남 | LH 청약플러스 본청약 접수 | [분양가 약 4.8억] | 공식접수: LH청약플러스",
@@ -75,10 +75,10 @@
     "searchURL": "https://search.naver.com/search.naver?query=%ED%95%98%EB%82%A8+%EA%B5%90%EC%82%B0+A2%EB%B8%94%EB%A1%9D+%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 4.8억",
     "priceWon": 480000000,
-    "createdAt": "2026-10-05T13:43:14.371765Z"
+    "createdAt": "2026-10-06T01:04:48.321377Z"
   },
   {
-    "id": "9f38bf7b-208b-4f68-92a6-ae20a4aaa4a8",
+    "id": "6f65ee6c-2f8a-476d-a898-a213802c0d6d",
     "title": "TSMC 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-17T09:00:00Z",
@@ -87,13 +87,13 @@
     "memo": "TSM Q3 실적 발표 및 가이던스",
     "linkURL": "https://finance.yahoo.com/quote/TSM",
     "timeDetail": "장 시작 전 (BMO)",
-    "createdAt": "2026-10-05T13:42:59.007809Z"
+    "createdAt": "2026-10-06T01:04:33.291008Z"
   },
   {
-    "id": "98f2250d-24e0-4b70-86e6-43a7e7a0d13b",
+    "id": "d3e0bb9b-33bd-4117-aa57-6a404a396332",
     "title": "[공공분양] 남양주 왕숙 B2블록 공공분양 청약",
     "category": "부동산",
-    "date": "2026-10-19T09:00:00Z",
+    "date": "2026-10-20T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "남양주 | 3기 신도시 LH 공공분양 본접수 | [분양가 약 4.5억] | 공식접수: LH청약플러스",
@@ -101,10 +101,10 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EB%82%A8%EC%96%91%EC%A3%BC+%EC%99%95%EC%88%99+B2%EB%B8%94%EB%A1%9D+%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 4.5억",
     "priceWon": 450000000,
-    "createdAt": "2026-10-05T13:43:14.371796Z"
+    "createdAt": "2026-10-06T01:04:48.321412Z"
   },
   {
-    "id": "c427a275-1dd0-4fc8-8ef5-9a3ddfc1a387",
+    "id": "c82190f6-7882-4686-a2bf-df6bd2183820",
     "title": "테슬라 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-23T09:00:00Z",
@@ -113,24 +113,10 @@
     "memo": "TSLA Q3 실적 발표 (컨퍼런스콜)",
     "linkURL": "https://finance.yahoo.com/quote/TSLA",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007717Z"
+    "createdAt": "2026-10-06T01:04:33.290917Z"
   },
   {
-    "id": "5510379a-18e6-4e6a-96a0-f4272cd7d841",
-    "title": "[일반분양] 고양 장항 아테라 청약",
-    "category": "부동산",
-    "date": "2026-10-23T09:00:00Z",
-    "isCompleted": false,
-    "isDDay": true,
-    "memo": "고양 일산 | 일산 장항지구 1순위 청약 접수 | [분양가 약 6.8억] | 공식접수: 청약홈",
-    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
-    "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91+%EC%9E%A5%ED%95%AD+%EC%95%84%ED%85%8C%EB%9D%BC+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
-    "timeDetail": "분양가 약 6.8억",
-    "priceWon": 680000000,
-    "createdAt": "2026-10-05T13:43:14.371826Z"
-  },
-  {
-    "id": "cc7aa8fc-9090-4205-8e67-3d4cb5714ecf",
+    "id": "2a29d79d-585f-44dc-93bb-ca60abbca9f8",
     "title": "SK하이닉스 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-24T09:00:00Z",
@@ -139,13 +125,27 @@
     "memo": "000660.KS 3분기 경영 실적 발표",
     "linkURL": "https://finance.naver.com/item/main.naver?code=000660",
     "timeDetail": "장 시작 전 공시",
-    "createdAt": "2026-10-05T13:42:59.007705Z"
+    "createdAt": "2026-10-06T01:04:33.290900Z"
   },
   {
-    "id": "0c795b7d-6262-4b87-927d-ee22d717dbe2",
+    "id": "f81fbedc-d804-4af6-b7f0-53fd167071e6",
+    "title": "[일반분양] 고양 장항 아테라 청약",
+    "category": "부동산",
+    "date": "2026-10-24T09:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "고양 일산 | 일산 장항지구 1순위 청약 접수 | [분양가 약 6.8억] | 공식접수: 청약홈",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91+%EC%9E%A5%ED%95%AD+%EC%95%84%ED%85%8C%EB%9D%BC+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
+    "timeDetail": "분양가 약 6.8억",
+    "priceWon": 680000000,
+    "createdAt": "2026-10-06T01:04:48.321443Z"
+  },
+  {
+    "id": "619263f8-6072-4fe5-85b5-714442df7756",
     "title": "[일반분양] 구리 인창 수택 재개발 청약",
     "category": "부동산",
-    "date": "2026-10-27T09:00:00Z",
+    "date": "2026-10-28T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "구리 | 구리역 역세권 일반분양 특공/1순위 | [분양가 약 8.8억] | 공식접수: 청약홈",
@@ -153,10 +153,10 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC+%EC%9D%B8%EC%B0%BD+%EC%88%98%ED%83%9D+%EC%9E%AC%EA%B0%9C%EB%B0%9C+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 8.8억",
     "priceWon": 880000000,
-    "createdAt": "2026-10-05T13:43:14.371853Z"
+    "createdAt": "2026-10-06T01:04:48.321470Z"
   },
   {
-    "id": "2ad4c680-9bf2-400a-8266-7ef0cb3642f4",
+    "id": "77ce10fb-cd3e-4c51-9f3f-10d9ecab3d93",
     "title": "구글(알파벳) 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-29T09:00:00Z",
@@ -165,10 +165,10 @@
     "memo": "GOOGL Q3 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/GOOGL",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007733Z"
+    "createdAt": "2026-10-06T01:04:33.290933Z"
   },
   {
-    "id": "69bcc2d3-2af3-405f-adf5-b21acbef5f34",
+    "id": "06527297-1a8d-4310-af92-5858c7cb59fe",
     "title": "마이크로소프트 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-30T09:00:00Z",
@@ -177,10 +177,10 @@
     "memo": "MSFT FY25 Q1 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/MSFT",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007744Z"
+    "createdAt": "2026-10-06T01:04:33.290944Z"
   },
   {
-    "id": "5c5637a6-a517-4c69-b1e1-e9385fbdc297",
+    "id": "c5e4dde3-39cc-4590-9945-d9c706139dc5",
     "title": "메타 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-30T09:00:00Z",
@@ -189,10 +189,10 @@
     "memo": "META Q3 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/META",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007754Z"
+    "createdAt": "2026-10-06T01:04:33.290955Z"
   },
   {
-    "id": "29674382-1755-4df8-8b75-36719149a84c",
+    "id": "f52cb936-64da-4802-95a8-a2c368d44c8d",
     "title": "애플 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-31T09:00:00Z",
@@ -201,10 +201,10 @@
     "memo": "AAPL FY24 Q4 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/AAPL",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007770Z"
+    "createdAt": "2026-10-06T01:04:33.290970Z"
   },
   {
-    "id": "28b61fb3-6581-40fd-bcd1-64bc3fb2c447",
+    "id": "0d8dbb14-139d-4754-99a7-720308978325",
     "title": "아마존 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-31T09:00:00Z",
@@ -213,13 +213,13 @@
     "memo": "AMZN Q3 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/AMZN",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007788Z"
+    "createdAt": "2026-10-06T01:04:33.290987Z"
   },
   {
-    "id": "57944da0-6f4e-42fd-9e9f-7a34c51eb3a6",
+    "id": "a65d4da4-a8ff-4b4d-9562-597caa3048d8",
     "title": "[일반분양] 의정부 롯데캐슬 나리벡시티 청약",
     "category": "부동산",
-    "date": "2026-10-31T09:00:00Z",
+    "date": "2026-11-01T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "의정부 | 의정부 금오동 1순위 청약 | [분양가 약 5.8억] | 공식접수: 청약홈",
@@ -227,13 +227,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80+%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC+%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 5.8억",
     "priceWon": 580000000,
-    "createdAt": "2026-10-05T13:43:14.371877Z"
+    "createdAt": "2026-10-06T01:04:48.321494Z"
   },
   {
-    "id": "5c1629d1-9674-4d84-a13f-a30fd7be30cc",
+    "id": "4162be08-bbff-4b44-8da6-89c500c75476",
     "title": "[무순위] 올림픽파크 포레온 (취소분 59㎡) 청약",
     "category": "부동산",
-    "date": "2026-11-02T09:00:00Z",
+    "date": "2026-11-03T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "서울 강동 | 59㎡ 취소분 무순위 줍줍 청약 접수 | [분양가 약 10.5억] | 공식접수: 청약홈",
@@ -241,10 +241,10 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC+%ED%8F%AC%EB%A0%88%EC%98%A8+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 10.5억",
     "priceWon": 1050000000,
-    "createdAt": "2026-10-05T13:43:14.371901Z"
+    "createdAt": "2026-10-06T01:04:48.321518Z"
   },
   {
-    "id": "991deb7b-e8b2-47e3-90b2-13ae7933ce41",
+    "id": "fcf985b3-408a-4852-9c24-b329ec0d7fe7",
     "title": "엔비디아 실적 발표",
     "category": "주식/금융",
     "date": "2026-11-20T09:00:00Z",
@@ -253,6 +253,6 @@
     "memo": "NVDA FY25 Q3 실적 발표 (컨퍼런스콜)",
     "linkURL": "https://finance.yahoo.com/quote/NVDA",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-05T13:42:59.007799Z"
+    "createdAt": "2026-10-06T01:04:33.290998Z"
   }
 ]
