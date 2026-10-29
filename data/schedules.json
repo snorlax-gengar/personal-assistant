@@ -10,7 +10,7 @@
     "date": "2026-10-03T09:10:11Z"
   },
   {
-    "id": "2e5cea01-40ab-489a-bb0f-364c70703595",
+    "id": "8b807a8a-16a4-474c-8d32-1fbcd31edbeb",
     "title": "구글(알파벳) 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-29T09:00:00Z",
@@ -18,11 +18,11 @@
     "isDDay": true,
     "memo": "GOOGL Q3 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/GOOGL",
-    "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-28T23:48:09.950896Z"
+    "timeDetail": "오늘 발표 D-Day!",
+    "createdAt": "2026-10-29T02:01:22.299306Z"
   },
   {
-    "id": "051a907b-4ff7-45ca-9617-1249d35c2e6d",
+    "id": "48a36c14-3b28-4fd2-bc64-3a00fa96f820",
     "title": "마이크로소프트 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-30T09:00:00Z",
@@ -31,10 +31,10 @@
     "memo": "MSFT FY25 Q1 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/MSFT",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-28T23:48:09.950922Z"
+    "createdAt": "2026-10-29T02:01:22.299348Z"
   },
   {
-    "id": "9ba0abc3-0635-43ae-8738-f65dfaeb5634",
+    "id": "944b9250-1f06-42d3-a3e1-c68e762fbe06",
     "title": "메타 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-30T09:00:00Z",
@@ -43,24 +43,10 @@
     "memo": "META Q3 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/META",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-28T23:48:09.950931Z"
+    "createdAt": "2026-10-29T02:01:22.299371Z"
   },
   {
-    "id": "335c6005-6840-4181-b634-d1d135f692e9",
-    "title": "[일반분양] 과천 디에트르 퍼스티지 청약",
-    "category": "부동산",
-    "date": "2026-10-30T09:00:00Z",
-    "isCompleted": false,
-    "isDDay": true,
-    "memo": "과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억] | 공식접수: 청약홈",
-    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
-    "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%BC%EC%B2%9C+%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4+%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
-    "timeDetail": "분양가 약 8.7억",
-    "priceWon": 870000000,
-    "createdAt": "2026-10-28T23:48:25.044921Z"
-  },
-  {
-    "id": "b0b2124c-2447-4f3a-abcf-d11d14ab6908",
+    "id": "89246b38-5ffb-4a59-aa0b-7c541365dfef",
     "title": "애플 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-31T09:00:00Z",
@@ -69,10 +55,10 @@
     "memo": "AAPL FY24 Q4 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/AAPL",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-28T23:48:09.950950Z"
+    "createdAt": "2026-10-29T02:01:22.299399Z"
   },
   {
-    "id": "ee980bde-7279-4091-a6a1-d5170bbed1b0",
+    "id": "08cc5762-171f-4451-912d-4967d0352ea3",
     "title": "아마존 실적 발표",
     "category": "주식/금융",
     "date": "2026-10-31T09:00:00Z",
@@ -81,13 +67,27 @@
     "memo": "AMZN Q3 실적 발표",
     "linkURL": "https://finance.yahoo.com/quote/AMZN",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-28T23:48:09.950960Z"
+    "createdAt": "2026-10-29T02:01:22.299415Z"
   },
   {
-    "id": "5b4851eb-1f3a-4ea5-a59a-2bb27ab6bcfc",
+    "id": "f93130fd-cd58-4fd9-8cb0-1c9a0b4d5870",
+    "title": "[일반분양] 과천 디에트르 퍼스티지 청약",
+    "category": "부동산",
+    "date": "2026-10-31T09:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "과천 | 과천 지식정보타운 1순위 접수 | [분양가 약 8.7억] | 공식접수: 청약홈",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%BC%EC%B2%9C+%EB%94%94%EC%97%90%ED%8A%B8%EB%A5%B4+%ED%8D%BC%EC%8A%A4%ED%8B%B0%EC%A7%80+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
+    "timeDetail": "분양가 약 8.7억",
+    "priceWon": 870000000,
+    "createdAt": "2026-10-29T02:01:37.312474Z"
+  },
+  {
+    "id": "51e1737a-2f50-45fd-9083-7cd5cc51eafa",
     "title": "[공공분양] 동작구 수방사 본청약 청약",
     "category": "부동산",
-    "date": "2026-11-02T09:00:00Z",
+    "date": "2026-11-03T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "서울 동작 | 노량진 한강변 알짜 공공분양 1순위 | [분양가 약 8.7억] | 공식접수: LH청약플러스",
@@ -95,13 +95,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EB%8F%99%EC%9E%91%EA%B5%AC+%EC%88%98%EB%B0%A9%EC%82%AC+%EB%B3%B8%EC%B2%AD%EC%95%BD+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 8.7억",
     "priceWon": 870000000,
-    "createdAt": "2026-10-28T23:48:25.044966Z"
+    "createdAt": "2026-10-29T02:01:37.312524Z"
   },
   {
-    "id": "42d7d7bd-96c1-4db3-8045-0e05eb03826d",
+    "id": "4a8a0d64-32c2-4757-bfe6-47284f4ee761",
     "title": "[일반분양] 마포 에피트 어바닉 청약",
     "category": "부동산",
-    "date": "2026-11-04T09:00:00Z",
+    "date": "2026-11-05T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "서울 마포 | 애오개역 초역세권 일반분양 청약 | [분양가 약 10.2억] | 공식접수: 청약홈",
@@ -109,13 +109,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EB%A7%88%ED%8F%AC+%EC%97%90%ED%94%BC%ED%8A%B8+%EC%96%B4%EB%B0%94%EB%8B%89+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 10.2억",
     "priceWon": 1020000000,
-    "createdAt": "2026-10-28T23:48:25.044990Z"
+    "createdAt": "2026-10-29T02:01:37.312550Z"
   },
   {
-    "id": "9fc9710c-be07-48db-88a8-e3fdd167de71",
+    "id": "9bb5b795-06f9-4046-93c5-fcf748bc9d06",
     "title": "[신혼희망타운] 하남 교산 A2블록 신혼희망타운 청약",
     "category": "부동산",
-    "date": "2026-11-07T09:00:00Z",
+    "date": "2026-11-08T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "하남 | LH 청약플러스 본청약 접수 | [분양가 약 4.8억] | 공식접수: LH청약플러스",
@@ -123,13 +123,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%ED%95%98%EB%82%A8+%EA%B5%90%EC%82%B0+A2%EB%B8%94%EB%A1%9D+%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 4.8억",
     "priceWon": 480000000,
-    "createdAt": "2026-10-28T23:48:25.045015Z"
+    "createdAt": "2026-10-29T02:01:37.312580Z"
   },
   {
-    "id": "17390fff-05c7-4c96-9802-be727d510d78",
+    "id": "f429b050-8c93-4f2d-ba3b-8e426b51d4ad",
     "title": "[공공분양] 남양주 왕숙 B2블록 공공분양 청약",
     "category": "부동산",
-    "date": "2026-11-11T09:00:00Z",
+    "date": "2026-11-12T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "남양주 | 3기 신도시 LH 공공분양 본접수 | [분양가 약 4.5억] | 공식접수: LH청약플러스",
@@ -137,13 +137,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EB%82%A8%EC%96%91%EC%A3%BC+%EC%99%95%EC%88%99+B2%EB%B8%94%EB%A1%9D+%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 4.5억",
     "priceWon": 450000000,
-    "createdAt": "2026-10-28T23:48:25.045036Z"
+    "createdAt": "2026-10-29T02:01:37.312603Z"
   },
   {
-    "id": "8599c8bd-22b8-4f38-b501-bb53b3c111c1",
+    "id": "aa1f2a6e-dfc7-44e1-85af-30be797834b5",
     "title": "[일반분양] 고양 장항 아테라 청약",
     "category": "부동산",
-    "date": "2026-11-15T09:00:00Z",
+    "date": "2026-11-16T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "고양 일산 | 일산 장항지구 1순위 청약 접수 | [분양가 약 6.8억] | 공식접수: 청약홈",
@@ -151,24 +151,10 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91+%EC%9E%A5%ED%95%AD+%EC%95%84%ED%85%8C%EB%9D%BC+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 6.8억",
     "priceWon": 680000000,
-    "createdAt": "2026-10-28T23:48:25.045081Z"
+    "createdAt": "2026-10-29T02:01:37.312650Z"
   },
   {
-    "id": "79a21f56-3ccb-46cb-acee-bca0d72e0582",
-    "title": "[일반분양] 구리 인창 수택 재개발 청약",
-    "category": "부동산",
-    "date": "2026-11-19T09:00:00Z",
-    "isCompleted": false,
-    "isDDay": true,
-    "memo": "구리 | 구리역 역세권 일반분양 특공/1순위 | [분양가 약 8.8억] | 공식접수: 청약홈",
-    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
-    "searchURL": "https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC+%EC%9D%B8%EC%B0%BD+%EC%88%98%ED%83%9D+%EC%9E%AC%EA%B0%9C%EB%B0%9C+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
-    "timeDetail": "분양가 약 8.8억",
-    "priceWon": 880000000,
-    "createdAt": "2026-10-28T23:48:25.045101Z"
-  },
-  {
-    "id": "577274d0-ef8e-479c-a466-301a93f11a17",
+    "id": "d0b244c8-a97b-4be6-836b-92e0378a2fe4",
     "title": "엔비디아 실적 발표",
     "category": "주식/금융",
     "date": "2026-11-20T09:00:00Z",
@@ -177,13 +163,27 @@
     "memo": "NVDA FY25 Q3 실적 발표 (컨퍼런스콜)",
     "linkURL": "https://finance.yahoo.com/quote/NVDA",
     "timeDetail": "장 마감 후 (AMC)",
-    "createdAt": "2026-10-28T23:48:09.950968Z"
+    "createdAt": "2026-10-29T02:01:22.299430Z"
   },
   {
-    "id": "a2c85612-2a37-45ff-8b0e-f3e4a756496c",
+    "id": "5141883a-69d3-4d81-b1af-00acc9560f1c",
+    "title": "[일반분양] 구리 인창 수택 재개발 청약",
+    "category": "부동산",
+    "date": "2026-11-20T09:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "구리 | 구리역 역세권 일반분양 특공/1순위 | [분양가 약 8.8억] | 공식접수: 청약홈",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC+%EC%9D%B8%EC%B0%BD+%EC%88%98%ED%83%9D+%EC%9E%AC%EA%B0%9C%EB%B0%9C+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
+    "timeDetail": "분양가 약 8.8억",
+    "priceWon": 880000000,
+    "createdAt": "2026-10-29T02:01:37.312672Z"
+  },
+  {
+    "id": "6ae4368e-b013-4329-a35b-3ad8e216a437",
     "title": "[일반분양] 의정부 롯데캐슬 나리벡시티 청약",
     "category": "부동산",
-    "date": "2026-11-23T09:00:00Z",
+    "date": "2026-11-24T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "의정부 | 의정부 금오동 1순위 청약 | [분양가 약 5.8억] | 공식접수: 청약홈",
@@ -191,13 +191,13 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80+%EB%A1%AF%EB%8D%B0%EC%BA%90%EC%8A%AC+%EB%82%98%EB%A6%AC%EB%B2%A1%EC%8B%9C%ED%8B%B0+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 5.8억",
     "priceWon": 580000000,
-    "createdAt": "2026-10-28T23:48:25.045126Z"
+    "createdAt": "2026-10-29T02:01:37.312698Z"
   },
   {
-    "id": "2bc8ea04-244e-4ef9-b02b-85c6bd1d4048",
+    "id": "b44908cb-04a8-4b32-bcf7-2e2e062afb2a",
     "title": "[무순위] 올림픽파크 포레온 (취소분 59㎡) 청약",
     "category": "부동산",
-    "date": "2026-11-25T09:00:00Z",
+    "date": "2026-11-26T09:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "서울 강동 | 59㎡ 취소분 무순위 줍줍 청약 접수 | [분양가 약 10.5억] | 공식접수: 청약홈",
@@ -205,6 +205,6 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EC%98%AC%EB%A6%BC%ED%94%BD%ED%8C%8C%ED%81%AC+%ED%8F%AC%EB%A0%88%EC%98%A8+%EC%B2%AD%EC%95%BD+%EA%B3%B5%EA%B3%A0",
     "timeDetail": "분양가 약 10.5억",
     "priceWon": 1050000000,
-    "createdAt": "2026-10-28T23:48:25.045154Z"
+    "createdAt": "2026-10-29T02:01:37.312729Z"
   }
 ]
