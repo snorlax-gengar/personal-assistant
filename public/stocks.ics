@@ -6,50 +6,12 @@ METHOD:PUBLISH
 X-WR-CALNAME:📈 [개인비서 Blanc] 주식·실적
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
-UID:4122205c-244a-4591-9ab7-5c073c72d949@personalassistant
-DTSTAMP:20261030T232550Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:[📈] 마이크로소프트 실적 발표 (오늘 발표 D-Day!)
-DESCRIPTION:⏰ [발표 시간]: 오늘 발표 D-Day!\n📊 [종목 정보]: MSFT FY25 Q1 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/MSFT\n✦ [개인비서 Blanc 자동 비서 구독]
-URL:https://finance.yahoo.com/quote/MSFT
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:마이크로소프트 실적 발표 D-Day입니다!
-TRIGGER:PT9H
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 마이크로소프트 실적 발표 예정일입니다.
-TRIGGER:-PT15H
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:c9ebe8dd-3465-400d-a85f-233a4946a84b@personalassistant
-DTSTAMP:20261030T232550Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:[📈] 메타 실적 발표 (오늘 발표 D-Day!)
-DESCRIPTION:⏰ [발표 시간]: 오늘 발표 D-Day!\n📊 [종목 정보]: META Q3 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/META\n✦ [개인비서 Blanc 자동 비서 구독]
-URL:https://finance.yahoo.com/quote/META
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:메타 실적 발표 D-Day입니다!
-TRIGGER:PT9H
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:내일 메타 실적 발표 예정일입니다.
-TRIGGER:-PT15H
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:bf86f94c-4e76-4301-beed-add651288d63@personalassistant
-DTSTAMP:20261030T232550Z
+UID:8b6e1798-5701-4c20-9d77-23a93ccb5ece@personalassistant
+DTSTAMP:20261031T015626Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
-SUMMARY:[📈] 애플 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: AAPL FY24 Q4 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/AAPL\n✦ [개인비서 Blanc 자동 비서 구독]
+SUMMARY:[📈] 애플 실적 발표 (오늘 발표 D-Day!)
+DESCRIPTION:⏰ [발표 시간]: 오늘 발표 D-Day!\n📊 [종목 정보]: AAPL FY24 Q4 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/AAPL\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/AAPL
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -63,12 +25,12 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:96244c4b-1d27-4b04-bdf8-08e891a10fcd@personalassistant
-DTSTAMP:20261030T232550Z
+UID:4f95127f-e03f-4dc8-a242-e59d5ce62e46@personalassistant
+DTSTAMP:20261031T015626Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
-SUMMARY:[📈] 아마존 실적 발표 (장 마감 후 (AMC))
-DESCRIPTION:⏰ [발표 시간]: 장 마감 후 (AMC)\n📊 [종목 정보]: AMZN Q3 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/AMZN\n✦ [개인비서 Blanc 자동 비서 구독]
+SUMMARY:[📈] 아마존 실적 발표 (오늘 발표 D-Day!)
+DESCRIPTION:⏰ [발표 시간]: 오늘 발표 D-Day!\n📊 [종목 정보]: AMZN Q3 실적 발표\n📈 [실적 공시 및 시세 확인]: https://finance.yahoo.com/quote/AMZN\n✦ [개인비서 Blanc 자동 비서 구독]
 URL:https://finance.yahoo.com/quote/AMZN
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -82,8 +44,8 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:dc871b51-1902-4a49-b316-d1b9cb3a31d0@personalassistant
-DTSTAMP:20261030T232550Z
+UID:98b1d539-9012-4650-8e7f-cca1981ec849@personalassistant
+DTSTAMP:20261031T015626Z
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:[📈] 엔비디아 실적 발표 (장 마감 후 (AMC))
