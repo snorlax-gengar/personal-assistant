@@ -39,10 +39,10 @@ jobs:
       DART_KEY: ${{ secrets.DART_KEY }}
     steps:
       - name: 📥 코드 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 🐍 Python 환경 구성
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -76,7 +76,7 @@ jobs:
           fi
 
       - name: 📦 GitHub Pages 아티팩트 업로드
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: 'public/'
 
@@ -89,4 +89,4 @@ jobs:
     steps:
       - name: 🌐 GitHub Pages 배포
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
