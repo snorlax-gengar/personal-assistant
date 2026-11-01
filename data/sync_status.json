@@ -1,0 +1,29 @@
+{
+  "updatedAt": "2026-11-01T20:20:04+09:00",
+  "sources": {
+    "applyhome": {
+      "status": "not_configured",
+      "label": "청약홈",
+      "message": "DATA_GO_KR_KEY 없음",
+      "lastSuccess": null
+    },
+    "lh": {
+      "status": "not_configured",
+      "label": "LH청약플러스",
+      "message": "DATA_GO_KR_KEY 없음",
+      "lastSuccess": null
+    },
+    "finnhub": {
+      "status": "not_configured",
+      "label": "미국 실적(Finnhub)",
+      "message": "FINNHUB_KEY 없음",
+      "lastSuccess": null
+    },
+    "dart": {
+      "status": "not_configured",
+      "label": "국내 공시(DART)",
+      "message": "DART_KEY 없음",
+      "lastSuccess": null
+    }
+  }
+}
