@@ -27,6 +27,49 @@ class CalendarSyncManager {
         }
     }
 
+    /// webcal 구독으로 통일하면서, 예전에 이 앱이 iCloud에 만든 Blanc 캘린더(와 그 안의 일정)를 1회 삭제.
+    /// (같은 일정이 구독 캘린더와 iCloud 캘린더에 두 번 보이던 문제 해결)
+    func removeLegacyBlancCalendarsOnce() {
+        let flagKey = "legacyBlancCalendarsRemoved_v2"
+        if UserDefaults.standard.bool(forKey: flagKey) { return }
+
+        let handler: (Bool, Error?) -> Void = { [weak self] granted, _ in
+            guard let self = self else { return }
+            guard granted else {
+                print("[i] 캘린더 접근 권한이 없어 이전 Blanc 캘린더 정리를 건너뜁니다.")
+                return
+            }
+            DispatchQueue.main.async {
+                let categories: [ScheduleCategory] = [.stock, .realEstate, .personal, .todo, .all]
+                var targets = Set(categories.map { self.config(for: $0).title })
+                targets.insert("개인 비서 (실적·청약)")
+
+                var removed = 0
+                for cal in self.eventStore.calendars(for: .event) where targets.contains(cal.title) {
+                    do {
+                        try self.eventStore.removeCalendar(cal, commit: false)
+                        removed += 1
+                    } catch {
+                        print("[!] 캘린더 삭제 실패 (\(cal.title)): \(error)")
+                    }
+                }
+                do {
+                    try self.eventStore.commit()
+                    UserDefaults.standard.set(true, forKey: flagKey)
+                    print("[+] 이전 Blanc iCloud 캘린더 \(removed)개 정리 완료 (이제 webcal 구독만 사용)")
+                } catch {
+                    print("[!] 캘린더 정리 저장 실패: \(error)")
+                }
+            }
+        }
+
+        if #available(macOS 14.0, *) {
+            eventStore.requestFullAccessToEvents(completion: handler)
+        } else {
+            eventStore.requestAccess(to: .event, completion: handler)
+        }
+    }
+
     func syncSchedulesToAppleCalendar(items: [ScheduleItem], completion: @escaping (Bool, String) -> Void) {
         if #available(macOS 14.0, *) {
             eventStore.requestFullAccessToEvents { [weak self] granted, error in

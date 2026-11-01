@@ -407,6 +407,9 @@ def generate_landing_html(total_count, stock_count, re_count):
     <a href="all.ics" class="btn btn-primary" id="allLink">✦ [통합] 비서실 전체 캘린더 구독하기</a>
     <a href="stocks.ics" class="btn btn-secondary" id="stockLink">📈 주식 실적 발표 전용 구독</a>
     <a href="realestate.ics" class="btn btn-secondary" id="reLink">🏠 수도권 청약 (15억 이하) 구독</a>
+    <a href="personal.ics" class="btn btn-secondary" id="personalLink">💼 개인·업무 구독</a>
+    <a href="todo.ics" class="btn btn-secondary" id="todoLink">✅ 할 일 구독</a>
+    <div class="guide" style="margin-top:4px;border-top:none;padding-top:0">※ <strong>통합 하나</strong>만 구독하거나, 색 구분을 원하면 <strong>아래 4개</strong>를 각각 구독하세요. 둘 다 하면 일정이 두 번 보입니다.</div>
 
     <div class="guide">
       <strong>💡 비서실 안내:</strong><br>
@@ -429,6 +432,8 @@ def generate_landing_html(total_count, stock_count, re_count):
     document.getElementById('allLink').href = protocol + '//' + currentHost + currentPath + '/all.ics';
     document.getElementById('stockLink').href = protocol + '//' + currentHost + currentPath + '/stocks.ics';
     document.getElementById('reLink').href = protocol + '//' + currentHost + currentPath + '/realestate.ics';
+    document.getElementById('personalLink').href = protocol + '//' + currentHost + currentPath + '/personal.ics';
+    document.getElementById('todoLink').href = protocol + '//' + currentHost + currentPath + '/todo.ics';
   </script>
 </body>
 </html>
@@ -448,7 +453,7 @@ def main():
     re_items = [i for i in items if i.get("category") == "부동산"]
 
     # 1. all.ics 생성 (로봇 이모지 대신 품격 있는 ✦ 심볼)
-    all_ics = build_ics_content(items, "✦ [개인비서 Blanc] 주식 & 부동산 통합")
+    all_ics = build_ics_content(items, "✦ [개인비서 Blanc] 전체 일정")
     with open(os.path.join(PUBLIC_DIR, "all.ics"), "w", encoding="utf-8") as f:
         f.write(all_ics)
 
@@ -462,7 +467,17 @@ def main():
     with open(os.path.join(PUBLIC_DIR, "realestate.ics"), "w", encoding="utf-8") as f:
         f.write(re_ics)
 
-    # 4. index.html 생성
+    # 4. 개인·업무 / 할 일 전용 (맥 앱·아이폰 단축어로 등록한 일정)
+    personal_items = [i for i in items if i.get("category") == "개인/업무"]
+    todo_items = [i for i in items if i.get("category") == "할 일"]
+    for fname, subset, cal_name in [
+        ("personal.ics", personal_items, "💼 [개인비서 Blanc] 개인·업무"),
+        ("todo.ics", todo_items, "✅ [개인비서 Blanc] 할 일"),
+    ]:
+        with open(os.path.join(PUBLIC_DIR, fname), "w", encoding="utf-8") as f:
+            f.write(build_ics_content(subset, cal_name))
+
+    # 5. index.html 생성
     html = generate_landing_html(len(items), len(stock_items), len(re_items))
     with open(os.path.join(PUBLIC_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)

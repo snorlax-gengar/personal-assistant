@@ -272,6 +272,9 @@ class ScheduleStore: ObservableObject {
         if self.morningBriefingEnabled {
             NotificationManager.shared.scheduleDailyMorningBriefing(items: items)
         }
+
+        // 아이폰 캘린더는 webcal 구독(GitHub)으로 통일 → 예전에 앱이 iCloud에 만든 Blanc 캘린더는 1회 정리
+        CalendarSyncManager.shared.removeLegacyBlancCalendarsOnce()
     }
 
     func addItem(title: String, category: ScheduleCategory, date: Date, isDDay: Bool = true, memo: String = "") {
@@ -664,30 +667,16 @@ class ScheduleStore: ObservableObject {
         }
     }
 
-    /// 웹 수집기 실행 -> 캘린더 동기화까지 원스톱 전자동 수행
+    /// GitHub 동기화 (아이폰 캘린더는 webcal 구독으로 자동 반영되므로 iCloud 직접 등록은 하지 않음)
     func performFullAutoSync(completion: ((Bool, String) -> Void)? = nil) {
-        syncAutoCollector { [weak self] success, message in
-            guard let self = self else { return }
-            if success {
-                CalendarSyncManager.shared.syncSchedulesToAppleCalendar(items: self.items) { calSuccess, calMessage in
-                    completion?(calSuccess, calMessage)
-                }
-            } else {
-                completion?(false, message)
-            }
+        syncAutoCollector { success, message in
+            completion?(success, message)
         }
     }
 
-    /// 개인 일정 추가/삭제/완료 시 캘린더 자동 업데이트 (디바운스 1.5초)
+    /// 개인 일정 추가/삭제/완료 시 GitHub로 업로드 → 아이폰 webcal 캘린더에 반영
     private func triggerDebouncedCalendarSync() {
         guard autoSyncEnabled else { return }
-        calendarSyncDebounceItem?.cancel()
-        let item = DispatchWorkItem { [weak self] in
-            guard let self = self else { return }
-            CalendarSyncManager.shared.syncSchedulesToAppleCalendar(items: self.items) { _, _ in }
-        }
-        calendarSyncDebounceItem = item
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: item)
 
         // 맥에서 바꾼 개인 일정을 GitHub(아이폰 캘린더)로 올리기 — 연속 편집을 모아 8초 뒤 1회
         gitSyncDebounceItem?.cancel()

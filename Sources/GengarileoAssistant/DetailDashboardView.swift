@@ -347,7 +347,7 @@ struct DetailDashboardView: View {
                 .controlSize(.mini)
 
                 Button(action: {
-                    CalendarSyncManager.shared.syncSchedulesToAppleCalendar(items: store.items) { success, message in
+                    store.performFullAutoSync { success, message in
                         backupMessage = message
                         showingBackupAlert = true
                     }
@@ -390,9 +390,8 @@ struct DetailDashboardView: View {
                 .controlSize(.mini)
 
                 Menu {
-                    Button("아이폰 클라우드 구독 페이지 열기") {
-                        let indexPath = "/Users/declan/Desktop/GengarileoAssistant/public/index.html"
-                        NSWorkspace.shared.open(URL(fileURLWithPath: indexPath))
+                    Button("아이폰 캘린더 구독 페이지 열기") {
+                        openURLSafely("https://snorlax-gengar.github.io/personal-assistant/")
                     }
                     Button("📢 텔레그램 모바일 브리핑 지금 발송") {
                         store.sendTelegramBriefing { success, message in
