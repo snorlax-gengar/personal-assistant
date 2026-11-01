@@ -332,7 +332,7 @@
     "date": "2026-11-02T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
-    "memo": "AAPL FY2026 Q4 | EPS 예상 2.02 | 매출 예상 $115.50B",
+    "memo": "AAPL FY2026 Q4 | EPS 예상 2.03 | 매출 예상 $115.66B",
     "source": "finnhub",
     "createdAt": "2026-11-01T11:37:08Z",
     "linkURL": "https://finance.yahoo.com/quote/AAPL/",
@@ -679,5 +679,19 @@
     "linkURL": "https://finance.yahoo.com/quote/NVDA/",
     "searchURL": "https://search.naver.com/search.naver?query=%EC%97%94%EB%B9%84%EB%94%94%EC%95%84+%EC%8B%A4%EC%A0%81",
     "timeDetail": "장 마감 후 (AMC) · 한국시간 다음날 새벽"
+  },
+  {
+    "id": "30F1358A-90BB-514F-8CD8-FBA3FA09BBBC",
+    "title": "브로드컴 실적 발표",
+    "category": "주식/금융",
+    "date": "2027-03-02T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "AVGO FY2027 Q1 | EPS 예상 4.16 | 매출 예상 $37.76B",
+    "source": "finnhub",
+    "createdAt": "2026-11-01T23:18:23Z",
+    "linkURL": "https://finance.yahoo.com/quote/AVGO/",
+    "searchURL": "https://search.naver.com/search.naver?query=%EB%B8%8C%EB%A1%9C%EB%93%9C%EC%BB%B4+%EC%8B%A4%EC%A0%81",
+    "timeDetail": "발표 시간 미정"
   }
 ]
