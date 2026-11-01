@@ -24,8 +24,10 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   add-schedule:
@@ -40,46 +42,56 @@ jobs:
           python-version: '3.11'
 
       - name: ➕ 모바일 신규 일정 추가
+        # 입력값은 환경변수로만 전달 (따옴표 등이 들어가도 스크립트가 깨지지 않게)
+        env:
+          IN_TITLE: ${{ inputs.title }}
+          IN_CATEGORY: ${{ inputs.category }}
+          IN_DATE: ${{ inputs.date }}
+          IN_MEMO: ${{ inputs.memo }}
         run: |
-          python3 -c "
-          import json, uuid, datetime, os
+          python3 - <<'PY'
+          import os, sys, uuid
+          sys.path.insert(0, "scripts")
+          from blanc import common
 
-          data_path = 'data/schedules.json'
-          with open(data_path, 'r', encoding='utf-8') as f:
-              items = json.load(f)
+          title = os.environ["IN_TITLE"].strip()
+          category = os.environ.get("IN_CATEGORY", "").strip() or "개인/업무"
+          if category not in ("개인/업무", "할 일", "주식/금융", "부동산"):
+              category = "개인/업무"
+          d = common.parse_loose_date(os.environ["IN_DATE"])
+          if not d:
+              sys.exit("날짜 형식 오류: " + os.environ["IN_DATE"])
+          memo = os.environ.get("IN_MEMO", "").strip()
 
-          title = '''${{ inputs.title }}'''.strip()
-          category = '''${{ inputs.category }}'''.strip() or '개인/업무'
-          date_str = '''${{ inputs.date }}'''.strip()
-          memo = '''${{ inputs.memo }}'''.strip()
+          items = common.load_json(common.SCHEDULES_PATH, [])
+          items.append({
+              "id": str(uuid.uuid4()).upper(),
+              "title": title,
+              "category": category,
+              "date": common.date_to_item_iso(d),
+              "isCompleted": False,
+              "isDDay": True,
+              "memo": (memo + " [아이폰 단축어 등록]").strip(),
+              "source": "manual",
+              "createdAt": common.iso_utc_now(),
+          })
+          items.sort(key=lambda x: (common.parse_item_date(x.get("date")) or d).isoformat())
+          common.save_json(common.SCHEDULES_PATH, items)
+          print("[+] 모바일 일정 등록 성공: %s (%s)" % (title, d))
+          PY
 
-          new_item = {
-              'id': str(uuid.uuid4()),
-              'title': title,
-              'category': category,
-              'date': f'{date_str}T09:00:00Z',
-              'isCompleted': False,
-              'isDDay': True,
-              'memo': f'{memo} [아이폰 단축어 등록]',
-              'createdAt': datetime.datetime.now().isoformat() + 'Z'
-          }
-          items.append(new_item)
-          items.sort(key=lambda x: x.get('date', ''))
-
-          with open(data_path, 'w', encoding='utf-8') as f:
-              json.dump(items, f, ensure_ascii=False, indent=2)
-
-          print(f'[+] 모바일 일정 등록 성공: {title} ({date_str})')
-          "
-
-      - name: 📅 캘린더 파일 (.ics) 재성성
-        run: |
-          python3 scripts/generate_ics.py
+      - name: 📅 캘린더 파일 (.ics) 재생성
+        run: python3 scripts/generate_ics.py
 
       - name: 💾 저장소 커밋 & 푸시
+        env:
+          IN_TITLE: ${{ inputs.title }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/schedules.json public/
-          git commit -m "feat(mobile): 아이폰 단축어를 통한 새 일정 등록 - ${{ inputs.title }} [skip ci]"
-          git push
+          git commit -m "feat(mobile): 아이폰 단축어 일정 등록 - ${IN_TITLE} [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            sleep 5
+          done

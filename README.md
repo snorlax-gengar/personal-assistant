@@ -60,3 +60,22 @@ cd /Users/declan/Desktop/GengarileoAssistant
 webcal://raw.githubusercontent.com/snorlax-gengar/personal-assistant/main/public/all.ics
 ```
 웹 대시보드: https://snorlax-gengar.github.io/personal-assistant/
+
+---
+
+## 🔧 v2 데이터 엔진 (2026-11)
+
+이전 버전은 수집 API가 실패하면 **코드에 적힌 예시 일정**을 대신 넣었습니다. v2부터는 실제 공고/공시만 사용하고, 실패하면 직전 데이터를 유지하면서 `data/sync_status.json`·텔레그램·웹 대시보드에 실패 사실을 표시합니다.
+
+| 데이터 | 출처 | 비밀키 |
+|---|---|---|
+| 청약 (일반분양·국민·무순위) | 한국부동산원 청약홈 분양정보 API | `DATA_GO_KR_KEY` |
+| LH 공공분양·신혼희망타운 | LH 분양임대공고문 API | `DATA_GO_KR_KEY` |
+| 미국 실적 발표 (+EPS 결과) | Finnhub | `FINNHUB_KEY` |
+| 삼성전자·SK하이닉스 공시 | OpenDART | `DART_KEY` |
+| 모닝 브리핑 | Telegram Bot | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` |
+
+- 비밀키는 **GitHub Secrets**(Actions용)와 로컬 `.env`(`.env.example` 복사)에만 둡니다. `config.json`에 넣지 마세요.
+- 키 점검: `python3 scripts/sync_collector.py --check`
+- 브리핑 미리보기: `python3 scripts/telegram_briefing.py --preview`
+- 맥 앱 ↔ GitHub 동기화: `scripts/mac_sync.sh` (맥 앱이 자동 실행. 수집은 GitHub Actions 전담)

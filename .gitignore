@@ -10,3 +10,11 @@
 data/backups/
 .DS_Store
 *.xcuserstate
+
+# 비밀키 (절대 커밋 금지)
+.env
+
+# 맥 앱 로컬 내보내기 파일
+data/GengarileoAssistant.ics
+*.tmp
+__pycache__/

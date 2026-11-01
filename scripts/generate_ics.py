@@ -11,9 +11,13 @@ generate_ics.py
 """
 
 import os
+import sys
 import json
 import datetime
 import urllib.parse
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from blanc import common  # noqa: E402
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(BASE_DIR, "data", "schedules.json")
@@ -23,17 +27,31 @@ os.makedirs(PUBLIC_DIR, exist_ok=True)
 
 
 def parse_date(date_str):
-    if not date_str:
-        return datetime.date.today()
-    clean_str = date_str.replace("Z", "+00:00")
-    try:
-        dt = datetime.datetime.fromisoformat(clean_str)
-        return dt.date()
-    except Exception:
-        try:
-            return datetime.datetime.strptime(date_str[:10], "%Y-%m-%d").date()
-        except Exception:
-            return datetime.date.today()
+    """한국 시간 기준 날짜 (UTC 서버에서도 하루 밀리지 않음)."""
+    return common.parse_item_date(date_str) or common.today_kst()
+
+
+def ics_escape(text):
+    """RFC 5545 텍스트 이스케이프 (쉼표·세미콜론·줄바꿈)."""
+    text = str(text or "")
+    text = text.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,")
+    return text.replace("\r\n", "\\n").replace("\n", "\\n")
+
+
+def fold_line(line):
+    """RFC 5545: 한 줄 75바이트 초과 시 접기 (한글 UTF-8 글자가 잘리지 않게)."""
+    out, cur, size = [], "", 0
+    for ch in line:
+        b = len(ch.encode("utf-8"))
+        limit = 75 if not out else 74
+        if size + b > limit:
+            out.append(cur)
+            cur, size = ch, b
+        else:
+            cur += ch
+            size += b
+    out.append(cur)
+    return "\r\n ".join(out)
 
 
 def build_ics_content(items, calendar_name):
@@ -51,6 +69,8 @@ def build_ics_content(items, calendar_name):
 
     for item in items:
         if item.get("isCompleted", False):
+            continue
+        if parse_date(item.get("date")) < common.today_kst() - datetime.timedelta(days=60):
             continue
 
         item_id = item.get("id", str(datetime.datetime.now().timestamp()))
@@ -106,15 +126,15 @@ def build_ics_content(items, calendar_name):
                 desc_parts.append(f"상세정보: {link_url}")
 
         desc_parts.append("✦ [개인비서 Blanc 자동 비서 구독]")
-        description = "\\n".join(desc_parts)
+        description = "\\n".join(ics_escape(p) for p in desc_parts)
 
         lines.extend([
             "BEGIN:VEVENT",
-            f"UID:{item_id}@personalassistant",
+            f"UID:{str(item_id).lower()}@personalassistant",
             f"DTSTAMP:{now_stamp}",
             f"DTSTART;VALUE=DATE:{dt_start_str}",
             f"DTEND;VALUE=DATE:{dt_end_str}",
-            f"SUMMARY:{summary}",
+            f"SUMMARY:{ics_escape(summary)}",
             f"DESCRIPTION:{description}",
         ])
 
@@ -125,7 +145,7 @@ def build_ics_content(items, calendar_name):
         lines.extend([
             "BEGIN:VALARM",
             "ACTION:DISPLAY",
-            f"DESCRIPTION:{title} D-Day입니다!",
+            f"DESCRIPTION:{ics_escape(title)} D-Day입니다!",
             "TRIGGER:PT9H",
             "END:VALARM"
         ])
@@ -134,7 +154,7 @@ def build_ics_content(items, calendar_name):
         lines.extend([
             "BEGIN:VALARM",
             "ACTION:DISPLAY",
-            f"DESCRIPTION:내일 {title} 예정일입니다.",
+            f"DESCRIPTION:내일 {ics_escape(title)} 예정일입니다.",
             "TRIGGER:-PT15H",
             "END:VALARM"
         ])
@@ -142,10 +162,25 @@ def build_ics_content(items, calendar_name):
         lines.append("END:VEVENT")
 
     lines.append("END:VCALENDAR")
-    return "\r\n".join(lines)
+    return "\r\n".join(fold_line(l) for l in lines) + "\r\n"
+
+
+def build_status_html():
+    st = common.load_json(common.STATUS_PATH, {})
+    if not st:
+        return ""
+    rows = []
+    for name, s in (st.get("sources") or {}).items():
+        icon = {"ok": "🟢", "error": "🟠", "not_configured": "⚪"}.get(s.get("status"), "⚪")
+        info = "%s건" % s.get("count", 0) if s.get("status") == "ok" else ("키 미설정" if s.get("status") == "not_configured" else "수집 실패 · 이전 데이터 표시 중")
+        rows.append('<div>%s %s <span style="color:#64748b">%s</span></div>' % (icon, s.get("label", name), info))
+    updated = (st.get("updatedAt") or "")[:16].replace("T", " ")
+    return ('<div class="guide" style="margin-top:0;border-top:none;padding-top:0;margin-bottom:18px">'
+            '<strong>🛰 마지막 수집: %s KST</strong><br>%s</div>' % (updated, "".join(rows)))
 
 
 def generate_landing_html(total_count, stock_count, re_count):
+    status_html = build_status_html()
     html = f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -365,6 +400,8 @@ def generate_landing_html(total_count, stock_count, re_count):
         <div class="stat-label">✦ 총 보좌 일정</div>
       </div>
     </div>
+
+    {status_html}
 
     <!-- 아이폰 Safari에서 클릭 시 캘린더 구독 창 팝업 -->
     <a href="all.ics" class="btn btn-primary" id="allLink">✦ [통합] 비서실 전체 캘린더 구독하기</a>

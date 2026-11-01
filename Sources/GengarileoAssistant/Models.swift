@@ -95,6 +95,15 @@ struct ScheduleItem: Identifiable, Codable, Equatable {
     var searchURL: String? = nil
     var timeDetail: String? = nil
     var createdAt: Date = Date()
+    /// 자동 수집 출처 (applyhome, lh, finnhub, dart). nil 또는 "manual"이면 직접 등록한 일정
+    var source: String? = nil
+    /// 최저 분양가 (원) — 부동산 일정만
+    var priceWon: Int? = nil
+
+    var isAutoCollected: Bool {
+        guard let s = source else { return false }
+        return s != "manual"
+    }
 
     // MARK: - Portal Branding Helper
     var portalButtonTitle: String {
@@ -214,6 +223,10 @@ class ScheduleStore: ObservableObject {
 
     private var periodicTimer: Timer?
     private var calendarSyncDebounceItem: DispatchWorkItem?
+    private var gitSyncDebounceItem: DispatchWorkItem?
+    private var isGitSyncRunning = false
+    /// 파일 읽기에 실패하면 빈 목록으로 덮어쓰지 않도록 저장을 막는다
+    private var saveBlocked = false
 
     let dataDirectory: URL
     let saveURL: URL
@@ -506,6 +519,10 @@ class ScheduleStore: ObservableObject {
     }
 
     private func save() {
+        if saveBlocked {
+            print("[!] 일정 파일을 읽지 못한 상태라 저장을 건너뜁니다 (데이터 보호).")
+            return
+        }
         do {
             let data = try makeEncoder().encode(items)
             try data.write(to: saveURL, options: .atomic)
@@ -522,24 +539,33 @@ class ScheduleStore: ObservableObject {
 
         do {
             let data = try Data(contentsOf: saveURL)
-            self.items = try makeDecoder().decode([ScheduleItem].self, from: data)
+            let decoded = try makeDecoder().decode([ScheduleItem].self, from: data)
+            saveBlocked = false
+            self.items = decoded
             print("Successfully loaded \(self.items.count) schedules.")
         } catch {
-            print("Failed to load schedules: \(error)")
-            self.items = []
+            // 이전에는 여기서 빈 목록을 저장해 파일 전체가 지워질 수 있었음 → 기존 상태 유지
+            print("Failed to load schedules (기존 데이터 유지): \(error)")
+            saveBlocked = true
         }
     }
 
-    /// 파이썬 자동 수집기(sync_collector.py)를 백그라운드에서 실행하고 최신 데이터 갱신
+    /// GitHub와 일정 동기화 (scripts/mac_sync.sh)
+    /// - 실제 API 수집은 GitHub Actions가 담당하고, 맥은 최신 데이터를 받아오고 개인 일정을 올린다.
     func syncAutoCollector(completion: @escaping (Bool, String) -> Void) {
+        if isGitSyncRunning {
+            completion(false, "이미 동기화가 진행 중입니다.")
+            return
+        }
+        isGitSyncRunning = true
+        // 대기 중인 맥 일정 저장이 있으면 먼저 파일에 반영된 상태여야 함 (items didSet에서 즉시 저장됨)
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let self = self else { return }
 
-            let scriptPath = "/Users/declan/Desktop/GengarileoAssistant/scripts/sync_collector.py"
-            let pythonBin = "/opt/homebrew/bin/python3"
+            let scriptPath = "/Users/declan/Desktop/GengarileoAssistant/scripts/mac_sync.sh"
 
             let process = Process()
-            process.executableURL = URL(fileURLWithPath: FileManager.default.fileExists(atPath: pythonBin) ? pythonBin : "/usr/bin/python3")
+            process.executableURL = URL(fileURLWithPath: "/bin/bash")
             process.arguments = [scriptPath]
 
             let pipe = Pipe()
@@ -554,16 +580,22 @@ class ScheduleStore: ObservableObject {
                 let output = String(data: data, encoding: .utf8) ?? ""
 
                 DispatchQueue.main.async {
+                    self.isGitSyncRunning = false
                     self.load()
-                    if process.terminationStatus == 0 {
-                        completion(true, "주식 실적발표 및 부동산 청약 일정이 최신으로 동기화되었습니다!")
-                    } else {
-                        completion(false, "동기화 중 오류가 발생했습니다: \(output)")
+                    let lastLine = output.split(separator: "\n").last.map(String.init) ?? ""
+                    switch process.terminationStatus {
+                    case 0:
+                        completion(true, "GitHub와 동기화했습니다. 실적·청약 일정은 매일 05시/08시에 실제 공고 기준으로 갱신됩니다.\n\(lastLine)")
+                    case 2:
+                        completion(false, "GitHub에 연결하지 못해 맥에 저장된 일정을 그대로 표시합니다.\n\(lastLine)")
+                    default:
+                        completion(false, "동기화 중 문제가 생겼습니다:\n\(output.suffix(400))")
                     }
                 }
             } catch {
                 DispatchQueue.main.async {
-                    completion(false, "수집기 실행 실패: \(error.localizedDescription)")
+                    self.isGitSyncRunning = false
+                    completion(false, "동기화 스크립트 실행 실패: \(error.localizedDescription)")
                 }
             }
         }
@@ -656,6 +688,16 @@ class ScheduleStore: ObservableObject {
         }
         calendarSyncDebounceItem = item
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: item)
+
+        // 맥에서 바꾼 개인 일정을 GitHub(아이폰 캘린더)로 올리기 — 연속 편집을 모아 8초 뒤 1회
+        gitSyncDebounceItem?.cancel()
+        let gitItem = DispatchWorkItem { [weak self] in
+            self?.syncAutoCollector { success, message in
+                print(success ? "[+] GitHub 업로드 완료" : "[!] GitHub 업로드 보류: \(message)")
+            }
+        }
+        gitSyncDebounceItem = gitItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0, execute: gitItem)
     }
 
     /// 수동 또는 주요 작업 전 백업 스냅샷 파일 자동 생성

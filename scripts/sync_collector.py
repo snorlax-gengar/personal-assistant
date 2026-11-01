@@ -1,470 +1,244 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
-PersonalAssistant 자동 수집 엔진 (sync_collector.py)
-- 미국 M7 + 반도체 및 국내 주식 실적 발표(Earnings) 일정 수집
-- 서울 및 수도권(의정부, 구리, 남양주, 양주, 포천, 일산, 과천, 하남 등) 청약 일정(일반분양, 신희타, 공공, 줍줍) 수집
-- 개인 일정/Todo는 100% 안전하게 보존하고 주식/부동산 일정만 최신 정보로 병합
+개인비서 Blanc 자동 수집기 v2 (sync_collector.py)
+
+바뀐 점
+- 실제 API에서 받은 데이터만 저장합니다. 실패하면 '가짜 예시 일정'을 만들지 않고,
+  직전에 성공한 데이터를 그대로 유지한 뒤 data/sync_status.json에 실패 사유를 남깁니다.
+- 같은 공고/실적은 항상 같은 ID → 완료 체크가 유지되고 중복이 생기지 않습니다.
+- 지난 일정도 60일간 기록으로 남깁니다 (실적 결과 EPS, 당첨발표 등 사후 확인용).
+- 날짜는 모두 한국 시간 기준입니다.
+
+사용법
+  python3 scripts/sync_collector.py            # 전체 수집
+  python3 scripts/sync_collector.py --check    # 키 설정 여부만 확인
 """
 
-import os
-import sys
-import json
-import uuid
 import datetime
-import urllib.request
-import urllib.error
-import urllib.parse
-import ssl
+import glob
+import os
+import re
+import sys
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
-DATA_DIR = os.path.join(BASE_DIR, "data")
-SCHEDULES_PATH = os.path.join(DATA_DIR, "schedules.json")
-BACKUPS_DIR = os.path.join(DATA_DIR, "backups")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(BACKUPS_DIR, exist_ok=True)
+from blanc import common, realestate, stocks  # noqa: E402
+from blanc.common import FetchError  # noqa: E402
 
-USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+BACKUPS_DIR = os.path.join(common.DATA_DIR, "backups")
+HISTORY_DAYS = 60
+MAX_BACKUPS = 30
+AUTO_CATEGORIES = ("주식/금융", "부동산")
 
-# SSL 컨텍스트 설정 (인증서 오류 방지)
-ssl_context = ssl.create_default_context()
-ssl_context.check_hostname = False
-ssl_context.verify_mode = ssl.CERT_NONE
+SECRETS = {
+    "DATA_GO_KR_KEY": "공공데이터포털 (청약홈·LH 청약 공고)",
+    "FINNHUB_KEY": "Finnhub (미국 실적 발표)",
+    "DART_KEY": "OpenDART (국내 실적 공시)",
+    "TELEGRAM_BOT_TOKEN": "텔레그램 봇 토큰",
+    "TELEGRAM_CHAT_ID": "텔레그램 chat id",
+}
 
-
-def load_config():
-    if not os.path.exists(CONFIG_PATH):
-        print(f"[!] config.json이 없습니다: {CONFIG_PATH}")
-        return {"stocks": [], "realEstate": {"regions": [], "types": []}}
-    with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+# v1 수집기가 만들던 '예시(가짜) 일정'을 알아보는 표시들
+_LEGACY_MEMO = re.compile(
+    r"(공식접수: (청약홈|LH청약플러스|SH청약)$)|(실적 발표 예정 \(공시 확인\))|(^[A-Z0-9.]+ (FY\d{2} Q\d|Q\d|\d분기|3분기))")
 
 
-def load_existing_schedules():
-    if not os.path.exists(SCHEDULES_PATH):
-        return []
-    try:
-        with open(SCHEDULES_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"[!] 기존 일정 로드 실패: {e}")
-        return []
+def is_legacy_fake(item):
+    if item.get("source"):
+        return False
+    if item.get("category") not in AUTO_CATEGORIES:
+        return False
+    memo = item.get("memo", "") or ""
+    if "아이폰 단축어" in memo:
+        return False
+    if " · " in item.get("title", ""):
+        return False  # v2 형식 (Swift 앱이 source를 지운 경우)
+    if item.get("category") == "부동산" and "공식접수:" in memo:
+        return True
+    return bool(_LEGACY_MEMO.search(memo.split(" | [")[0].strip()) or item.get("priceWon"))
 
 
-def create_backup(schedules):
-    if not schedules:
+def source_of(item):
+    s = item.get("source")
+    if s:
+        return s
+    return common.SOURCE_MANUAL
+
+
+def create_backup(items):
+    if not items:
         return
-    now_str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    backup_file = os.path.join(BACKUPS_DIR, f"backup_before_sync_{now_str}.json")
-    try:
-        with open(backup_file, "w", encoding="utf-8") as f:
-            json.dump(schedules, f, ensure_ascii=False, indent=2)
-        print(f"[+] 안전 백업 생성 완료: {backup_file}")
-    except Exception as e:
-        print(f"[!] 백업 실패: {e}")
-
-
-# ==========================================
-# 1. 주식 실적 발표(Earnings Date) 수집기
-# ==========================================
-def fetch_stock_earnings(stock_list):
-    """
-    Yahoo Finance 및 공시 캘린더를 통해 종목별 다음 실적 발표일을 가져옵니다.
-    """
-    results = []
-    today = datetime.date.today()
-
-    if not stock_list:
-        return results
-
-    symbols = [s["ticker"] for s in stock_list]
-    name_map = {s["ticker"]: s["name"] for s in stock_list}
-
-    print(f"[*] 주식 실적 발표 수집 시작 ({len(symbols)}개 관심 종목)...")
-
-    # Yahoo Finance Quote API 일괄 호출
-    chunk_size = 20
-    for i in range(0, len(symbols), chunk_size):
-        chunk = symbols[i : i + chunk_size]
-        symbols_str = ",".join(chunk)
-        url = f"https://query1.finance.yahoo.com/v7/finance/quote?symbols={symbols_str}"
-
-        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    os.makedirs(BACKUPS_DIR, exist_ok=True)
+    stamp = common.now_kst().strftime("%Y%m%d_%H%M%S")
+    common.save_json(os.path.join(BACKUPS_DIR, "backup_before_sync_%s.json" % stamp), items)
+    files = sorted(glob.glob(os.path.join(BACKUPS_DIR, "backup_before_sync_*.json")))
+    for old in files[:-MAX_BACKUPS]:
         try:
-            with urllib.request.urlopen(req, timeout=7, context=ssl_context) as res:
-                data = json.loads(res.read().decode("utf-8"))
-                quotes = data.get("quoteResponse", {}).get("result", [])
-
-                for q in quotes:
-                    symbol = q.get("symbol")
-                    name = name_map.get(symbol, symbol)
-
-                    # 실적 발표 타임스탬프 추출
-                    ts = q.get("earningsTimestamp") or q.get("earningsTimestampStart")
-                    if ts:
-                        # 로컬 날짜로 변환
-                        dt = datetime.datetime.fromtimestamp(ts)
-                        date_str = dt.strftime("%Y-%m-%d")
-
-                        # 이미 지난 실적 발표가 아닌 미래/당일 일정인 경우만 채택
-                        if dt.date() >= today:
-                            title = f"{name} 실적 발표"
-                            memo = f"{symbol} 실적 발표 예정 (공시 확인)"
-                            results.append({
-                                "id": str(uuid.uuid4()),
-                                "title": title,
-                                "category": "주식/금융",
-                                "date": f"{date_str}T09:00:00Z",
-                                "isCompleted": False,
-                                "isDDay": True,
-                                "memo": memo,
-                                "createdAt": datetime.datetime.now().isoformat() + "Z"
-                            })
-                            print(f"  -> [발견] {name}({symbol}): {date_str}")
-        except Exception as e:
-            print(f"  [!] Yahoo API 호출 중 오류 ({symbols_str}): {e}")
-
-    # 공시 일정 기반 추정 fallback (네트워크 차단 또는 야후 공백 대비)
-    # 주요 반도체/M7 기업들의 분기별 정기 발표 주기를 고려한 다음 실적 예정일 보완
-    if not results:
-        print("  [*] 온라인 실시간 쿼리가 제한된 환경이므로, 분기별 최신 발표 캘린더 기준으로 생성합니다.")
-        # M7 및 주요 반도체 차기 실적 예상 캘린더 예시 (분기별)
-        # 3분기 실적 시즌: 10월 중순 ~ 11월 초
-        current_year = today.year
-        sample_schedule_offsets = [
-            ("005930.KS", "삼성전자", datetime.date(current_year, 10, 8), "3분기 잠정 실적 발표 공시", "장 시작 전 공시", "https://finance.naver.com/item/main.naver?code=005930"),
-            ("000660.KS", "SK하이닉스", datetime.date(current_year, 10, 24), "3분기 경영 실적 발표", "장 시작 전 공시", "https://finance.naver.com/item/main.naver?code=000660"),
-            ("TSLA", "테슬라", datetime.date(current_year, 10, 23), "Q3 실적 발표 (컨퍼런스콜)", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/TSLA"),
-            ("GOOGL", "구글(알파벳)", datetime.date(current_year, 10, 29), "Q3 실적 발표", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/GOOGL"),
-            ("MSFT", "마이크로소프트", datetime.date(current_year, 10, 30), "FY25 Q1 실적 발표", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/MSFT"),
-            ("META", "메타", datetime.date(current_year, 10, 30), "Q3 실적 발표", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/META"),
-            ("AAPL", "애플", datetime.date(current_year, 10, 31), "FY24 Q4 실적 발표", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/AAPL"),
-            ("AMZN", "아마존", datetime.date(current_year, 10, 31), "Q3 실적 발표", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/AMZN"),
-            ("NVDA", "엔비디아", datetime.date(current_year, 11, 20), "FY25 Q3 실적 발표 (컨퍼런스콜)", "장 마감 후 (AMC)", "https://finance.yahoo.com/quote/NVDA"),
-            ("TSM", "TSMC", datetime.date(current_year, 10, 17), "Q3 실적 발표 및 가이던스", "장 시작 전 (BMO)", "https://finance.yahoo.com/quote/TSM")
-        ]
-        for ticker, name, d, memo, time_detail, link_url in sample_schedule_offsets:
-            if any(s["ticker"] == ticker for s in stock_list) and d >= today:
-                results.append({
-                    "id": str(uuid.uuid4()),
-                    "title": f"{name} 실적 발표",
-                    "category": "주식/금융",
-                    "date": f"{d.strftime('%Y-%m-%d')}T09:00:00Z",
-                    "isCompleted": False,
-                    "isDDay": True,
-                    "memo": f"{ticker} {memo}",
-                    "linkURL": link_url,
-                    "timeDetail": time_detail,
-                    "createdAt": datetime.datetime.now().isoformat() + "Z"
-                })
-
-    return results
-
-
-# ==========================================
-# ==========================================
-# 2. 부동산 청약(청약홈/신희타/공공) 수집기 (15억 이하 필터 적용)
-# ==========================================
-def parse_price_won(val):
-    """
-    다양한 형태의 분양가 텍스트/숫자를 원 단위 정수로 변환합니다.
-    예: 870000000, 87000 (만원), "8.7억", "8억 5000", "10억 5,000만원", "87,000만원"
-    """
-    if not val:
-        return None
-    import re
-    if isinstance(val, (int, float)):
-        if val > 10_000_000:
-            return int(val)
-        return int(val * 10_000)
-    
-    val_str = str(val).replace(",", "").strip()
-    m_eok = re.search(r'(\d+(?:\.\d+)?)\s*억', val_str)
-    if m_eok:
-        total = int(float(m_eok.group(1)) * 100_000_000)
-        rest = val_str[m_eok.end():]
-        m_rest = re.search(r'(\d+)', rest)
-        if m_rest:
-            total += int(m_rest.group(1)) * 10_000
-        return total
-    m_num = re.search(r'(\d+)', val_str)
-    if m_num:
-        num = int(m_num.group(1))
-        if num < 200_000: # 만원 단위 표기인 경우 (20억원 미만)
-            return num * 10_000
-        return num
-    return None
-
-
-def format_price_text(price_won):
-    """원 단위 금액을 '약 8.7억' 형식의 깔끔한 텍스트로 변환"""
-    if not price_won:
-        return ""
-    eok = price_won // 100_000_000
-    rem = (price_won % 100_000_000) // 10_000_000
-    if rem > 0:
-        return f"약 {eok}.{rem}억"
-    return f"약 {eok}억"
-
-
-def fetch_realestate_subscriptions(re_config):
-    """
-    청약홈 및 수도권 분양 캘린더에서 서울 전역 및 수도권 지정 지역의
-    분양가 15억원 이하 청약(일반분양, 신희타, 공공, 줍줍) 일정만 선별 수집합니다.
-    """
-    results = []
-    today = datetime.date.today()
-    regions = re_config.get("regions", [])
-    target_types = re_config.get("types", [])
-    max_price_won = re_config.get("maxPriceWon", 1500000000) # 기본 15억 원 이하
-    max_price_text = re_config.get("maxPriceText", "15억원 이하")
-
-    print(f"[*] 부동산 청약 일정 수집 시작 (지역: {len(regions)}곳, 조건: {max_price_text} / 분양가 {max_price_won:,}원 이하)...")
-
-    # 1. 네이버 부동산 분양 캘린더 크롤링 시도
-    current_year = today.year
-    current_month = today.month
-
-    months_to_query = [(current_year, current_month)]
-    if current_month == 12:
-        months_to_query.append((current_year + 1, 1))
-    else:
-        months_to_query.append((current_year, current_month + 1))
-
-    for y, m in months_to_query:
-        month_str = f"{m:02d}"
-        url = f"https://new.land.naver.com/api/complexes/calendar?year={y}&month={month_str}"
-        req = urllib.request.Request(
-            url,
-            headers={
-                "User-Agent": USER_AGENT,
-                "Referer": "https://new.land.naver.com/",
-                "Accept": "application/json"
-            }
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=7, context=ssl_context) as res:
-                data = json.loads(res.read().decode("utf-8"))
-                items = data.get("calendarList", []) or data.get("list", [])
-                for item in items:
-                    name = item.get("complexName") or item.get("name", "")
-                    region_name = item.get("regionName") or item.get("address", "")
-                    sub_type = item.get("supplyType") or item.get("type", "일반분양")
-                    apply_date_str = item.get("receiptDate") or item.get("date")
-
-                    # 지역 필터링
-                    matched_region = any(r in name or r in region_name for r in regions)
-                    if not matched_region:
-                        continue
-
-                    # 15억원 이하 분양가 필터링
-                    deal_price = item.get("dealPrice") or item.get("price") or item.get("supplyPrice") or item.get("minPrice")
-                    price_won = parse_price_won(deal_price)
-                    if price_won and price_won > max_price_won:
-                        print(f"  [X 분양가 15억 초과 제외] {name} ({format_price_text(price_won)})")
-                        continue
-
-                    # 날짜 파싱
-                    if apply_date_str:
-                        try:
-                            apply_date = datetime.datetime.strptime(apply_date_str, "%Y-%m-%d").date()
-                            if apply_date >= today:
-                                price_display = f" [분양가 {format_price_text(price_won)}]" if price_won else " [15억 이하]"
-                                title = f"[{sub_type}] {name} 청약 접수"
-                                if "SH" in name or "SH" in sub_type:
-                                    portal_hint = "SH청약"
-                                    official_url = "https://www.i-sh.co.kr/app/index.do"
-                                elif "신혼희망타운" in sub_type or "공공" in sub_type:
-                                    portal_hint = "LH청약플러스"
-                                    official_url = "https://apply.lh.or.kr/lhapply/apply/pblanc/selectPblancList.do"
-                                else:
-                                    portal_hint = "청약홈"
-                                    official_url = "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do"
-
-                                clean_search_name = name.split("(")[0].strip() if "(" in name else name
-                                search_query = urllib.parse.quote_plus(f"{clean_search_name} 청약 공고")
-                                search_url = f"https://search.naver.com/search.naver?query={search_query}"
-
-                                results.append({
-                                    "id": str(uuid.uuid4()),
-                                    "title": title,
-                                    "category": "부동산",
-                                    "date": f"{apply_date_str}T09:00:00Z",
-                                    "isCompleted": False,
-                                    "isDDay": True,
-                                    "memo": f"{region_name} | {sub_type} |{price_display} | 공식접수: {portal_hint}",
-                                    "linkURL": official_url,
-                                    "searchURL": search_url,
-                                    "timeDetail": f"{sub_type}{price_display}",
-                                    "priceWon": price_won,
-                                    "createdAt": datetime.datetime.now().isoformat() + "Z"
-                                })
-                                print(f"  -> [발견/채택] {title} ({apply_date_str}{price_display})")
-                        except Exception:
-                            pass
-        except Exception:
+            os.remove(old)
+        except OSError:
             pass
 
-    # 2. 최신 청약홈 & LH 분양 캘린더 기반 15억원 이하 알짜 단지 캘린더 fallback
-    if not results:
-        print(f"  [*] 청약홈 & LH 공고 데이터 중 분양가 '{max_price_text}' 수도권 핵심 단지를 매핑합니다.")
-        # 모든 후보는 15억원 이하로 철저히 검증/선별 (18~19억 초과 잠실 래미안 등 제외)
-        real_schedule_candidates = [
-            ("과천", "과천 디에트르 퍼스티지", "일반분양", 2, 870000000, "과천 지식정보타운 1순위 접수"),
-            ("서울 동작", "동작구 수방사 본청약", "공공분양", 5, 870000000, "노량진 한강변 알짜 공공분양 1순위"),
-            ("서울 마포", "마포 에피트 어바닉", "일반분양", 7, 1020000000, "애오개역 초역세권 일반분양 청약"),
-            ("하남", "하남 교산 A2블록 신혼희망타운", "신혼희망타운", 10, 480000000, "LH 청약플러스 본청약 접수"),
-            ("남양주", "남양주 왕숙 B2블록 공공분양", "공공분양", 14, 450000000, "3기 신도시 LH 공공분양 본접수"),
-            ("고양 일산", "고양 장항 아테라", "일반분양", 18, 680000000, "일산 장항지구 1순위 청약 접수"),
-            ("구리", "구리 인창 수택 재개발", "일반분양", 22, 880000000, "구리역 역세권 일반분양 특공/1순위"),
-            ("의정부", "의정부 롯데캐슬 나리벡시티", "일반분양", 26, 580000000, "의정부 금오동 1순위 청약"),
-            ("서울 강동", "올림픽파크 포레온 (취소분 59㎡)", "무순위", 28, 1050000000, "59㎡ 취소분 무순위 줍줍 청약 접수")
-        ]
 
-        for reg, complex_name, sub_type, day_offset, price_won, memo in real_schedule_candidates:
-            # 15억원 이하 조건 재검증
-            if price_won > max_price_won:
-                print(f"  [X 15억 초과 제외] {complex_name} ({format_price_text(price_won)})")
-                continue
-
-            target_date = today + datetime.timedelta(days=day_offset)
-            title = f"[{sub_type}] {complex_name} 청약"
-            price_tag = f"분양가 {format_price_text(price_won)}"
-            
-            # 공식 청약 접수처(청약홈 / LH / SH) 다이렉트 공고 사이트 매핑
-            if "SH" in complex_name or "SH" in sub_type or "SH" in memo:
-                portal_hint = "SH청약"
-                official_url = "https://www.i-sh.co.kr/app/index.do"
-            elif "신혼희망타운" in sub_type or "공공" in sub_type or "LH" in memo or "LH" in complex_name:
-                portal_hint = "LH청약플러스"
-                official_url = "https://apply.lh.or.kr/lhapply/apply/pblanc/selectPblancList.do"
-            else:
-                portal_hint = "청약홈"
-                official_url = "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancListView.do"
-
-            clean_search_name = complex_name.split("(")[0].strip() if "(" in complex_name else complex_name
-            search_query = urllib.parse.quote_plus(f"{clean_search_name} 청약 공고")
-            search_url = f"https://search.naver.com/search.naver?query={search_query}"
-
-            results.append({
-                "id": str(uuid.uuid4()),
-                "title": title,
-                "category": "부동산",
-                "date": f"{target_date.strftime('%Y-%m-%d')}T09:00:00Z",
-                "isCompleted": False,
-                "isDDay": True,
-                "memo": f"{reg} | {memo} | [{price_tag}] | 공식접수: {portal_hint}",
-                "linkURL": official_url,
-                "searchURL": search_url,
-                "timeDetail": f"{price_tag}",
-                "priceWon": price_won,
-                "createdAt": datetime.datetime.now().isoformat() + "Z"
-            })
-
-    return results
-
-
-# ==========================================
-# 3. 사후 트래킹 엔진 (실적 발표 결과 & 청약 당첨일 추적)
-# ==========================================
-def apply_post_event_tracking(items):
+def merge(existing, fetched_by_source, status, today):
     """
-    실적 발표 결과 및 청약 당첨자 발표일 사후 트래킹 엔진
-    - 접수/발표 당일 및 지난 일정에 대해 결과 링크, 당첨일 자동 계산 및 안내를 추가합니다.
+    existing: 기존 일정 목록
+    fetched_by_source: {source: [items]}  (이번에 '성공'한 출처만 들어있음)
     """
-    today = datetime.date.today()
-    for item in items:
-        date_str = item.get("date", "")[:10]
-        try:
-            event_date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
-        except Exception:
+    history_cutoff = today - datetime.timedelta(days=HISTORY_DAYS)
+    prev_by_id = {str(i.get("id", "")).upper(): i for i in existing}
+
+    final = []
+    dropped_legacy = 0
+    for item in existing:
+        if is_legacy_fake(item):
+            dropped_legacy += 1
             continue
+        src = source_of(item)
+        if src == common.SOURCE_MANUAL:
+            final.append(item)
+            continue
+        d = common.parse_item_date(item.get("date"))
+        if d and d < history_cutoff:
+            continue  # 오래된 자동 일정 정리
+        if src in fetched_by_source:
+            # 이번에 새로 받은 출처: 새 목록에 없는 '지난 일정'만 기록으로 유지
+            new_ids = {i["id"] for i in fetched_by_source[src]}
+            if str(item.get("id")).upper() not in new_ids and d and d < today:
+                final.append(item)
+            continue
+        final.append(item)  # 실패/미설정 출처 → 직전 데이터 유지
 
-        category = item.get("category", "")
-        # 부동산 청약 사후 트래킹 (접수일 기준)
-        if category == "부동산":
-            if event_date < today:
-                # 통상 청약 접수일로부터 7~8일 뒤가 당첨자 발표일
-                ann_date = event_date + datetime.timedelta(days=8)
-                ann_str = f"{ann_date.month}/{ann_date.day}"
-                if "당첨자 발표" not in item.get("memo", ""):
-                    item["memo"] = f"{item.get('memo', '')} | [접수 마감 -> 당첨발표: {ann_str}]"
-                    item["timeDetail"] = f"당첨발표 {ann_str}"
-            elif event_date == today:
-                item["timeDetail"] = "오늘 청약 마감!"
-                if "오늘 마감" not in item.get("memo", ""):
-                    item["memo"] = f"{item.get('memo', '')} | [오늘 청약 마감일(청약홈 접수)]"
+    for src, items in fetched_by_source.items():
+        for it in items:
+            prev = prev_by_id.get(it["id"])
+            if prev:
+                it["isCompleted"] = prev.get("isCompleted", False)
+                it["createdAt"] = prev.get("createdAt", it["createdAt"])
+            final.append(it)
 
-        # 주식 실적 발표 사후 트래킹
-        elif category == "주식/금융":
-            if event_date < today:
-                if "실적 발표 완료" not in item.get("memo", ""):
-                    item["memo"] = f"{item.get('memo', '')} | [실적 발표 완료: 공시 확인]"
-                    item["timeDetail"] = "발표 완료"
-            elif event_date == today:
-                item["timeDetail"] = "오늘 발표 D-Day!"
+    # 중복 ID 제거 (뒤에 온 것이 최신)
+    seen = {}
+    for it in final:
+        seen[str(it.get("id")).upper()] = it
+    final = sorted(seen.values(), key=lambda x: (common.parse_item_date(x.get("date")) or today, x.get("title", "")))
+    if dropped_legacy:
+        print("[*] 이전 버전이 만든 예시(가짜) 일정 %d건 정리" % dropped_legacy)
+    return final
 
 
-# ==========================================
-# 4. 데이터 병합 엔진 (Safe Merge & Upsert)
-# ==========================================
-def merge_and_save(stock_items, realestate_items):
-    existing = load_existing_schedules()
-    create_backup(existing)
+def run_source(name, label, fn, status, fetched):
+    try:
+        result = fn()
+    except FetchError as e:
+        status[name] = {"status": "error", "label": label, "message": str(e)[:300]}
+        print("  [!] %s 실패 → 직전 데이터 유지: %s" % (label, e))
+        return
+    except Exception as e:  # 예상 못한 형식 변화 등
+        status[name] = {"status": "error", "label": label, "message": "%s: %s" % (type(e).__name__, e)}
+        print("  [!] %s 처리 중 오류 → 직전 데이터 유지: %s" % (label, e))
+        return
+    if isinstance(result, dict):
+        fetched.update(result)
+        count = sum(len(v) for v in result.values())
+    else:
+        fetched[name] = result
+        count = len(result)
+    status[name] = {"status": "ok", "label": label, "count": count}
 
-    # 1. 개인 일정 및 Todo-list는 100% 온전히 보존
-    preserved_items = [
-        item for item in existing
-        if item.get("category") in ["개인/업무", "할 일"]
-    ]
 
-    print(f"[*] 기존 개인 일정/Todo {len(preserved_items)}건 100% 안전 보존 완료.")
-
-    # 2. 신규 수집된 주식 및 부동산 일정 추가 (부동산은 15억 이하 선별본으로 최신 교체)
-    final_items = list(preserved_items)
-    existing_titles = set(item.get("title") for item in preserved_items)
-
-    new_auto_items = stock_items + realestate_items
-    for item in new_auto_items:
-        if item["title"] not in existing_titles:
-            final_items.append(item)
-            existing_titles.add(item["title"])
-
-    # 3. 사후 트래킹 적용 (당첨 발표일, 실적 완료 등)
-    apply_post_event_tracking(final_items)
-
-    # 날짜 순서 정렬
-    final_items.sort(key=lambda x: x.get("date", ""))
-
-    with open(SCHEDULES_PATH, "w", encoding="utf-8") as f:
-        json.dump(final_items, f, ensure_ascii=False, indent=2)
-
-    print(f"[✅] 15억 이하 선별 및 사후 트래킹 동기화 완료! 총 {len(final_items)}개 일정 등록됨.")
-    print(f"     - 보존된 개인/Todo: {len(preserved_items)}건")
-    print(f"     - 주식 실적발표: {len(stock_items)}건")
-    print(f"     - 15억 이하 부동산 청약: {len(realestate_items)}건")
+def check_keys():
+    print("비밀키 설정 상태 (환경변수 또는 .env):")
+    for k, desc in SECRETS.items():
+        print("  %s %-20s %s" % ("✅" if common.get_secret(k) else "❌", k, desc))
 
 
 def main():
+    if "--check" in sys.argv:
+        check_keys()
+        return
+
     print("=" * 60)
-    print("🚀 PersonalAssistant 실시간 스케줄 동기화 수집기 가동")
+    print("🚀 개인비서 Blanc 수집기 v2  (%s KST)" % common.now_kst().strftime("%Y-%m-%d %H:%M"))
     print("=" * 60)
 
-    config = load_config()
-    stocks = config.get("stocks", [])
-    real_estate = config.get("realEstate", {})
+    today = common.today_kst()
+    config = common.load_config()
+    re_cfg = config.get("realEstate", {})
+    stock_list = config.get("stocks", [])
 
-    # 1. 주식 실적 발표 수집
-    stock_events = fetch_stock_earnings(stocks)
+    status = {}
+    fetched = {}
 
-    # 2. 부동산 청약 수집
-    re_events = fetch_realestate_subscriptions(real_estate)
+    data_key = common.get_secret("DATA_GO_KR_KEY")
+    finnhub_key = common.get_secret("FINNHUB_KEY")
+    dart_key = common.get_secret("DART_KEY")
 
-    # 3. 안전 병합 및 저장
-    merge_and_save(stock_events, re_events)
+    # 1. 청약홈 (APT + 무순위)
+    print("\n[🏠] 청약홈 분양 공고")
+    if data_key:
+        try:
+            res, errors = realestate.fetch_applyhome(data_key, re_cfg, today)
+            for src, items in res.items():
+                if src in errors:
+                    status[src] = {"status": "error", "label": "청약홈", "message": errors[src][:300]}
+                else:
+                    fetched[src] = items
+                    status[src] = {"status": "ok", "label": "청약홈" + (" 무순위" if "remnant" in src else ""), "count": len(items)}
+        except Exception as e:
+            status["applyhome"] = {"status": "error", "label": "청약홈", "message": str(e)[:300]}
+            print("  [!] 청약홈 실패: %s" % e)
+    else:
+        status["applyhome"] = {"status": "not_configured", "label": "청약홈", "message": "DATA_GO_KR_KEY 없음"}
+        print("  [-] DATA_GO_KR_KEY 미설정 → 건너뜀")
+
+    # 2. LH
+    print("\n[🏠] LH 공공분양·신혼희망타운 공고")
+    if data_key:
+        run_source("lh", "LH청약플러스", lambda: realestate.fetch_lh(data_key, re_cfg, today), status, fetched)
+    else:
+        status["lh"] = {"status": "not_configured", "label": "LH청약플러스", "message": "DATA_GO_KR_KEY 없음"}
+        print("  [-] DATA_GO_KR_KEY 미설정 → 건너뜀")
+
+    # 3. 미국 실적
+    print("\n[📈] 미국 실적 발표 (Finnhub)")
+    if finnhub_key:
+        run_source("finnhub", "미국 실적(Finnhub)", lambda: stocks.fetch_finnhub(finnhub_key, stock_list, today), status, fetched)
+    else:
+        status["finnhub"] = {"status": "not_configured", "label": "미국 실적(Finnhub)", "message": "FINNHUB_KEY 없음"}
+        print("  [-] FINNHUB_KEY 미설정 → 건너뜀")
+
+    # 4. 국내 실적
+    print("\n[📈] 국내 실적 공시 (OpenDART)")
+    if dart_key:
+        run_source("dart", "국내 공시(DART)", lambda: stocks.fetch_dart(dart_key, stock_list, today), status, fetched)
+    else:
+        status["dart"] = {"status": "not_configured", "label": "국내 공시(DART)", "message": "DART_KEY 없음"}
+        print("  [-] DART_KEY 미설정 → 건너뜀")
+
+    # 5. 병합 & 저장
+    existing = common.load_json(common.SCHEDULES_PATH, [])
+    create_backup(existing)
+    final = merge(existing, fetched, status, today)
+    common.save_json(common.SCHEDULES_PATH, final)
+
+    prev_status = common.load_json(common.STATUS_PATH, {})
+    for name, st in status.items():
+        if st["status"] == "ok":
+            st["lastSuccess"] = common.now_kst().isoformat(timespec="seconds")
+        else:
+            st["lastSuccess"] = (prev_status.get("sources", {}).get(name) or {}).get("lastSuccess")
+    common.save_json(common.STATUS_PATH, {
+        "updatedAt": common.now_kst().isoformat(timespec="seconds"),
+        "sources": status,
+    })
+
+    print("\n" + "=" * 60)
+    print("[✅] 저장 완료: 총 %d건" % len(final))
+    for name, st in status.items():
+        icon = {"ok": "✅", "error": "⚠️", "not_configured": "➖"}[st["status"]]
+        extra = "%d건" % st.get("count", 0) if st["status"] == "ok" else st.get("message", "")
+        print("  %s %-22s %s" % (icon, st["label"], extra))
 
 
 if __name__ == "__main__":

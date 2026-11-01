@@ -1,185 +1,165 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
-telegram_briefing.py
-- data/schedules.json의 데이터를 바탕으로 오늘의 D-Day 일정 및 임박한 주식 실발/부동산 청약 일정을 브리핑 메시지로 생성
-- 텔레그램 Bot API를 통해 모바일로 아침 브리핑 전송
+telegram_briefing.py — 개인비서 Blanc 모닝 브리핑 (v2)
+
+- 한국 시간 기준 '오늘'로 계산 (GitHub Actions의 UTC 때문에 하루 밀리던 문제 수정)
+- 어제·그제 발표된 실적 결과(EPS 서프라이즈) 요약
+- 데이터 수집이 실패했거나 키가 없으면 브리핑 하단에 경고 표시
+- 비밀키는 환경변수(GitHub Secrets) 또는 .env 에서만 읽음
+
+사용법
+  python3 scripts/telegram_briefing.py            # 전송
+  python3 scripts/telegram_briefing.py --preview  # 전송하지 않고 미리보기만
 """
 
+import html
+import json
 import os
 import sys
-import json
-import datetime
+import urllib.error
 import urllib.request
-import urllib.parse
-import ssl
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(BASE_DIR, "data", "schedules.json")
-CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from blanc import common  # noqa: E402
 
-# SSL 설정
-ssl_context = ssl.create_default_context()
-ssl_context.check_hostname = False
-ssl_context.verify_mode = ssl.CERT_NONE
+EMOJI = {"개인/업무": "💼", "할 일": "✅", "주식/금융": "📈", "부동산": "🏠"}
 
 
-def parse_date(date_str):
-    if not date_str:
-        return datetime.date.today()
-    clean_str = date_str.replace("Z", "+00:00")
-    try:
-        dt = datetime.datetime.fromisoformat(clean_str)
-        return dt.date()
-    except Exception:
-        try:
-            return datetime.datetime.strptime(date_str[:10], "%Y-%m-%d").date()
-        except Exception:
-            return datetime.date.today()
+def esc(s):
+    return html.escape(str(s or ""), quote=False)
 
 
-def build_briefing_message(items):
-    today = datetime.date.today()
-    weekday_kr = ["월", "화", "수", "목", "금", "토", "일"][today.weekday()]
-    today_str = f"{today.year}년 {today.month}월 {today.day}일 ({weekday_kr})"
+def link(url, text):
+    return '<a href="%s">%s</a>' % (html.escape(url, quote=True), esc(text))
 
-    today_items = []
-    urgent_items = []  # D-1 ~ D-3
-    upcoming_items = []  # D-4 ~ D-7
 
-    for item in items:
-        if item.get("isCompleted", False):
+def line_for(item, d_day=None, detailed=False):
+    emoji = EMOJI.get(item.get("category"), "📌")
+    head = "%s <b>%s</b>" % (emoji, esc(item.get("title")))
+    if d_day is not None:
+        head += " (D-%d)" % d_day
+    if item.get("timeDetail"):
+        head += " · " + esc(item["timeDetail"])
+    if not detailed:
+        return "• " + head
+    out = "• " + head
+    memo = (item.get("memo") or "").split(" | 공식접수")[0]
+    if memo:
+        out += "\n   └ " + esc(memo[:180])
+    if item.get("linkURL"):
+        out += "  " + link(item["linkURL"], "🔗바로가기")
+    return out
+
+
+def build_briefing_message(items, status, today):
+    today_str = "%d년 %d월 %d일 (%s)" % (today.year, today.month, today.day, common.weekday_kr(today))
+    today_items, urgent, upcoming, results = [], [], [], []
+
+    for it in items:
+        d = common.parse_item_date(it.get("date"))
+        if not d:
             continue
-        item_date = parse_date(item.get("date"))
-        d_day = (item_date - today).days
+        diff = (d - today).days
+        if it.get("isCompleted"):
+            continue
+        if diff == 0:
+            today_items.append(it)
+        elif 1 <= diff <= 3:
+            urgent.append((it, diff))
+        elif 4 <= diff <= 7:
+            upcoming.append((it, diff))
+        elif -2 <= diff < 0 and it.get("source") == "finnhub" and "EPS" in (it.get("timeDetail") or ""):
+            results.append(it)
 
-        if d_day == 0:
-            today_items.append(item)
-        elif 1 <= d_day <= 3:
-            urgent_items.append((item, d_day))
-        elif 4 <= d_day <= 7:
-            upcoming_items.append((item, d_day))
+    lines = ["✦ <b>개인비서 Blanc 모닝 브리핑</b>", "📅 %s" % today_str, ""]
 
-    # 메시지 조합
-    lines = [
-        "✦ *[개인비서 Blanc 모닝 브리핑]*",
-        f"📅 {today_str}\n"
-    ]
-
-    # 1. 오늘 D-Day 일정
     if today_items:
-        lines.append(f"🚨 *[오늘의 D-Day 보좌 일정]* ({len(today_items)}건)")
-        for it in today_items:
-            cat = it.get("category", "")
-            emoji = "💼" if "개인" in cat else ("📈" if "주식" in cat else "🏠")
-            detail = f" ({it.get('timeDetail')})" if it.get("timeDetail") else ""
-            memo = f"\n   └ {it.get('memo')}" if it.get("memo") else ""
-            if it.get("linkURL"):
-                link_text = "공고글 보기" if "부동산" in cat else "상세보기"
-                memo += f" [🔗{link_text}]({it.get('linkURL')})"
-            lines.append(f"• {emoji} *{it.get('title')}*{detail}{memo}")
-        lines.append("")
+        lines.append("🚨 <b>오늘</b> (%d건)" % len(today_items))
+        lines += [line_for(it, detailed=True) for it in today_items]
     else:
-        lines.append("✨ *오늘 예정된 D-Day 일정은 없습니다.*\n")
+        lines.append("✨ 오늘 예정된 일정은 없습니다.")
+    lines.append("")
 
-    # 2. 3일 이내 임박 일정
-    if urgent_items:
-        lines.append(f"⏳ *[3일 이내 임박 일정 (D-3)]* ({len(urgent_items)}건)")
-        for it, d_day in urgent_items:
-            cat = it.get("category", "")
-            emoji = "💼" if "개인" in cat else ("📈" if "주식" in cat else "🏠")
-            detail = f" | {it.get('timeDetail')}" if it.get("timeDetail") else ""
-            memo = f"\n   └ {it.get('memo')}" if it.get("memo") else ""
-            if it.get("linkURL"):
-                link_text = "공고글 보기" if "부동산" in cat else "상세보기"
-                memo += f" [🔗{link_text}]({it.get('linkURL')})"
-            lines.append(f"• {emoji} *{it.get('title')}* (D-{d_day}){detail}{memo}")
+    if urgent:
+        lines.append("⏳ <b>3일 이내</b> (%d건)" % len(urgent))
+        lines += [line_for(it, dd, detailed=True) for it, dd in sorted(urgent, key=lambda x: x[1])]
         lines.append("")
 
-    # 3. 이번 주 다가올 일정 (D-4 ~ D-7)
-    if upcoming_items:
-        lines.append(f"📌 *[이번 주 다가올 주요 일정]*")
-        for it, d_day in upcoming_items[:4]:  # 최대 4개
-            cat = it.get("category", "")
-            emoji = "💼" if "개인" in cat else ("📈" if "주식" in cat else "🏠")
-            lines.append(f"• {emoji} {it.get('title')} (D-{d_day})")
+    if upcoming:
+        lines.append("📌 <b>이번 주 다가올 일정</b>")
+        lines += [line_for(it, dd) for it, dd in sorted(upcoming, key=lambda x: x[1])[:6]]
+        if len(upcoming) > 6:
+            lines.append("   … 외 %d건" % (len(upcoming) - 6))
         lines.append("")
 
-    lines.append("━━━━━━━━━━━━━━━━━")
-    lines.append("💡 *오늘도 알차고 성공적인 하루 보내세요!* ✨\n— 개인비서 Blanc")
+    if results:
+        lines.append("📊 <b>최근 실적 결과</b>")
+        for it in results:
+            lines.append("• %s — %s" % (esc(it.get("title", "").replace(" 실적 발표", "")), esc(it.get("timeDetail"))))
+        lines.append("")
 
+    # 수집 상태 경고
+    warn = []
+    for name, s in (status.get("sources") or {}).items():
+        if s.get("status") == "error":
+            last = (s.get("lastSuccess") or "없음")[:10]
+            warn.append("⚠️ %s 수집 실패 (마지막 성공 %s)" % (esc(s.get("label", name)), last))
+        elif s.get("status") == "not_configured":
+            warn.append("➖ %s 미연결 (API 키 필요)" % esc(s.get("label", name)))
+    if warn:
+        lines.append("━━━━━━━━━━━━━━")
+        lines += warn
+        lines.append("")
+
+    lines.append("— 개인비서 Blanc")
     return "\n".join(lines)
 
 
 def send_telegram_message(token, chat_id, text):
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    payload = {
+    url = "https://api.telegram.org/bot%s/sendMessage" % token
+    payload = json.dumps({
         "chat_id": chat_id,
         "text": text,
-        "parse_mode": "Markdown"
-    }
-    data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=data,
-        headers={"Content-Type": "application/json"}
-    )
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
+    }).encode("utf-8")
+    req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=10, context=ssl_context) as res:
-            res_data = json.loads(res.read().decode("utf-8"))
-            if res_data.get("ok"):
-                print("[✅] 텔레그램 브리핑 전송 성공!")
-                return True
-            else:
-                print(f"[!] 텔레그램 응답 에러: {res_data}")
-                return False
-    except Exception as e:
-        print(f"[!] 텔레그램 전송 실패: {e}")
+        with urllib.request.urlopen(req, timeout=15, context=common._SSL) as res:
+            data = json.loads(res.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        print("[!] 텔레그램 전송 실패: HTTP %s %s" % (e.code, e.read()[:200]))
         return False
+    except Exception as e:
+        print("[!] 텔레그램 전송 실패: %s" % e)
+        return False
+    if data.get("ok"):
+        print("[✅] 텔레그램 브리핑 전송 성공!")
+        return True
+    print("[!] 텔레그램 응답 에러: %s" % data)
+    return False
 
 
 def main():
-    print("=" * 60)
-    print("📢 개인비서 Blanc 텔레그램 아침 브리핑 발송 시스템")
-    print("=" * 60)
+    items = common.load_json(common.SCHEDULES_PATH, [])
+    status = common.load_json(common.STATUS_PATH, {})
+    message = build_briefing_message(items, status, common.today_kst())
 
-    # 1. 토큰 및 Chat ID 확인
-    # 환경변수 우선 -> config.json 차선
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
-
-    if not token or not chat_id:
-        if os.path.exists(CONFIG_PATH):
-            try:
-                with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-                    cfg = json.load(f)
-                    tg_cfg = cfg.get("telegram", {})
-                    token = token or tg_cfg.get("botToken")
-                    chat_id = chat_id or tg_cfg.get("chatId")
-            except Exception:
-                pass
-
-    if not os.path.exists(DATA_PATH):
-        print(f"[!] 일정이 저장된 파일이 없습니다: {DATA_PATH}")
-        sys.exit(1)
-
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        items = json.load(f)
-
-    # 2. 브리핑 메시지 생성
-    message = build_briefing_message(items)
-    print("\n--- [미리보기: 전송될 브리핑 메시지] ---")
+    print("--- [미리보기] ---")
     print(message)
-    print("----------------------------------------\n")
+    print("------------------")
 
-    # 3. 텔레그램 전송
-    if not token or not chat_id or token == "YOUR_BOT_TOKEN" or chat_id == "YOUR_CHAT_ID":
-        print("[ℹ️] 텔레그램 토큰 또는 Chat ID가 설정되지 않아 화면에 미리보기만 출력되었습니다.")
-        print("    텔레그램 봇 토큰과 Chat ID를 설정하시면 매일 아침 모바일로 메시지가 발송됩니다.")
+    if "--preview" in sys.argv:
         return
 
-    send_telegram_message(token, chat_id, message)
+    token = common.get_secret("TELEGRAM_BOT_TOKEN")
+    chat_id = common.get_secret("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        print("[ℹ️] 텔레그램 토큰 또는 Chat ID가 설정되지 않아 미리보기만 출력했습니다.")
+        return
+    if not send_telegram_message(token, chat_id, message):
+        sys.exit(1)
 
 
 if __name__ == "__main__":
