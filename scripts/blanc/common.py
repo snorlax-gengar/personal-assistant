@@ -132,7 +132,7 @@ def _load_dotenv():
 
 def get_secret(name):
     """환경변수(GitHub Secrets) 우선, 없으면 로컬 .env. 비어 있으면 None."""
-    val = os.environ.get(name) or _load_dotenv().get(name)
+    val = (os.environ.get(name) or _load_dotenv().get(name) or "").strip().strip('"').strip("'")
     if val and not val.startswith("여기에") and val.upper() not in ("", "YOUR_KEY", "CHANGE_ME"):
         return val
     return None

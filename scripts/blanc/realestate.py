@@ -38,11 +38,17 @@ def _g(row, *keys):
     return None
 
 
-def _matches_region(text, regions):
+def _matches_region(text, regions, max_tokens=None):
+    """
+    단어 '시작' 기준으로 비교 (예: '강동' → '강동구' O, '장성동' X / '양주' → '양주시' O, '남양주시' X).
+    주소는 앞 3단어(시·도 / 시·군·구 / 구)만 본다.
+    """
     if not regions:
         return True
-    text = text or ""
-    return any(r in text for r in regions)
+    tokens = (text or "").replace("(", " ").replace(")", " ").split()
+    if max_tokens:
+        tokens = tokens[:max_tokens]
+    return any(t.startswith(r) for t in tokens for r in regions)
 
 
 def _odcloud_all(endpoint, key, conds, per_page=500, max_pages=10):
@@ -84,10 +90,8 @@ def _model_prices(endpoint, key, house_manage_no):
 def _price_text(prices):
     if not prices:
         return None
-    lo, hi = min(prices), max(prices)
-    if lo == hi:
-        return common.format_eok(lo)
-    return "%s~%s" % (common.format_eok(lo), common.format_eok(hi))
+    lo, hi = common.format_eok(min(prices)), common.format_eok(max(prices))
+    return lo if lo == hi else "%s~%s" % (lo, hi)
 
 
 def _classify_main(row):
@@ -212,8 +216,12 @@ def fetch_applyhome(key, cfg, today):
             continue
         print("  [*] 청약홈 %s: 최근 공고 %d건 조회" % ("무순위" if remnant else "APT", len(rows)))
         for row in rows:
-            region_text = " ".join(filter(None, [row.get("HSSPLY_ADRES"), row.get("SUBSCRPT_AREA_CODE_NM"), row.get("HOUSE_NM")]))
-            if not _matches_region(region_text, regions):
+            addr = row.get("HSSPLY_ADRES") or ""
+            if addr:
+                in_region = _matches_region(addr, regions, max_tokens=3)
+            else:
+                in_region = _matches_region(row.get("HOUSE_NM"), regions)
+            if not in_region:
                 continue
             if not _relevant(row, today, remnant):
                 continue

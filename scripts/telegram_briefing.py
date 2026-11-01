@@ -154,12 +154,15 @@ def main():
         return
 
     token = common.get_secret("TELEGRAM_BOT_TOKEN")
+    if token and token.lower().startswith("bot"):
+        token = token[3:]  # 'bot123:ABC' 형태로 넣은 경우
     chat_id = common.get_secret("TELEGRAM_CHAT_ID")
     if not token or not chat_id:
         print("[ℹ️] 텔레그램 토큰 또는 Chat ID가 설정되지 않아 미리보기만 출력했습니다.")
         return
     if not send_telegram_message(token, chat_id, message):
-        sys.exit(1)
+        # 브리핑 실패가 데이터 저장/캘린더 배포까지 막지 않도록 경고만 남김
+        print("::warning title=텔레그램 전송 실패::봇 토큰(TELEGRAM_BOT_TOKEN)과 chat id를 확인하세요.")
 
 
 if __name__ == "__main__":

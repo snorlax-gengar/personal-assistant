@@ -30,6 +30,8 @@ BACKUPS_DIR = os.path.join(common.DATA_DIR, "backups")
 HISTORY_DAYS = 60
 MAX_BACKUPS = 30
 AUTO_CATEGORIES = ("주식/금융", "부동산")
+# 각 수집기가 과거 며칠까지 다시 조회하는지 (이 범위 안의 일정은 매번 새로 받은 결과가 기준)
+FETCH_WINDOW_PAST_DAYS = {"applyhome": 14, "applyhome_remnant": 14, "lh": 14, "finnhub": 21, "dart": 89}
 
 SECRETS = {
     "DATA_GO_KR_KEY": "공공데이터포털 (청약홈·LH 청약 공고)",
@@ -104,7 +106,10 @@ def merge(existing, fetched_by_source, status, today):
         if src in fetched_by_source:
             # 이번에 새로 받은 출처: 새 목록에 없는 '지난 일정'만 기록으로 유지
             new_ids = {i["id"] for i in fetched_by_source[src]}
-            if str(item.get("id")).upper() not in new_ids and d and d < today:
+            # 수집 범위 '밖'으로 밀려난 지난 일정만 기록으로 유지.
+            # 범위 안인데 새 결과에 없으면 취소·필터 제외된 것이므로 삭제.
+            window = FETCH_WINDOW_PAST_DAYS.get(src, 14)
+            if str(item.get("id")).upper() not in new_ids and d and d < today - datetime.timedelta(days=window):
                 final.append(item)
             continue
         final.append(item)  # 실패/미설정 출처 → 직전 데이터 유지
