@@ -332,12 +332,12 @@
     "date": "2026-11-02T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
-    "memo": "AAPL FY2026 Q4 | EPS 예상 2.03 | 매출 예상 $115.66B",
+    "memo": "AAPL FY2026 Q4 | EPS 예상 2.03 | 매출 예상 $115.66B | EPS 실제 2.05 | 매출 실제 $114.48B (-1.0% 하회)",
     "source": "finnhub",
     "createdAt": "2026-11-01T11:37:08Z",
     "linkURL": "https://finance.yahoo.com/quote/AAPL/",
     "searchURL": "https://search.naver.com/search.naver?query=%EC%95%A0%ED%94%8C+%EC%8B%A4%EC%A0%81",
-    "timeDetail": "장 마감 후 (AMC) · 한국시간 다음날 새벽"
+    "timeDetail": "발표 완료 · EPS 2.05 (+1.1% 상회)"
   },
   {
     "id": "D738D04B-FF6E-59BF-BD60-F5379692C681",
@@ -397,6 +397,21 @@
     "priceWon": 857150000
   },
   {
+    "id": "741D695B-B140-5792-B3ED-D22C7EAEBA43",
+    "title": "[무순위] 빌리브센트하이(2차) · 청약 접수",
+    "category": "부동산",
+    "date": "2026-11-09T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "경기도 남양주시 화도읍 마석우리 295-32번지 일원 | 총 5세대 | 분양가 6.8억~7.8억 | 1순위 11/9(월) → 당첨발표 11/12(목) → 계약 11/14(토) | 공식접수: 청약홈",
+    "source": "applyhome_remnant",
+    "createdAt": "2026-11-03T01:56:42Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910281&pblancNo=2026910281",
+    "searchURL": "https://search.naver.com/search.naver?query=%EB%B9%8C%EB%A6%AC%EB%B8%8C%EC%84%BC%ED%8A%B8%ED%95%98%EC%9D%B4%282%EC%B0%A8%29+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "분양가 6.8억~7.8억",
+    "priceWon": 677000000
+  },
+  {
     "id": "3E49E6D1-5D84-5A17-85DB-4F701B042CD9",
     "title": "[일반분양] 구리갈매역세권 B-1블록 신안인스빌 디센트 · 특별공급 접수",
     "category": "부동산",
@@ -425,6 +440,21 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC%EA%B0%88%EB%A7%A4%EC%97%AD%EC%84%B8%EA%B6%8C+B-1%EB%B8%94%EB%A1%9D+%EC%8B%A0%EC%95%88%EC%9D%B8%EC%8A%A4%EB%B9%8C+%EB%94%94%EC%84%BC%ED%8A%B8+%EC%B2%AD%EC%95%BD",
     "timeDetail": "분양가 7억~7.8억",
     "priceWon": 695800000
+  },
+  {
+    "id": "B41BDC44-7E1B-5C8E-A0E2-8C15DF057033",
+    "title": "[무순위] 빌리브센트하이(2차) · 당첨자 발표",
+    "category": "부동산",
+    "date": "2026-11-12T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "경기도 남양주시 화도읍 마석우리 295-32번지 일원 | 총 5세대 | 분양가 6.8억~7.8억 | 1순위 11/9(월) → 당첨발표 11/12(목) → 계약 11/14(토) | 공식접수: 청약홈",
+    "source": "applyhome_remnant",
+    "createdAt": "2026-11-03T01:56:42Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910281&pblancNo=2026910281",
+    "searchURL": "https://search.naver.com/search.naver?query=%EB%B9%8C%EB%A6%AC%EB%B8%8C%EC%84%BC%ED%8A%B8%ED%95%98%EC%9D%B4%282%EC%B0%A8%29+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "분양가 6.8억~7.8억",
+    "priceWon": 677000000
   },
   {
     "id": "CC2A203C-8F6C-5AF0-98D8-DE2670A932A0",
