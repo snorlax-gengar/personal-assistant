@@ -1,35 +1,35 @@
 {
-  "updatedAt": "2026-11-04T09:19:37+09:00",
+  "updatedAt": "2026-11-04T11:50:51+09:00",
   "sources": {
     "applyhome": {
       "status": "ok",
       "label": "청약홈",
       "count": 7,
-      "lastSuccess": "2026-11-04T09:19:37+09:00"
+      "lastSuccess": "2026-11-04T11:50:51+09:00"
     },
     "applyhome_remnant": {
       "status": "ok",
       "label": "청약홈 무순위",
       "count": 7,
-      "lastSuccess": "2026-11-04T09:19:37+09:00"
+      "lastSuccess": "2026-11-04T11:50:51+09:00"
     },
     "lh": {
       "status": "ok",
       "label": "LH청약플러스",
       "count": 4,
-      "lastSuccess": "2026-11-04T09:19:37+09:00"
+      "lastSuccess": "2026-11-04T11:50:51+09:00"
     },
     "finnhub": {
       "status": "ok",
       "label": "미국 실적(Finnhub)",
       "count": 27,
-      "lastSuccess": "2026-11-04T09:19:37+09:00"
+      "lastSuccess": "2026-11-04T11:50:51+09:00"
     },
     "dart": {
       "status": "ok",
       "label": "국내 공시(DART)",
       "count": 7,
-      "lastSuccess": "2026-11-04T09:19:37+09:00"
+      "lastSuccess": "2026-11-04T11:50:51+09:00"
     }
   }
 }
