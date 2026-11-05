@@ -360,12 +360,12 @@
     "date": "2026-11-04T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
-    "memo": "QCOM FY2026 Q4 | EPS 예상 2.20 | 매출 예상 $10.32B",
+    "memo": "QCOM FY2026 Q4 | EPS 예상 2.20 | 매출 예상 $10.32B | EPS 실제 2.17 | 매출 실제 $10.44B (+1.2% 상회)",
     "source": "finnhub",
     "createdAt": "2026-11-01T11:37:09Z",
     "linkURL": "https://finance.yahoo.com/quote/QCOM/",
     "searchURL": "https://search.naver.com/search.naver?query=%ED%80%84%EC%BB%B4+%EC%8B%A4%EC%A0%81",
-    "timeDetail": "장 마감 후 (AMC) · 한국시간 다음날 새벽"
+    "timeDetail": "발표 완료 · EPS 2.17 (-1.5% 하회)"
   },
   {
     "id": "B8961A4A-70E8-586B-94F9-4E3DFF1443E4",
