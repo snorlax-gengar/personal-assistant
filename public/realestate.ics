@@ -7,7 +7,7 @@ X-WR-CALNAME:🏠 [개인비서 Blanc] 부동산·청약
 X-WR-TIMEZONE:Asia/Seoul
 BEGIN:VEVENT
 UID:9af8afa4-d535-5bac-b10b-c10ec150ae33@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
 SUMMARY:[🏠] [무순위] e편한세상 에코델타 센터포인트(19BL)
@@ -39,7 +39,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:af66fa81-ca2a-588e-8937-bd2bb78fe73c@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
 SUMMARY:[🏠] [무순위] 에코델타시티 푸르지오 센터파크(18B
@@ -71,7 +71,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1ce92df7-519f-5e94-a833-a87fcf4be49c@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261019
 DTEND;VALUE=DATE:20261020
 SUMMARY:[🏠] [무순위] 청계 노르웨이숲(13차) · 청약 접수 (
@@ -102,7 +102,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:438bb28f-5c96-5607-a846-29bc8554ff08@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:[🏠] [무순위] e편한세상 에코델타 센터포인트(19BL)
@@ -134,7 +134,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:8bf34072-bc65-541a-b5f3-1d9d4e073d7c@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:[🏠] [무순위] 에코델타시티 푸르지오 센터파크(18B
@@ -166,7 +166,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:812a8c91-dfb3-5cbd-ae68-13729a114c47@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261022
 DTEND;VALUE=DATE:20261023
 SUMMARY:[🏠] [무순위] 청계 노르웨이숲(13차) · 당첨자 발
@@ -197,7 +197,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:1c8cca48-1621-53ca-b8f3-3357b10fef92@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261026
 DTEND;VALUE=DATE:20261027
 SUMMARY:[🏠] [공공분양] 고덕강일지구 3단지 토지임대부(
@@ -231,7 +231,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:7e023f52-4397-553d-b648-7bbe1bdf6a48@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:[🏠] [무순위] 과천 디에트르 퍼스티지(S2BL) · 청약
@@ -263,7 +263,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:9dcfafe4-bcb9-5258-99bc-03841bab9133@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261105
 DTEND;VALUE=DATE:20261106
 SUMMARY:[🏠] [무순위] 과천 디에트르 퍼스티지(S2BL) · 당첨
@@ -295,7 +295,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:741d695b-b140-5792-b3ed-d22c7eaeba43@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:[🏠] [무순위] 빌리브센트하이(2차) · 청약 접수 (
@@ -327,7 +327,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:3e49e6d1-5d84-5a17-85db-4f701b042cd9@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:[🏠] [일반분양] 구리갈매역세권 B-1블록 신안인스
@@ -361,7 +361,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:af72d2c6-dbd5-50aa-90ae-adc75240f7df@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:[🏠] [일반분양] 구리갈매역세권 B-1블록 신안인스
@@ -394,8 +394,41 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:2baae409-ce17-5ce8-b3ac-cd54ea95e889@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:[🏠] [무순위] 오남역 서희스타힐스 여의재 3단지 (
+ 조합원 취소분) · 청약 접수 (분양가 6.5억~7.1억)
+DESCRIPTION:💰 [분양가]: 분양가 6.5억~7.1억\n📋 [단지 요약]
+ : 경기도 남양주시 오남읍 양지리 186-10번지 일원 | 총 6
+ 세대 | 분양가 6.5억~7.1억 | 1순위 11/11(수) → 당첨발표 11/
+ 16(월) → 계약 11/18(수) | 공식접수: 청약홈\n🏛 [공식 접
+ 수처 (청약홈)]: https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLtt
+ otPblancDetailView.do?houseManageNo=2026910280&pblancNo=2026910280\n🔍 [
+ 단지 분석 & 공고 요약글]: https://search.naver.com/search.naver?q
+ uery=%EC%98%A4%EB%82%A8%EC%97%AD+%EC%84%9C%ED%9D%AC%EC%8A%A4%ED%83%80%ED%9
+ E%90%EC%8A%A4+%EC%97%AC%EC%9D%98%EC%9E%AC+3%EB%8B%A8%EC%A7%80+%28%EC%A1%B0
+ %ED%95%A9%EC%9B%90+%EC%B7%A8%EC%86%8C%EB%B6%84%29+%EC%B2%AD%EC%95%BD\n✦ 
+ [개인비서 Blanc 자동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView
+ .do?houseManageNo=2026910280&pblancNo=2026910280
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[무순위] 오남역 서희스타힐스 여의재 3단지 (조
+ 합원 취소분) · 청약 접수 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [무순위] 오남역 서희스타힐스 여의재 3단
+ 지 (조합원 취소분) · 청약 접수 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ac3a1499-cefa-55ae-9c3d-4dc4af57b968@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261111
 DTEND;VALUE=DATE:20261112
 SUMMARY:[🏠] [신혼희망타운] 남양주왕숙 A-2블록 신혼희망
@@ -434,7 +467,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:b41bdc44-7e1b-5c8e-a0e2-8c15df057033@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
 SUMMARY:[🏠] [무순위] 빌리브센트하이(2차) · 당첨자 발표 
@@ -466,7 +499,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:cc2a203c-8f6c-5af0-98d8-de2670a932a0@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
 SUMMARY:[🏠] [신혼희망타운] 구리갈매역세권 A-1BL 신혼희
@@ -503,7 +536,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:330e6357-e701-5854-9542-8e96cc6b77e7@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
 SUMMARY:[🏠] [신혼희망타운] 남양주왕숙 A-2블록 신혼희망
@@ -540,7 +573,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:ef3dd505-feb6-522c-808e-13006a31a366@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:[🏠] [공공분양] 고양지축 B-1블록 공공분양주택 잔
@@ -574,7 +607,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:92a3150d-ee34-50b9-bf89-ada911c27d4b@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:[🏠] [신혼희망타운] 고양장항 A-2\, A-4\, A-5블록 신
@@ -610,8 +643,107 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:09516073-7d16-5a95-83cf-3bac75cf2e99@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:[🏠] [무순위] 오남역 서희스타힐스 여의재 3단지 (
+ 조합원 취소분) · 당첨자 발표 (분양가 6.5억~7.1억)
+DESCRIPTION:💰 [분양가]: 분양가 6.5억~7.1억\n📋 [단지 요약]
+ : 경기도 남양주시 오남읍 양지리 186-10번지 일원 | 총 6
+ 세대 | 분양가 6.5억~7.1억 | 1순위 11/11(수) → 당첨발표 11/
+ 16(월) → 계약 11/18(수) | 공식접수: 청약홈\n🏛 [공식 접
+ 수처 (청약홈)]: https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLtt
+ otPblancDetailView.do?houseManageNo=2026910280&pblancNo=2026910280\n🔍 [
+ 단지 분석 & 공고 요약글]: https://search.naver.com/search.naver?q
+ uery=%EC%98%A4%EB%82%A8%EC%97%AD+%EC%84%9C%ED%9D%AC%EC%8A%A4%ED%83%80%ED%9
+ E%90%EC%8A%A4+%EC%97%AC%EC%9D%98%EC%9E%AC+3%EB%8B%A8%EC%A7%80+%28%EC%A1%B0
+ %ED%95%A9%EC%9B%90+%EC%B7%A8%EC%86%8C%EB%B6%84%29+%EC%B2%AD%EC%95%BD\n✦ 
+ [개인비서 Blanc 자동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView
+ .do?houseManageNo=2026910280&pblancNo=2026910280
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[무순위] 오남역 서희스타힐스 여의재 3단지 (조
+ 합원 취소분) · 당첨자 발표 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [무순위] 오남역 서희스타힐스 여의재 3단
+ 지 (조합원 취소분) · 당첨자 발표 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6024bd2b-c4a5-5d0e-bd0a-c17cfc5e1115@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:[🏠] [일반분양] 의정부역 펠리스타워 양우내안애 
+ · 특별공급 접수 (분양가 6.4억~8.6억)
+DESCRIPTION:💰 [분양가]: 분양가 6.4억~8.6억\n📋 [단지 요약]
+ : 경기도 의정부시 의정부동 424번지 일원  | 총 414세대 | 
+ 분양가 6.4억~8.6억 | 특별공급 11/16(월) → 1순위 11/17(화) 
+ → 2순위 11/18(수) → 당첨발표 11/24(화) → 계약 12/7(월)~12
+ /9(수) | 공식접수: 청약홈\n🏛 [공식 접수처 (청약홈)]: ht
+ tps://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManage
+ No=2026000553&pblancNo=2026000553\n🔍 [단지 분석 & 공고 요약글]
+ : https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80%
+ EC%97%AD+%ED%8E%A0%EB%A6%AC%EC%8A%A4%ED%83%80%EC%9B%8C+%EC%96%91%EC%9A%B0%
+ EB%82%B4%EC%95%88%EC%95%A0+%EC%B2%AD%EC%95%BD\n✦ [개인비서 Blanc 자
+ 동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseM
+ anageNo=2026000553&pblancNo=2026000553
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 의정부역 펠리스타워 양우내안애 · 
+ 특별공급 접수 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 의정부역 펠리스타워 양우내안
+ 애 · 특별공급 접수 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d024d72c-e67a-5202-bbad-6ca09e524f67@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:[🏠] [일반분양] 중화역 라온프라이빗 센트로 · 특
+ 별공급 접수 (분양가 6.6억~20.2억)
+DESCRIPTION:💰 [분양가]: 분양가 6.6억~20.2억\n📋 [단지 요약
+ ]: 서울특별시 중랑구 중화동 303-9번지 일원 | 총 113세대 
+ | 분양가 6.6억~20.2억 | 투기과열 | 특별공급 11/16(월) → 1
+ 순위 11/17(화) → 2순위 11/19(목) → 당첨발표 11/25(수) → 
+ 계약 12/7(월)~12/9(수) | 공식접수: 청약홈\n🏛 [공식 접수
+ 처 (청약홈)]: https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancD
+ etail.do?houseManageNo=2026000497&pblancNo=2026000497\n🔍 [단지 분석
+  & 공고 요약글]: https://search.naver.com/search.naver?query=%EC%A4%9
+ 1%ED%99%94%EC%97%AD+%EB%9D%BC%EC%98%A8%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B9%97
+ +%EC%84%BC%ED%8A%B8%EB%A1%9C+%EC%B2%AD%EC%95%BD\n✦ [개인비서 Blanc 
+ 자동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseM
+ anageNo=2026000497&pblancNo=2026000497
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 중화역 라온프라이빗 센트로 · 특별
+ 공급 접수 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 중화역 라온프라이빗 센트로 ·
+  특별공급 접수 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:2e1f0497-3652-59d1-8020-e75b3795c411@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:[🏠] [일반분양] 구리갈매역세권 B-1블록 신안인스
@@ -644,8 +776,74 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:deabb103-ba54-5805-8a5a-1226084b644f@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:[🏠] [일반분양] 의정부역 펠리스타워 양우내안애 
+ · 1순위 접수 (분양가 6.4억~8.6억)
+DESCRIPTION:💰 [분양가]: 분양가 6.4억~8.6억\n📋 [단지 요약]
+ : 경기도 의정부시 의정부동 424번지 일원  | 총 414세대 | 
+ 분양가 6.4억~8.6억 | 특별공급 11/16(월) → 1순위 11/17(화) 
+ → 2순위 11/18(수) → 당첨발표 11/24(화) → 계약 12/7(월)~12
+ /9(수) | 공식접수: 청약홈\n🏛 [공식 접수처 (청약홈)]: ht
+ tps://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManage
+ No=2026000553&pblancNo=2026000553\n🔍 [단지 분석 & 공고 요약글]
+ : https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80%
+ EC%97%AD+%ED%8E%A0%EB%A6%AC%EC%8A%A4%ED%83%80%EC%9B%8C+%EC%96%91%EC%9A%B0%
+ EB%82%B4%EC%95%88%EC%95%A0+%EC%B2%AD%EC%95%BD\n✦ [개인비서 Blanc 자
+ 동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseM
+ anageNo=2026000553&pblancNo=2026000553
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 의정부역 펠리스타워 양우내안애 · 
+ 1순위 접수 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 의정부역 펠리스타워 양우내안
+ 애 · 1순위 접수 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:c4f53b48-ac61-578b-b415-6e44c8aa934e@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:[🏠] [일반분양] 중화역 라온프라이빗 센트로 · 1
+ 순위 접수 (분양가 6.6억~20.2억)
+DESCRIPTION:💰 [분양가]: 분양가 6.6억~20.2억\n📋 [단지 요약
+ ]: 서울특별시 중랑구 중화동 303-9번지 일원 | 총 113세대 
+ | 분양가 6.6억~20.2억 | 투기과열 | 특별공급 11/16(월) → 1
+ 순위 11/17(화) → 2순위 11/19(목) → 당첨발표 11/25(수) → 
+ 계약 12/7(월)~12/9(수) | 공식접수: 청약홈\n🏛 [공식 접수
+ 처 (청약홈)]: https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancD
+ etail.do?houseManageNo=2026000497&pblancNo=2026000497\n🔍 [단지 분석
+  & 공고 요약글]: https://search.naver.com/search.naver?query=%EC%A4%9
+ 1%ED%99%94%EC%97%AD+%EB%9D%BC%EC%98%A8%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B9%97
+ +%EC%84%BC%ED%8A%B8%EB%A1%9C+%EC%B2%AD%EC%95%BD\n✦ [개인비서 Blanc 
+ 자동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseM
+ anageNo=2026000497&pblancNo=2026000497
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 중화역 라온프라이빗 센트로 · 1순
+ 위 접수 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 중화역 라온프라이빗 센트로 ·
+  1순위 접수 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:0a4985ca-c715-5c66-af5b-5bb9be70728e@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261119
 DTEND;VALUE=DATE:20261120
 SUMMARY:[🏠] [신혼희망타운] 남양주왕숙 A-2블록 신혼희망
@@ -683,8 +881,74 @@ TRIGGER:-PT15H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:4b0cb967-167c-5725-b0dc-c6f3e5b45792@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:[🏠] [일반분양] 의정부역 펠리스타워 양우내안애 
+ · 당첨자 발표 (분양가 6.4억~8.6억)
+DESCRIPTION:💰 [분양가]: 분양가 6.4억~8.6억\n📋 [단지 요약]
+ : 경기도 의정부시 의정부동 424번지 일원  | 총 414세대 | 
+ 분양가 6.4억~8.6억 | 특별공급 11/16(월) → 1순위 11/17(화) 
+ → 2순위 11/18(수) → 당첨발표 11/24(화) → 계약 12/7(월)~12
+ /9(수) | 공식접수: 청약홈\n🏛 [공식 접수처 (청약홈)]: ht
+ tps://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManage
+ No=2026000553&pblancNo=2026000553\n🔍 [단지 분석 & 공고 요약글]
+ : https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80%
+ EC%97%AD+%ED%8E%A0%EB%A6%AC%EC%8A%A4%ED%83%80%EC%9B%8C+%EC%96%91%EC%9A%B0%
+ EB%82%B4%EC%95%88%EC%95%A0+%EC%B2%AD%EC%95%BD\n✦ [개인비서 Blanc 자
+ 동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseM
+ anageNo=2026000553&pblancNo=2026000553
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 의정부역 펠리스타워 양우내안애 · 
+ 당첨자 발표 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 의정부역 펠리스타워 양우내안
+ 애 · 당첨자 발표 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2fcd4725-102a-56fc-8d23-6cb2ce6d1be8@personalassistant
+DTSTAMP:20261106T235556Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:[🏠] [일반분양] 중화역 라온프라이빗 센트로 · 당
+ 첨자 발표 (분양가 6.6억~20.2억)
+DESCRIPTION:💰 [분양가]: 분양가 6.6억~20.2억\n📋 [단지 요약
+ ]: 서울특별시 중랑구 중화동 303-9번지 일원 | 총 113세대 
+ | 분양가 6.6억~20.2억 | 투기과열 | 특별공급 11/16(월) → 1
+ 순위 11/17(화) → 2순위 11/19(목) → 당첨발표 11/25(수) → 
+ 계약 12/7(월)~12/9(수) | 공식접수: 청약홈\n🏛 [공식 접수
+ 처 (청약홈)]: https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancD
+ etail.do?houseManageNo=2026000497&pblancNo=2026000497\n🔍 [단지 분석
+  & 공고 요약글]: https://search.naver.com/search.naver?query=%EC%A4%9
+ 1%ED%99%94%EC%97%AD+%EB%9D%BC%EC%98%A8%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B9%97
+ +%EC%84%BC%ED%8A%B8%EB%A1%9C+%EC%B2%AD%EC%95%BD\n✦ [개인비서 Blanc 
+ 자동 비서 구독]
+URL:https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseM
+ anageNo=2026000497&pblancNo=2026000497
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:[일반분양] 중화역 라온프라이빗 센트로 · 당첨
+ 자 발표 D-Day입니다!
+TRIGGER:PT9H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:내일 [일반분양] 중화역 라온프라이빗 센트로 ·
+  당첨자 발표 예정일입니다.
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:bfc41092-a50d-5179-8bb2-04dc68b3fd08@personalassistant
-DTSTAMP:20261106T025937Z
+DTSTAMP:20261106T235556Z
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
 SUMMARY:[🏠] [공공분양] 고덕강일지구 3단지 토지임대부(
