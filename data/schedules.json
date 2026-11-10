@@ -493,12 +493,12 @@
     "date": "2026-11-12T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
-    "memo": "경기도 | 행복주택(신혼희망) | 공고 10/27(화) | 마감 11/12(목) | 상태: 공고중 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
+    "memo": "경기도 | 행복주택(신혼희망) | 공고 10/27(화) | 마감 11/12(목) | 상태: 접수중 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
     "source": "lh",
     "createdAt": "2026-11-01T11:37:08Z",
     "linkURL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300020936&ccrCnntSysDsCd=03&uppAisTpCd=39&aisTpCd=42&mi=1026",
     "searchURL": "https://search.naver.com/search.naver?query=%EA%B5%AC%EB%A6%AC%EA%B0%88%EB%A7%A4%EC%97%AD%EC%84%B8%EA%B6%8C+A-1BL+%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4+%ED%96%89%EB%B3%B5%EC%A3%BC%ED%83%9D+%EC%B5%9C%EC%B4%88+%EC%9E%85%EC%A3%BC%EC%9E%90+%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%28%2726.10.27%29",
-    "timeDetail": "공고중"
+    "timeDetail": "접수중"
   },
   {
     "id": "330E6357-E701-5854-9542-8E96CC6B77E7",
@@ -556,6 +556,21 @@
     "searchURL": "https://search.naver.com/search.naver?query=%EC%98%A4%EB%82%A8%EC%97%AD+%EC%84%9C%ED%9D%AC%EC%8A%A4%ED%83%80%ED%9E%90%EC%8A%A4+%EC%97%AC%EC%9D%98%EC%9E%AC+3%EB%8B%A8%EC%A7%80+%28%EC%A1%B0%ED%95%A9%EC%9B%90+%EC%B7%A8%EC%86%8C%EB%B6%84%29+%EC%B2%AD%EC%95%BD",
     "timeDetail": "분양가 6.5억~7.1억",
     "priceWon": 649000000
+  },
+  {
+    "id": "C4C4A257-35FC-518B-BDDE-2013032D63DC",
+    "title": "[무순위] 청계 노르웨이숲(14차) · 청약 접수",
+    "category": "부동산",
+    "date": "2026-11-16T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "서울특별시 중구 황학동 1756번지 일원 | 총 6세대 | 분양가 7.4억 | 1순위 11/16(월)~11/17(화) → 당첨발표 11/20(금) → 계약 11/23(월)~11/25(수) | 공식접수: 청약홈",
+    "source": "applyhome_remnant",
+    "createdAt": "2026-11-10T02:29:16Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290",
+    "searchURL": "https://search.naver.com/search.naver?query=%EC%B2%AD%EA%B3%84+%EB%85%B8%EB%A5%B4%EC%9B%A8%EC%9D%B4%EC%88%B2%2814%EC%B0%A8%29+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "~11/17(화) · 분양가 7.4억",
+    "priceWon": 738260000
   },
   {
     "id": "6024BD2B-C4A5-5D0E-BD0A-C17CFC5E1115",
@@ -662,6 +677,21 @@
     "priceWon": 352760000
   },
   {
+    "id": "2B282AEE-3562-5C86-BBAF-AF9AD32D73F0",
+    "title": "[무순위] 청계 노르웨이숲(14차) · 당첨자 발표",
+    "category": "부동산",
+    "date": "2026-11-20T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "서울특별시 중구 황학동 1756번지 일원 | 총 6세대 | 분양가 7.4억 | 1순위 11/16(월)~11/17(화) → 당첨발표 11/20(금) → 계약 11/23(월)~11/25(수) | 공식접수: 청약홈",
+    "source": "applyhome_remnant",
+    "createdAt": "2026-11-10T02:29:16Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTRemndrLttotPblancDetailView.do?houseManageNo=2026910290&pblancNo=2026910290",
+    "searchURL": "https://search.naver.com/search.naver?query=%EC%B2%AD%EA%B3%84+%EB%85%B8%EB%A5%B4%EC%9B%A8%EC%9D%B4%EC%88%B2%2814%EC%B0%A8%29+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "분양가 7.4억",
+    "priceWon": 738260000
+  },
+  {
     "id": "4B0CB967-167C-5725-B0DC-C6F3E5B45792",
     "title": "[일반분양] 의정부역 펠리스타워 양우내안애 · 당첨자 발표",
     "category": "부동산",
@@ -710,7 +740,7 @@
     "id": "D1AAA92F-ADE3-5434-8F17-6E2B4EBBC5C7",
     "title": "브로드컴 실적 발표",
     "category": "주식/금융",
-    "date": "2026-12-09T03:00:00Z",
+    "date": "2026-12-10T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
     "memo": "AVGO FY2026 Q4 | EPS 예상 3.89 | 매출 예상 $35.59B",
