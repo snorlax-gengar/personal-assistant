@@ -521,12 +521,12 @@
     "date": "2026-11-13T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
-    "memo": "경기도 | 분양주택 | 공고 11/3(화) | 마감 11/13(금) | 상태: 접수중 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
+    "memo": "경기도 | 분양주택 | 공고 11/3(화) | 마감 11/13(금) | 상태: 접수마감 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
     "source": "lh",
     "createdAt": "2026-11-04T00:19:28Z",
     "linkURL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061200&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
     "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91%EC%A7%80%EC%B6%95+B-1%EB%B8%94%EB%A1%9D+%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91%EC%A3%BC%ED%83%9D+%EC%9E%94%EC%97%AC%EC%84%B8%EB%8C%80+%EC%B6%94%EA%B0%80%EC%9E%85%EC%A3%BC%EC%9E%90%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0",
-    "timeDetail": "접수중"
+    "timeDetail": "접수마감"
   },
   {
     "id": "92A3150D-EE34-50B9-BF89-ADA911C27D4B",
@@ -535,12 +535,12 @@
     "date": "2026-11-13T03:00:00Z",
     "isCompleted": false,
     "isDDay": true,
-    "memo": "경기도 | 공공분양(신혼희망) | 공고 11/3(화) | 마감 11/13(금) | 상태: 접수중 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
+    "memo": "경기도 | 공공분양(신혼희망) | 공고 11/3(화) | 마감 11/13(금) | 상태: 접수마감 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
     "source": "lh",
     "createdAt": "2026-11-04T00:19:29Z",
     "linkURL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061199&ccrCnntSysDsCd=02&uppAisTpCd=39&aisTpCd=39&mi=1027",
     "searchURL": "https://search.naver.com/search.naver?query=%EA%B3%A0%EC%96%91%EC%9E%A5%ED%95%AD+A-2%2C+A-4%2C+A-5%EB%B8%94%EB%A1%9D+%EC%8B%A0%ED%98%BC%ED%9D%AC%EB%A7%9D%ED%83%80%EC%9A%B4%28%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91%29+%EC%9E%94%EC%97%AC%EC%84%B8%EB%8C%80+%EC%B6%94%EA%B0%80%EC%9E%85%EC%A3%BC%EC%9E%90%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0",
-    "timeDetail": "접수중"
+    "timeDetail": "접수마감"
   },
   {
     "id": "09516073-7D16-5A95-83CF-3BAC75CF2E99",
@@ -662,6 +662,20 @@
     "timeDetail": "장 마감 후 (AMC) · 한국시간 다음날 새벽"
   },
   {
+    "id": "87D80DB1-CBE9-5B37-807D-1883B4C54B3D",
+    "title": "삼성전자 실적 발표 (IR·컨퍼런스콜)",
+    "category": "주식/금융",
+    "date": "2026-11-18T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "005930 | 기업설명회(IR)개최(안내공시) (공시일 11/13(금)) | 시간·방식은 공시 원문 확인",
+    "source": "dart",
+    "createdAt": "2026-11-14T00:36:58Z",
+    "linkURL": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261113801115",
+    "searchURL": "https://search.naver.com/search.naver?query=%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90+%EC%8B%A4%EC%A0%81+%EB%B0%9C%ED%91%9C",
+    "timeDetail": "IR 개최"
+  },
+  {
     "id": "0A4985CA-C715-5C66-AF5B-5BB9BE70728E",
     "title": "[신혼희망타운] 남양주왕숙 A-2블록 신혼희망타운(공공분양) 잔여세대 추가입주자모집공고 · 당첨자 발표",
     "category": "부동산",
@@ -707,6 +721,21 @@
     "priceWon": 637200000
   },
   {
+    "id": "90ED9023-C5FF-571D-AB01-2BF5FE4EEBCF",
+    "title": "[일반분양] 경희궁 에피트 · 특별공급 접수",
+    "category": "부동산",
+    "date": "2026-11-25T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "서울특별시 종로구 교남동 28번지 일원 | 총 134세대 | 분양가 11.8억~25.7억 | 투기과열 | 특별공급 11/25(수) → 1순위 11/26(목) → 2순위 11/30(월) → 당첨발표 12/4(금) → 계약 12/16(수)~12/18(금) | 공식접수: 청약홈",
+    "source": "applyhome",
+    "createdAt": "2026-11-14T00:36:39Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EA%B6%81+%EC%97%90%ED%94%BC%ED%8A%B8+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "분양가 11.8억~25.7억",
+    "priceWon": 1182410000
+  },
+  {
     "id": "2FCD4725-102A-56FC-8D23-6CB2CE6D1BE8",
     "title": "[일반분양] 중화역 라온프라이빗 센트로 · 당첨자 발표",
     "category": "부동산",
@@ -737,6 +766,36 @@
     "priceWon": 295670000
   },
   {
+    "id": "D266D0EE-D370-5089-9438-C766AAD2F469",
+    "title": "[일반분양] 경희궁 에피트 · 1순위 접수",
+    "category": "부동산",
+    "date": "2026-11-26T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "서울특별시 종로구 교남동 28번지 일원 | 총 134세대 | 분양가 11.8억~25.7억 | 투기과열 | 특별공급 11/25(수) → 1순위 11/26(목) → 2순위 11/30(월) → 당첨발표 12/4(금) → 계약 12/16(수)~12/18(금) | 공식접수: 청약홈",
+    "source": "applyhome",
+    "createdAt": "2026-11-14T00:36:39Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EA%B6%81+%EC%97%90%ED%94%BC%ED%8A%B8+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "분양가 11.8억~25.7억",
+    "priceWon": 1182410000
+  },
+  {
+    "id": "F8C7AB47-13D6-5107-9E6F-7DAC9D4F9BBF",
+    "title": "[일반분양] 경희궁 에피트 · 당첨자 발표",
+    "category": "부동산",
+    "date": "2026-12-04T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "서울특별시 종로구 교남동 28번지 일원 | 총 134세대 | 분양가 11.8억~25.7억 | 투기과열 | 특별공급 11/25(수) → 1순위 11/26(목) → 2순위 11/30(월) → 당첨발표 12/4(금) → 계약 12/16(수)~12/18(금) | 공식접수: 청약홈",
+    "source": "applyhome",
+    "createdAt": "2026-11-14T00:36:39Z",
+    "linkURL": "https://www.applyhome.co.kr/ai/aia/selectAPTLttotPblancDetail.do?houseManageNo=2026000505&pblancNo=2026000505",
+    "searchURL": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EA%B6%81+%EC%97%90%ED%94%BC%ED%8A%B8+%EC%B2%AD%EC%95%BD",
+    "timeDetail": "분양가 11.8억~25.7억",
+    "priceWon": 1182410000
+  },
+  {
     "id": "D1AAA92F-ADE3-5434-8F17-6E2B4EBBC5C7",
     "title": "브로드컴 실적 발표",
     "category": "주식/금융",
@@ -749,6 +808,20 @@
     "linkURL": "https://finance.yahoo.com/quote/AVGO/",
     "searchURL": "https://search.naver.com/search.naver?query=%EB%B8%8C%EB%A1%9C%EB%93%9C%EC%BB%B4+%EC%8B%A4%EC%A0%81",
     "timeDetail": "장 마감 후 (AMC) · 한국시간 다음날 새벽"
+  },
+  {
+    "id": "D4F45E5D-27B9-50DB-9F04-76003D25C688",
+    "title": "[공공분양] 의정부우정 A-1블록 공공분양주택 잔여세대 추가입주자모집공고(순번추첨 동호지정) · 접수 마감",
+    "category": "부동산",
+    "date": "2026-12-10T03:00:00Z",
+    "isCompleted": false,
+    "isDDay": true,
+    "memo": "경기도 | 분양주택 | 공고 11/13(금) | 마감 12/10(목) | 상태: 공고중 | 분양가·세부 접수일정은 공고문 확인 | 공식접수: LH청약플러스",
+    "source": "lh",
+    "createdAt": "2026-11-14T00:36:52Z",
+    "linkURL": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061211&ccrCnntSysDsCd=02&uppAisTpCd=05&aisTpCd=05&mi=1027",
+    "searchURL": "https://search.naver.com/search.naver?query=%EC%9D%98%EC%A0%95%EB%B6%80%EC%9A%B0%EC%A0%95+A-1%EB%B8%94%EB%A1%9D+%EA%B3%B5%EA%B3%B5%EB%B6%84%EC%96%91%EC%A3%BC%ED%83%9D+%EC%9E%94%EC%97%AC%EC%84%B8%EB%8C%80+%EC%B6%94%EA%B0%80%EC%9E%85%EC%A3%BC%EC%9E%90%EB%AA%A8%EC%A7%91%EA%B3%B5%EA%B3%A0%28%EC%88%9C%EB%B2%88%EC%B6%94%EC%B2%A8+%EB%8F%99%ED%98%B8%EC%A7%80%EC%A0%95%29",
+    "timeDetail": "공고중"
   },
   {
     "id": "C17840DB-22CA-5314-9A0B-B9E52C293FD3",
