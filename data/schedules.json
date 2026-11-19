@@ -185,34 +185,6 @@
     "priceWon": 295670000
   },
   {
-    "id": "030C7124-55D8-5E0A-B93E-3078FF35123E",
-    "title": "SK하이닉스 실적 발표 (IR·컨퍼런스콜)",
-    "category": "주식/금융",
-    "date": "2026-10-28T03:00:00Z",
-    "isCompleted": false,
-    "isDDay": true,
-    "memo": "000660 | [기재정정]기업설명회(IR)개최(안내공시) (공시일 10/28(수)) | 시간·방식은 공시 원문 확인",
-    "source": "dart",
-    "createdAt": "2026-11-01T11:37:14Z",
-    "linkURL": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028800052",
-    "searchURL": "https://search.naver.com/search.naver?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4+%EC%8B%A4%EC%A0%81+%EB%B0%9C%ED%91%9C",
-    "timeDetail": "IR 개최"
-  },
-  {
-    "id": "F6BD35D2-F64D-532E-B32E-29F57ACF2D84",
-    "title": "SK하이닉스 실적 발표 (IR·컨퍼런스콜)",
-    "category": "주식/금융",
-    "date": "2026-10-28T03:00:00Z",
-    "isCompleted": false,
-    "isDDay": true,
-    "memo": "000660 | 기업설명회(IR)개최(안내공시) (공시일 10/14(수)) | 시간·방식은 공시 원문 확인",
-    "source": "dart",
-    "createdAt": "2026-11-01T11:37:15Z",
-    "linkURL": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261014800385",
-    "searchURL": "https://search.naver.com/search.naver?query=SK%ED%95%98%EC%9D%B4%EB%8B%89%EC%8A%A4+%EC%8B%A4%EC%A0%81+%EB%B0%9C%ED%91%9C",
-    "timeDetail": "IR 개최"
-  },
-  {
     "id": "29D4203A-4C43-5439-9531-D4B8A0CE5454",
     "title": "SK하이닉스 잠정실적 공시",
     "category": "주식/금융",
